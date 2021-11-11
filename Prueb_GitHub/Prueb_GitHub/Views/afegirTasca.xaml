@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub.Views"
         mc:Ignorable="d"
-        Title="afegirTasca" Height="500" Width="800">
+        Title="Afegir Tasca" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="270"/>
@@ -18,8 +18,7 @@
             <ColumnDefinition Width="267*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel x:Name="PanellLabels" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" >
-            <!--Label-->
+        <StackPanel x:Name="PanellLabels" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,0">
             <Label Name="lbl_Id" Content="ID"   FontSize="14" Height="27"/>
             <Label Name="lbl_name" Content="Nom" FontSize="14" Height="28"/>
             <Label Name="lbl_descripcio" Content="Descripcio"  FontSize="14" Height="28"/>
@@ -54,11 +53,11 @@
             </ComboBox>
         </StackPanel>
 
-        <StackPanel x:Name="PanellBotons" Orientation="Vertical" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Margin="0,78,0,70">
-            <Button Content="Afegir Tasca" Margin="0,0,0,10"></Button>
-            <Button Content="Modificar Tasca" Margin="0,0,0,10"></Button>
-            <Button Content="Eliminar Tasca"  Margin="0,0,0,10"></Button>
-            <Button Content="Netejar Text"/>
+        <StackPanel x:Name="PanellBotons" Orientation="Vertical" Grid.Column="2" Grid.Row="0" Margin="10,79,10,77">
+            <Button Content="Afegir Tasca" Margin="0,0,0,10" Width="236"></Button>
+            <Button Content="Modificar Tasca" Margin="0,0,0,10" Width="236"></Button>
+            <Button Content="Eliminar Tasca"  Margin="0,0,0,10" Width="236"></Button>
+            <Button Content="Netejar Text" Width="236"/>
         </StackPanel>
     </Grid>
 </Window>
