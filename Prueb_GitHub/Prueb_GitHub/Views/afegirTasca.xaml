@@ -1,0 +1,56 @@
+﻿<Window x:Class="Prueb_GitHub.Views.afegirTasca"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prueb_GitHub.Views"
+        mc:Ignorable="d"
+        Title="afegirTasca" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="124"/>
+                <ColumnDefinition Width="409*"/>
+                <ColumnDefinition Width="267*"/>
+            </Grid.ColumnDefinitions>
+
+         <!--Label-->
+        <Label Name="lbl_Id" Content="ID" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_name" Content="Nom" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_descripcio" Content="Descripcio"  Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_data_inici" Content="Data Inici" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_data_final" Content="Data Final" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_prioritat" Content="Prioritat" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_responsable" Content="Responsable" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        <Label Name="lbl_estat" Content="Estat" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+
+        <TextBox TabIndex="2"  Name="txt_id" Grid.Row="0" Grid.Column="1" />
+        <TextBox TabIndex="3" Name="txt_nomTasca" Grid.Row="1" Grid.Column="1"/>
+        <TextBox TabIndex="4" Name="txt_descripcio" Grid.Row="2" Grid.Column="1"/>
+        <TextBox TabIndex="5" Name="txt_data_inici" Grid.Row="3" Grid.Column="1"/>
+        <TextBox TabIndex="6" Name="txt_data_final" Grid.Row="4" Grid.Column="1"/>
+        <ComboBox TabIndex="7" Name="txt_prioritat" Grid.Row="5" Grid.Column="1">
+            <ComboBoxItem Content="Alta"/>
+            <ComboBoxItem Content="Media"/>
+            <ComboBoxItem Content="Baja"/>
+        </ComboBox>
+        <ComboBox TabIndex="7" Name="txt_responsable" Grid.Row="6" Grid.Column="1">
+            <ComboBoxItem Content="Usuari 1"/>
+            <ComboBoxItem Content="Usuari 2"/>
+            <ComboBoxItem Content="Usuari 3"/>
+        </ComboBox>
+        <TextBox TabIndex="7" Name="txt_estat" Grid.Row="7" Grid.Column="1"/>
+        
+
+    </Grid>
+</Window>
