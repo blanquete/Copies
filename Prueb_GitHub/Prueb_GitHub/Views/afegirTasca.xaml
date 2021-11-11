@@ -8,49 +8,57 @@
         Title="afegirTasca" Height="500" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="124"/>
-                <ColumnDefinition Width="409*"/>
-                <ColumnDefinition Width="267*"/>
-            </Grid.ColumnDefinitions>
+            <RowDefinition Height="270"/>
+            <RowDefinition/>
 
-         <!--Label-->
-        <Label Name="lbl_Id" Content="ID" Grid.Row="0" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_name" Content="Nom" Grid.Row="1" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_descripcio" Content="Descripcio"  Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_data_inici" Content="Data Inici" Grid.Row="3" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_data_final" Content="Data Final" Grid.Row="4" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_prioritat" Content="Prioritat" Grid.Row="5" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_responsable" Content="Responsable" Grid.Row="6" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
-        <Label Name="lbl_estat" Content="Estat" Grid.Row="7" Grid.Column="0" Margin="10,0,0,0" FontSize="16"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="124"/>
+            <ColumnDefinition Width="409*"/>
+            <ColumnDefinition Width="267*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBox TabIndex="2"  Name="txt_id" Grid.Row="0" Grid.Column="1" />
-        <TextBox TabIndex="3" Name="txt_nomTasca" Grid.Row="1" Grid.Column="1"/>
-        <TextBox TabIndex="4" Name="txt_descripcio" Grid.Row="2" Grid.Column="1"/>
-        <TextBox TabIndex="5" Name="txt_data_inici" Grid.Row="3" Grid.Column="1"/>
-        <TextBox TabIndex="6" Name="txt_data_final" Grid.Row="4" Grid.Column="1"/>
-        <ComboBox TabIndex="7" Name="txt_prioritat" Grid.Row="5" Grid.Column="1">
-            <ComboBoxItem Content="Alta"/>
-            <ComboBoxItem Content="Media"/>
-            <ComboBoxItem Content="Baja"/>
-        </ComboBox>
-        <ComboBox TabIndex="7" Name="txt_responsable" Grid.Row="6" Grid.Column="1">
-            <ComboBoxItem Content="Usuari 1"/>
-            <ComboBoxItem Content="Usuari 2"/>
-            <ComboBoxItem Content="Usuari 3"/>
-        </ComboBox>
-        <TextBox TabIndex="7" Name="txt_estat" Grid.Row="7" Grid.Column="1"/>
-        
+        <StackPanel x:Name="PanellLabels" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,0" >
+            <!--Label-->
+            <Label Name="lbl_Id" Content="ID"   FontSize="14" Height="27"/>
+            <Label Name="lbl_name" Content="Nom" FontSize="14" Height="28"/>
+            <Label Name="lbl_descripcio" Content="Descripcio"  FontSize="14" Height="28"/>
+            <Label Name="lbl_data_inici" Content="Data Inici"  FontSize="14"/>
+            <Label Name="lbl_data_final" Content="Data Final"  FontSize="14" Height="30"/>
+            <Label Name="lbl_prioritat" Content="Prioritat"  FontSize="14" Height="28"/>
+            <Label Name="lbl_responsable" Content="Responsable"  FontSize="14" Height="27"/>
+            <Label Name="lbl_estat" Content="Estat" FontSize="14" Height="28"/>
+        </StackPanel>
 
+        <StackPanel x:Name="PanellBoxs" Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0,11,0,0">
+            <TextBox TabIndex="2"  Name="txt_id" Height="28"/>
+            <TextBox TabIndex="3" Name="txt_nomTasca" Height="28"/>
+            <TextBox TabIndex="4" Name="txt_descripcio" Height="28"/>
+            <DatePicker TabIndex="5" Name="data_inici" Height="28"/>
+            <DatePicker TabIndex="6" Name="data_final" Height="28" />
+
+            <ComboBox TabIndex="7" Name="txt_prioritat" Height="28">
+                <ComboBoxItem Content="Alta"/>
+                <ComboBoxItem Content="Media"/>
+                <ComboBoxItem Content="Baja"/>
+            </ComboBox>
+            <ComboBox TabIndex="7" Name="txt_responsable" Height="28">
+                <ComboBoxItem Content="Usuari 1"/>
+                <ComboBoxItem Content="Usuari 2"/>
+                <ComboBoxItem Content="Usuari 3"/>
+            </ComboBox>
+            <ComboBox TabIndex="7" Name="txt_estat" Height="28">
+                <ComboBoxItem Content="To do"/>
+                <ComboBoxItem Content="Doing"/>
+                <ComboBoxItem Content="Done"/>
+            </ComboBox>
+        </StackPanel>
+
+        <StackPanel x:Name="PanellBotons" Orientation="Vertical" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" Margin="0,78,0,70">
+            <Button Content="Afegir Tasca" Margin="0,0,0,10"></Button>
+            <Button Content="Modificar Tasca" Margin="0,0,0,10"></Button>
+            <Button Content="Eliminar Tasca"  Margin="0,0,0,10"></Button>
+            <Button Content="Netejar Text"/>
+        </StackPanel>
     </Grid>
 </Window>
