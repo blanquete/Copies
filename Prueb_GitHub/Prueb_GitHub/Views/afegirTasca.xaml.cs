@@ -1,6 +1,5 @@
 ﻿using Prueb_GitHub.Entity;
 using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -37,8 +36,8 @@ namespace Prueb_GitHub.Views
                     Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
-                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
-                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    DInici = datepicker_data_inici.Text,
+                    DFinal = datepicker_data_final.Text,
                     Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
@@ -66,8 +65,8 @@ namespace Prueb_GitHub.Views
                     Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
-                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
-                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    DInici = datepicker_data_inici.Text,
+                    DFinal = datepicker_data_final.Text,
                     Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
@@ -117,7 +116,7 @@ namespace Prueb_GitHub.Views
         private void OnKeyDownHandler(object sender, KeyEventArgs e)
         {
             //si la tecla es un nuemero
-            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Tab)
                 //permet introduir valors
                 e.Handled = false;
             else
