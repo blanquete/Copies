@@ -29,7 +29,6 @@ namespace Prueb_GitHub.Views
         {
             try
             {
-            
                     //afageix un nou item al listview
                      temp = new Tasca()
                     {
@@ -128,8 +127,13 @@ namespace Prueb_GitHub.Views
 
         private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(lvTasca.SelectedItem.ToString());
+            //onsole.WriteLine(lvTasca.SelectedItem.ToString());
             //lvTasca.GetValue();
+        }
+
+        private void btn_netejar_Click(object sender, RoutedEventArgs e)
+        {
+            netejaCamps();
         }
     }
 }
