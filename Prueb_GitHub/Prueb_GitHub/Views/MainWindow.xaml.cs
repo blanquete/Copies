@@ -20,15 +20,19 @@ namespace Prueb_GitHub
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
+            BBDD.DataBase.ObtenerConexion();
             InitializeComponent();
+            
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Views.afegirTasca t = new Views.afegirTasca();
             t.Show();
+            
         }
     }
 
