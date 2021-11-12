@@ -31,13 +31,13 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Nom}"/>
                         <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
-                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding ata_Inici}"/>
-                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding Data_final}"/>
-                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat}"/>
-                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable}"/>
-                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat}"/>
+                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
+                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
+                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_id}"/>
+                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_id}"/>
+                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_id}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

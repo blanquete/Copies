@@ -19,6 +19,8 @@ namespace Prueb_GitHub.Views
     /// </summary>
     public partial class afegirTasca : Window
     {
+        public Tasca temp;
+        public MainWindow w1;
         public afegirTasca()
         {
             InitializeComponent();
@@ -28,12 +30,10 @@ namespace Prueb_GitHub.Views
         {
             try
             {
-                
-                MainWindow w1 = new MainWindow();
-
-                //afageix un nou item al listview
-                lvTasca.Items.Add(new Tasca()
-                { 
+            
+                    //afageix un nou item al listview
+                     temp = new Tasca()
+                    {
                     Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
@@ -42,13 +42,15 @@ namespace Prueb_GitHub.Views
                     Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                });
-
+                };
                 
+                //Añadir al listView De Afegir Tasca
+                lvTasca.Items.Add(temp);
+
+                //El primer listview obtiene los datos del segundo listview
                 w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
                 netejaCamps();
 
-                
             }
             catch (Exception)
             {

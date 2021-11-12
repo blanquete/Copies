@@ -30,8 +30,9 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Views.afegirTasca t = new Views.afegirTasca();
-            t.Show();
+            Views.afegirTasca ventana2 = new Views.afegirTasca();
+            ventana2.w1 = this;
+            ventana2.Show();
             
         }
     }
