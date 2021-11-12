@@ -10,7 +10,7 @@ namespace Prueb_GitHub.BBDD
         public static MySqlConnection ObtenerConexion()
         {
 
-            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = prueba; Uid = root; pwd =;");
+            MySqlConnection conectar = new MySqlConnection("server = 127.0.0.1; database = todolist; Uid = root; pwd =1234;");
             conectar.Open();
             return conectar;
         }
