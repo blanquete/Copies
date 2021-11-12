@@ -61,16 +61,17 @@ namespace Prueb_GitHub.Views
             try
             {
                 //creem un nou item al listview
-                Tasca tasca_mod = new Tasca(
-
-                    int.Parse(txt_id.Text),
-                    txt_nomTasca.Text,txt_descripcio.Text,
-                    (DateTime)datepicker_data_inici.SelectedDate,
-                    (DateTime)datepicker_data_final.SelectedDate,
-                    (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
-                );
+                Tasca tasca_mod = (new Tasca()
+                {
+                    Id = int.Parse(txt_id.Text),
+                    Nom = txt_nomTasca.Text,
+                    Descripcio = txt_descripcio.Text,
+                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                });
                 //intercanvia l'item seleccionat per el que acabem de crear
                 lvTasca.Items.Insert(lvTasca.SelectedIndex, tasca_mod);
 
@@ -126,7 +127,7 @@ namespace Prueb_GitHub.Views
 
         private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Console.WriteLine(lvTasca.SelectedItem.ToString());
+            Console.WriteLine(lvTasca.SelectedItem.ToString());
             //lvTasca.GetValue();
         }
     }
