@@ -28,6 +28,7 @@ namespace Prueb_GitHub.Views
         {
             try
             {
+
                 //afageix un nou item al listview
                 lvTasca.Items.Add(new Tasca()
                 {
@@ -41,8 +42,12 @@ namespace Prueb_GitHub.Views
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
                 });
+<<<<<<< Updated upstream
 
                 netejaCamps();
+=======
+                
+>>>>>>> Stashed changes
             }
             catch (Exception)
             {

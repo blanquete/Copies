@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="To Do List" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -24,7 +24,25 @@
                 <MenuItem Header="Modificar Tasca"/>
                 <MenuItem Header="Eliminar Tasca"/>
             </MenuItem>
-            
         </Menu>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <ListView Margin="10" Name="lvTascaPrincipal" Width="768">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
+                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding ata_Inici}"/>
+                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding Data_final}"/>
+                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat}"/>
+                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable}"/>
+                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </StackPanel>
+
     </Grid>
 </Window>
