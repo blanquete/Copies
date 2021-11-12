@@ -42,12 +42,12 @@ namespace Prueb_GitHub.Views
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
                 });
-<<<<<<< Updated upstream
 
+                MainWindow w1 = new MainWindow();
+                w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
                 netejaCamps();
-=======
+
                 
->>>>>>> Stashed changes
             }
             catch (Exception)
             {
@@ -125,8 +125,8 @@ namespace Prueb_GitHub.Views
 
         private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine(lvTasca.SelectedItem.ToString());
-            lvTasca.GetValue();
+            //Console.WriteLine(lvTasca.SelectedItem.ToString());
+            //lvTasca.GetValue();
         }
     }
 }
