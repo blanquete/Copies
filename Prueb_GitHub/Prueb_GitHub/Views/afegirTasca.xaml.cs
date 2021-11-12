@@ -28,20 +28,23 @@ namespace Prueb_GitHub.Views
         {
             try
             {
+                
+                MainWindow w1 = new MainWindow();
 
                 //afageix un nou item al listview
-                lvTasca.Items.Add(new Tasca(
-                    int.Parse(txt_id.Text),
-                    txt_nomTasca.Text,
-                    txt_descripcio.Text,
-                    (DateTime)datepicker_data_inici.SelectedDate,
-                    (DateTime)datepicker_data_final.SelectedDate,
-                    (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
-                ));
+                lvTasca.Items.Add(new Tasca()
+                { 
+                    Id = int.Parse(txt_id.Text),
+                    Nom = txt_nomTasca.Text,
+                    Descripcio = txt_descripcio.Text,
+                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                });
 
-                MainWindow w1 = new MainWindow();
+                
                 w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
                 netejaCamps();
 
@@ -102,7 +105,7 @@ namespace Prueb_GitHub.Views
             txt_nomTasca.Text = "";
             txt_descripcio.Text = "";
             datepicker_data_inici.SelectedDate = null;
-            datepicker_data_inici.SelectedDate = null;
+            datepicker_data_final.SelectedDate = null;
             cmb_prioritat.SelectedItem = null;
             cmb_responsable.SelectedItem = null;
             cmb_estat.SelectedItem = null;
