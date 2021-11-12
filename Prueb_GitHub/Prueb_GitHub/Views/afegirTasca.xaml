@@ -30,7 +30,7 @@
         </StackPanel>
 
         <StackPanel x:Name="PanellBoxs" Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0,11,0,0">
-            <TextBox TabIndex="2"  Name="txt_id" Height="28"/>
+            <TextBox TabIndex="2"  Name="txt_id" Height="28" KeyDown="OnKeyDownHandler"/>
             <TextBox TabIndex="3" Name="txt_nomTasca" Height="28"/>
             <TextBox TabIndex="4" Name="txt_descripcio" Height="28"/>
             <DatePicker TabIndex="5" Name="datepicker_data_inici" Height="28"/>
@@ -61,7 +61,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-            <ListView Margin="10" Name="lvTasca">
+            <ListView Margin="10" Name="lvTasca" SelectionChanged="lvTasca_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="120" DisplayMemberBinding="{Binding Id}"/>

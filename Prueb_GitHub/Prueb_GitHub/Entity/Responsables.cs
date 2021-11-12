@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace To_do_List_ARI.Entity
+namespace Prueb_GitHub.Entity
 {
     public class Responsable
     {

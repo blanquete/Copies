@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prueb_GitHub.Entity;
+using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -29,16 +31,18 @@ namespace Prueb_GitHub.Views
                 //afageix un nou item al listview
                 lvTasca.Items.Add(new Tasca()
                 {
-                    //Id = temp.ToString()
+                    
                     Id = int.Parse(txt_id.Text),
-                    Name = txt_nomTasca.Text,
+                    Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
-                    ata_Inici = datepicker_data_inici.Text,
-                    Data_final = datepicker_data_final.Text,
-                    Prioritat = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    Responsable = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    Estat = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
+                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
                 });
+
+                netejaCamps();
             }
             catch (Exception)
             {
@@ -48,7 +52,29 @@ namespace Prueb_GitHub.Views
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                //creem un nou item al listview
+                Tasca tasca_mod = new Tasca(
 
+                    int.Parse(txt_id.Text),
+                    txt_nomTasca.Text,txt_descripcio.Text,
+                    (DateTime)datepicker_data_inici.SelectedDate,
+                    (DateTime)datepicker_data_final.SelectedDate,
+                    (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString() //transforma el valor del item seleccionat
+                );
+                //intercanvia l'item seleccionat per el que acabem de crear
+                lvTasca.Items.Insert(lvTasca.SelectedIndex, tasca_mod);
+
+                netejaCamps();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+            }
         }
 
         // quan l'usuari clica sobre el button eliminar
@@ -58,34 +84,26 @@ namespace Prueb_GitHub.Views
             {
                 //elimina el item seleccionat
                 lvTasca.Items.RemoveAt(lvTasca.SelectedIndex);
+                netejaCamps();
+
             }
             catch (Exception)
             {
                 MessageBox.Show("Has de seleccionar una tasca", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-
-        public class Tasca
-        {
-            public string Name { get; set; } //accesors
-            public string Responsable { get; set; }
-            public string Descripcio { get; set; }
-            public string Data_final { get; set; }
-            public string Prioritat { get; set; }
-            public string ata_Inici { get; set; } //si poso data_inici em dona errors per iaxo he possat ata inici
-            public int Id { get; set; }
-            public string Estat { get; set; }
-        }
-
         //metode per netejar els camps
         public void netejaCamps()
         {
-            /*txt_nomTasca.Text = "";
-            txt_responsable.Text = "";
+            txt_id.Text = "";
+            txt_nomTasca.Text = "";
             txt_descripcio.Text = "";
-            txt_prioritat.Text = "";
-            txt_data_final.Text = "";
-            txt_data_inici.Text = "";*/
+            datepicker_data_inici.SelectedDate = null;
+            datepicker_data_inici.SelectedDate = null;
+            cmb_prioritat.SelectedItem = null;
+            cmb_responsable.SelectedItem = null;
+            cmb_estat.SelectedItem = null;
+
         }
 
         //Aques event s'aplica sobre el textbox id  
@@ -100,5 +118,10 @@ namespace Prueb_GitHub.Views
                 e.Handled = true;
         }
 
+        private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine(lvTasca.SelectedItem.ToString());
+            lvTasca.GetValue();
+        }
     }
 }

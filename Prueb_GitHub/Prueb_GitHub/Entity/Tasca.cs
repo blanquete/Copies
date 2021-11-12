@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace To_do_List_ARI.Entity
+namespace Prueb_GitHub.Entity
 {
     public class Tasca
     {
@@ -11,9 +11,9 @@ namespace To_do_List_ARI.Entity
         private string descripcio;
         private DateTime dInici;
         private DateTime dFinal;
-        private int prioritat_id;
-        private int responsable_id;
-        private int estat_id;
+        private string prioritat_id;
+        private string responsable_id;
+        private string estat_id;
         private enum estat
         {
             ToDo,
@@ -29,11 +29,11 @@ namespace To_do_List_ARI.Entity
             descripcio = "";
             dInici = new DateTime(2021, 1, 1, 0, 0, 0);
             dFinal = new DateTime(2021, 1, 1, 0, 0, 0);
-            prioritat_id = 0;
-            responsable_id = 0;
-            estat_id = 0;
+            prioritat_id = "";
+            responsable_id = "";
+            estat_id = "";
         }
-        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, int prioritat_id_, int estat_id_, int responsable_id_)
+        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, string prioritat_id_, string responsable_id_, string estat_id_)
         {
             id = id_;
             nom = nom_;
@@ -70,17 +70,17 @@ namespace To_do_List_ARI.Entity
             get { return dFinal; }
             set { dFinal = value; }
         }
-        public int Prioritat_id
+        public string Prioritat_id
         {
             get { return prioritat_id; }
             set { prioritat_id = value; }
         }
-        public int Responsable_id
+        public string Responsable_id
         {
             get { return responsable_id; }
             set { responsable_id = value; }
         }
-        public int Estat_id
+        public string Estat_id
         {
             get { return estat_id; }
             set { estat_id = value; }
