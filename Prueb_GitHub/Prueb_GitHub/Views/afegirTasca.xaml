@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub.Views"
         mc:Ignorable="d"
-        Title="Afegir Tasca" Height="500" Width="800">
+        Title="Afegir Tasca" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="270"/>
-            <RowDefinition/>
+            <RowDefinition Height="270"/>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -33,20 +33,20 @@
             <TextBox TabIndex="2"  Name="txt_id" Height="28"/>
             <TextBox TabIndex="3" Name="txt_nomTasca" Height="28"/>
             <TextBox TabIndex="4" Name="txt_descripcio" Height="28"/>
-            <DatePicker TabIndex="5" Name="data_inici" Height="28"/>
-            <DatePicker TabIndex="6" Name="data_final" Height="28" />
+            <DatePicker TabIndex="5" Name="datepicker_data_inici" Height="28"/>
+            <DatePicker TabIndex="6" Name="datepicker_data_final" Height="28" />
 
-            <ComboBox TabIndex="7" Name="txt_prioritat" Height="28">
+            <ComboBox TabIndex="7" Name="cmb_prioritat" Height="28">
                 <ComboBoxItem Content="Alta"/>
                 <ComboBoxItem Content="Media"/>
                 <ComboBoxItem Content="Baja"/>
             </ComboBox>
-            <ComboBox TabIndex="7" Name="txt_responsable" Height="28">
+            <ComboBox TabIndex="7" Name="cmb_responsable" Height="28">
                 <ComboBoxItem Content="Usuari 1"/>
                 <ComboBoxItem Content="Usuari 2"/>
                 <ComboBoxItem Content="Usuari 3"/>
             </ComboBox>
-            <ComboBox TabIndex="7" Name="txt_estat" Height="28">
+            <ComboBox TabIndex="7" Name="cmb_estat" Height="28">
                 <ComboBoxItem Content="To do"/>
                 <ComboBoxItem Content="Doing"/>
                 <ComboBoxItem Content="Done"/>
@@ -54,10 +54,29 @@
         </StackPanel>
 
         <StackPanel x:Name="PanellBotons" Orientation="Vertical" Grid.Column="2" Grid.Row="0" Margin="10,79,10,77">
-            <Button Content="Afegir Tasca" Margin="0,0,0,10" Width="236"></Button>
-            <Button Content="Modificar Tasca" Margin="0,0,0,10" Width="236"></Button>
-            <Button Content="Eliminar Tasca"  Margin="0,0,0,10" Width="236"></Button>
-            <Button Content="Netejar Text" Width="236"/>
+            <Button x:Name="btn_agregar" Content="Afegir Tasca" Margin="0,0,0,10" Width="236" Click="btn_agregar_Click"></Button>
+            <Button x:Name="btn_modificar"  Content="Modificar Tasca" Margin="0,0,0,10" Width="236"></Button>
+            <Button x:Name="btn_eliminar"  Content="Eliminar Tasca"  Margin="0,0,0,10" Width="236"></Button>
+            <Button x:Name="btn_netejar"  Content="Netejar Text" Width="236"/>
         </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <ListView Margin="10" Name="lvTasca">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="120" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Nom" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Descripció" Width="120" DisplayMemberBinding="{Binding Descripcio}"/>
+                        <GridViewColumn Header="Data Inici" Width="120" DisplayMemberBinding="{Binding ata_Inici}"/>
+                        <GridViewColumn Header="Data Final" Width="120" DisplayMemberBinding="{Binding Data_final}"/>
+                        <GridViewColumn Header="Prioritat" Width="120" DisplayMemberBinding="{Binding Prioritat}"/>
+                        <GridViewColumn Header="Responsable" Width="120" DisplayMemberBinding="{Binding Responsable}"/>
+                        <GridViewColumn Header="Estat" Width="120" DisplayMemberBinding="{Binding Estat}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </StackPanel>
+        
     </Grid>
 </Window>
