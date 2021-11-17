@@ -29,7 +29,6 @@ namespace Prueb_GitHub.Views
         {
             try
             {
-            
                     //afageix un nou item al listview
                      temp = new Tasca()
                      {
@@ -42,12 +41,23 @@ namespace Prueb_GitHub.Views
                         Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                         Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                      };
+
                 
                 //Añadir al listView De Afegir Tasca
-                lvTasca.Items.Add(temp);
+                if (temp.Estat_id == "To do")
+                {
+                    
+                    w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+                }
+                else if (temp.Estat_id == "Doing")
+                {
+                    
+                    w1.lvTascaDoing.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+
+                }
 
                 //El primer listview obtiene los datos del segundo listview
-                w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+                
                 netejaCamps();
 
             }
@@ -138,6 +148,11 @@ namespace Prueb_GitHub.Views
             cmb_prioritat.Text = temp.Prioritat_id;
             cmb_responsable.Text = temp.Responsable_id;
             cmb_estat.Text = temp.Estat_id;
+        }
+
+        private void btn_netejar_Click(object sender, RoutedEventArgs e)
+        {
+            netejaCamps();
         }
     }
 }

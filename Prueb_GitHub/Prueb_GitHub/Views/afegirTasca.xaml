@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub.Views"
         mc:Ignorable="d"
-        Title="Afegir Tasca" Height="600" Width="1000">
+        Title="Afegir Tasca" Height="300" Width="1000" MinHeight="275" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="270"/>
@@ -55,28 +55,12 @@
 
         <StackPanel x:Name="PanellBotons" Orientation="Vertical" Grid.Column="2" Grid.Row="0" Margin="10,79,10,77">
             <Button x:Name="btn_agregar" Content="Afegir Tasca" Margin="0,0,0,10" Width="236" Click="btn_agregar_Click"></Button>
-            <Button x:Name="btn_modificar"  Content="Modificar Tasca" Margin="0,0,0,10" Width="236"></Button>
-            <Button x:Name="btn_eliminar"  Content="Eliminar Tasca"  Margin="0,0,0,10" Width="236"></Button>
-            <Button x:Name="btn_netejar"  Content="Netejar Text" Width="236"/>
+            <Button x:Name="btn_modificar"  Content="Modificar Tasca" Margin="0,0,0,10" Width="236" Click="btn_modificar_Click"></Button>
+            <Button x:Name="btn_eliminar"  Content="Eliminar Tasca"  Margin="0,0,0,10" Width="236" Click="btn_eliminar_Click"></Button>
+            <Button x:Name="btn_netejar"  Content="Netejar Text" Width="236" Click="btn_netejar_Click"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-            <ListView Margin="10" Name="lvTasca" SelectionChanged="lvTasca_SelectionChanged">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="ID" Width="120" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Nom" Width="120" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Descripció" Width="120" DisplayMemberBinding="{Binding Descripcio}"/>
-                        <GridViewColumn Header="Data Inici" Width="120" DisplayMemberBinding="{Binding DInici}"/>
-                        <GridViewColumn Header="Data Final" Width="120" DisplayMemberBinding="{Binding DFinal}"/>
-                        <GridViewColumn Header="Prioritat" Width="120" DisplayMemberBinding="{Binding Prioritat_id}"/>
-                        <GridViewColumn Header="Responsable" Width="120" DisplayMemberBinding="{Binding Responsable_id}"/>
-                        <GridViewColumn Header="Estat" Width="120" DisplayMemberBinding="{Binding Estat_id}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-
-        </StackPanel>
+       
         
     </Grid>
 </Window>
