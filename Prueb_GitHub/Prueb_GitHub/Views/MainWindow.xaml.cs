@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Prueb_GitHub.Entity;
+using Prueb_GitHub.Views;
 
 namespace Prueb_GitHub
 {
@@ -20,6 +22,8 @@ namespace Prueb_GitHub
     /// </summary>
     public partial class MainWindow : Window
     {
+        public afegirTasca w2;
+        Tasca temp;
 
         public MainWindow()
         {
@@ -30,10 +34,26 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Views.afegirTasca ventana2 = new Views.afegirTasca();
-            ventana2.w1 = this;
-            ventana2.Show();
+            w2 = new Views.afegirTasca();
+            w2.w1 = this;
+            w2.Show();
             
+        }
+
+        private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lvTascaDoing.SelectedItem = null;
+            //lvTascaDone.SelectedItem = null;
+            temp = (Tasca)lvTascaToDo.SelectedItem;
+
+            w2.txt_id.Text = temp.Id.ToString();
+            w2.txt_nomTasca.Text = temp.Nom;
+            w2.txt_descripcio.Text = temp.Descripcio;
+            w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
+            w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            w2.cmb_prioritat.Text = temp.Prioritat_id;
+            w2.cmb_responsable.Text = temp.Responsable_id;
+            w2.cmb_estat.Text = temp.Estat_id;
         }
     }
 
