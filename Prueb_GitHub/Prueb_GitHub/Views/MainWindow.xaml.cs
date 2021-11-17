@@ -40,9 +40,6 @@ namespace Prueb_GitHub
             
         }
 
-<<<<<<< HEAD
-        
-=======
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             lvTascaDoing.SelectedItem = null;
@@ -58,7 +55,6 @@ namespace Prueb_GitHub
             w2.cmb_responsable.Text = temp.Responsable_id;
             w2.cmb_estat.Text = temp.Estat_id;
         }
->>>>>>> a65ff6435bec0fcc83f0b0d55ba98296de05dcdd
     }
 
 

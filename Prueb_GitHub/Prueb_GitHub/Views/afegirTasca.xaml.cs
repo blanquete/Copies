@@ -88,11 +88,8 @@ namespace Prueb_GitHub.Views
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
-<<<<<<< HEAD
-                //lvTasca.Items.Insert(lvTasca.SelectedIndex, tasca_mod);
-=======
+
                 lvTasca.Items.Insert(lvTasca.SelectedIndex, temp);
->>>>>>> a65ff6435bec0fcc83f0b0d55ba98296de05dcdd
 
                 netejaCamps();
             }
@@ -146,11 +143,7 @@ namespace Prueb_GitHub.Views
 
         private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-<<<<<<< HEAD
-            //onsole.WriteLine(lvTasca.SelectedItem.ToString());
-            //lvTasca.GetValue();
-            //txt_id.Text = lvTasca.Items.ToString();
-=======
+
             temp = (Tasca)lvTasca.SelectedItem;
             
             txt_id.Text = temp.Id.ToString();
@@ -161,7 +154,6 @@ namespace Prueb_GitHub.Views
             cmb_prioritat.Text = temp.Prioritat_id;
             cmb_responsable.Text = temp.Responsable_id;
             cmb_estat.Text = temp.Estat_id;
->>>>>>> a65ff6435bec0fcc83f0b0d55ba98296de05dcdd
         }
 
         private void btn_netejar_Click(object sender, RoutedEventArgs e)
