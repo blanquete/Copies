@@ -31,29 +31,33 @@ namespace Prueb_GitHub.Views
             {
                     //afageix un nou item al listview
                      temp = new Tasca()
-                    {
-                    Id = int.Parse(txt_id.Text),
-                    Nom = txt_nomTasca.Text,
-                    Descripcio = txt_descripcio.Text,
-                    DInici = datepicker_data_inici.Text,
-                    DFinal = datepicker_data_final.Text,
-                    Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                };
+                     {
+                        Id = int.Parse(txt_id.Text),
+                        Nom = txt_nomTasca.Text,
+                        Descripcio = txt_descripcio.Text,
+                        DInici = datepicker_data_inici.Text,
+                        DFinal = datepicker_data_final.Text,
+                        Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                        Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                        Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                     };
 
                 
                 //Añadir al listView De Afegir Tasca
                 if (temp.Estat_id == "To do")
                 {
                     
-                    w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+                    w1.lvTascaToDo.Items.Add(temp);
                 }
                 else if (temp.Estat_id == "Doing")
                 {
                     
-                    w1.lvTascaDoing.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+                    w1.lvTascaDoing.Items.Add(temp);
 
+                }
+                else if(temp.Estat_id == "Done")
+                {
+                    w1.lvTascaDone.Items.Add(temp);
                 }
 
                 //El primer listview obtiene los datos del segundo listview
@@ -72,7 +76,7 @@ namespace Prueb_GitHub.Views
             try
             {
                 //creem un nou item al listview
-                Tasca tasca_mod = (new Tasca()
+                temp = new Tasca()
                 {
                     Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
@@ -82,9 +86,13 @@ namespace Prueb_GitHub.Views
                     Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                });
+                };
                 //intercanvia l'item seleccionat per el que acabem de crear
-                lvTasca.Items.Insert(lvTasca.SelectedIndex, tasca_mod);
+<<<<<<< HEAD
+                //lvTasca.Items.Insert(lvTasca.SelectedIndex, tasca_mod);
+=======
+                lvTasca.Items.Insert(lvTasca.SelectedIndex, temp);
+>>>>>>> a65ff6435bec0fcc83f0b0d55ba98296de05dcdd
 
                 netejaCamps();
             }
@@ -101,7 +109,7 @@ namespace Prueb_GitHub.Views
             try //faig un trycatch per asegurarme que l'usuari ha seleccionat un item previament
             {
                 //elimina el item seleccionat
-                lvTasca.Items.RemoveAt(lvTasca.SelectedIndex);
+                //lvTasca.Items.RemoveAt(lvTasca.SelectedIndex);
                 netejaCamps();
 
             }
@@ -138,9 +146,22 @@ namespace Prueb_GitHub.Views
 
         private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+<<<<<<< HEAD
             //onsole.WriteLine(lvTasca.SelectedItem.ToString());
             //lvTasca.GetValue();
-            txt_id.Text = lvTasca.Items.ToString();
+            //txt_id.Text = lvTasca.Items.ToString();
+=======
+            temp = (Tasca)lvTasca.SelectedItem;
+            
+            txt_id.Text = temp.Id.ToString();
+            txt_nomTasca.Text = temp.Nom;
+            txt_descripcio.Text = temp.Descripcio;
+            datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
+            datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            cmb_prioritat.Text = temp.Prioritat_id;
+            cmb_responsable.Text = temp.Responsable_id;
+            cmb_estat.Text = temp.Estat_id;
+>>>>>>> a65ff6435bec0fcc83f0b0d55ba98296de05dcdd
         }
 
         private void btn_netejar_Click(object sender, RoutedEventArgs e)

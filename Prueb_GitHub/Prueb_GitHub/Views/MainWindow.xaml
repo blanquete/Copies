@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub"
         mc:Ignorable="d"
-        Title="To Do List" Height="450" Width="800">
+        Title="To Do List" Height="650" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -13,8 +13,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="29*"/>
-            <RowDefinition Height="179*"/>
-            <RowDefinition Height="226*"/>
+            <RowDefinition Height="230*"/>
+            <RowDefinition Height="230*"/>
+            <RowDefinition Height="230*"/>
         </Grid.RowDefinitions>
 
         <Menu x:Name="MenuItems" Grid.ColumnSpan="2" >
@@ -28,7 +29,7 @@
         </Menu>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0" Grid.ColumnSpan="2" Margin="6,20,0,0" Grid.RowSpan="2" Width="788">
-            <ListView Margin="10" Name="lvTascaPrincipal" Width="768">
+            <ListView Margin="10" Name="lvTascaToDo" Width="768">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
@@ -61,5 +62,21 @@
             </ListView>
         </StackPanel>
 
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="788">
+            <ListView Margin="10" Name="lvTascaDone" Width="768">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
+                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
+                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
+                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_id}"/>
+                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_id}"/>
+                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_id}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Window>
