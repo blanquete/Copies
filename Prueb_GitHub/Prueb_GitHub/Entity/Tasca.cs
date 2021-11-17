@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Prueb_GitHub.BBDD;
 
 namespace Prueb_GitHub.Entity
 {
@@ -85,5 +87,8 @@ namespace Prueb_GitHub.Entity
             get { return estat_id; }
             set { estat_id = value; }
         }
+
+
+       
     }
 }

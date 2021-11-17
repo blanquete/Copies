@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Prueb_GitHub.Entity;
 using Prueb_GitHub.Views;
+using Prueb_GitHub.BBDD;
 
 namespace Prueb_GitHub
 {
@@ -27,7 +28,7 @@ namespace Prueb_GitHub
 
         public MainWindow()
         {
-            BBDD.DataBase.ObtenerConexion();
+            BBDD.BaseDatos.ObtenerConexion();
             InitializeComponent();
             
         }
