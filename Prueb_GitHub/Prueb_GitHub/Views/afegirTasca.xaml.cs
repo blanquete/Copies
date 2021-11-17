@@ -41,12 +41,23 @@ namespace Prueb_GitHub.Views
                     Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                     Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                 };
+
                 
                 //Añadir al listView De Afegir Tasca
-                lvTasca.Items.Add(temp);
+                if (temp.Estat_id == "To do")
+                {
+                    
+                    w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+                }
+                else if (temp.Estat_id == "Doing")
+                {
+                    
+                    w1.lvTascaDoing.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+
+                }
 
                 //El primer listview obtiene los datos del segundo listview
-                w1.lvTascaPrincipal.Items.Add(lvTasca.Items[lvTasca.Items.Count - 1]);
+                
                 netejaCamps();
 
             }
@@ -129,6 +140,7 @@ namespace Prueb_GitHub.Views
         {
             //onsole.WriteLine(lvTasca.SelectedItem.ToString());
             //lvTasca.GetValue();
+            txt_id.Text = lvTasca.Items.ToString();
         }
 
         private void btn_netejar_Click(object sender, RoutedEventArgs e)
