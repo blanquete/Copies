@@ -23,6 +23,8 @@ namespace Prueb_GitHub.Views
         public afegirTasca()
         {
             InitializeComponent();
+
+            txt_id.Focus();
         }
         //quan l'usuari clica sobre el button afegir
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
@@ -89,7 +91,19 @@ namespace Prueb_GitHub.Views
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
-                lvTasca.Items.Insert(lvTasca.SelectedIndex, temp);
+                if(w1.lvTascaToDo.SelectedItem != null)
+                {
+                    w1.lvTascaToDo.Items.Insert(w1.lvTascaToDo.SelectedIndex, temp);
+                }
+                else if (w1.lvTascaDoing.SelectedItem != null)
+                {
+                    w1.lvTascaDoing.Items.Insert(w1.lvTascaDoing.SelectedIndex, temp);
+                }
+                else if (w1.lvTascaDone.SelectedItem != null)
+                {
+                    w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
+                }
+
 
                 netejaCamps();
             }
@@ -106,7 +120,19 @@ namespace Prueb_GitHub.Views
             try //faig un trycatch per asegurarme que l'usuari ha seleccionat un item previament
             {
                 //elimina el item seleccionat
-                //lvTasca.Items.RemoveAt(lvTasca.SelectedIndex);
+
+                if (w1.lvTascaToDo.SelectedItem != null)
+                {
+                    w1.lvTascaToDo.Items.RemoveAt(w1.lvTascaToDo.SelectedIndex);
+                }
+                else if (w1.lvTascaDoing.SelectedItem != null)
+                {
+                    w1.lvTascaDoing.Items.RemoveAt(w1.lvTascaDoing.SelectedIndex);
+                }
+                else if (w1.lvTascaDone.SelectedItem != null)
+                {
+                    w1.lvTascaDone.Items.RemoveAt(w1.lvTascaDone.SelectedIndex);
+                }
                 netejaCamps();
 
             }
@@ -127,6 +153,8 @@ namespace Prueb_GitHub.Views
             cmb_responsable.SelectedItem = null;
             cmb_estat.SelectedItem = null;
 
+            txt_id.Focus();
+
         }
 
         //Aques event s'aplica sobre el textbox id  
@@ -139,21 +167,6 @@ namespace Prueb_GitHub.Views
             else
                 //si no no permet introduir valors
                 e.Handled = true;
-        }
-
-        private void lvTasca_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            temp = (Tasca)lvTasca.SelectedItem;
-            
-            txt_id.Text = temp.Id.ToString();
-            txt_nomTasca.Text = temp.Nom;
-            txt_descripcio.Text = temp.Descripcio;
-            datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
-            datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
-            cmb_prioritat.Text = temp.Prioritat_id;
-            cmb_responsable.Text = temp.Responsable_id;
-            cmb_estat.Text = temp.Estat_id;
         }
 
         private void btn_netejar_Click(object sender, RoutedEventArgs e)

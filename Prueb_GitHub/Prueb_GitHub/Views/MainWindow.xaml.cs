@@ -42,9 +42,40 @@ namespace Prueb_GitHub
 
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            lvTascaDoing.SelectedItem = null;
-            //lvTascaDone.SelectedItem = null;
             temp = (Tasca)lvTascaToDo.SelectedItem;
+            lvTascaDoing.SelectedItem = null;
+            lvTascaDone.SelectedItem = null;
+
+            w2.txt_id.Text = temp.Id.ToString();
+            w2.txt_nomTasca.Text = temp.Nom;
+            w2.txt_descripcio.Text = temp.Descripcio;
+            w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
+            w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            w2.cmb_prioritat.Text = temp.Prioritat_id;
+            w2.cmb_responsable.Text = temp.Responsable_id;
+            w2.cmb_estat.Text = temp.Estat_id;
+        }
+
+        private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lvTascaToDo.SelectedItem = null;
+            temp = (Tasca)lvTascaDoing.SelectedItem;
+            lvTascaDone.SelectedItem = null;
+
+            w2.txt_id.Text = temp.Id.ToString();
+            w2.txt_nomTasca.Text = temp.Nom;
+            w2.txt_descripcio.Text = temp.Descripcio;
+            w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
+            w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            w2.cmb_prioritat.Text = temp.Prioritat_id;
+            w2.cmb_responsable.Text = temp.Responsable_id;
+            w2.cmb_estat.Text = temp.Estat_id;
+        }
+        private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lvTascaToDo.SelectedItem = null;
+            lvTascaDoing.SelectedItem = null;
+            temp = (Tasca)lvTascaDone.SelectedItem;
 
             w2.txt_id.Text = temp.Id.ToString();
             w2.txt_nomTasca.Text = temp.Nom;
