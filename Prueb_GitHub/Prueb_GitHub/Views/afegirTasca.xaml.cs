@@ -24,7 +24,7 @@ namespace Prueb_GitHub.Views
         
         public afegirTasca()
         {
-            BaseDatos.ObtenerConexion();
+            DbContext.ObtenerConexion();
             InitializeComponent();
 
             txt_id.Focus();
@@ -76,7 +76,7 @@ namespace Prueb_GitHub.Views
             {
                 MessageBox.Show("Has d'omplir tots els camps");
             }
-            BaseDatos.Agregar(temp);
+            DbContext.Agregar(temp);
         }
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
