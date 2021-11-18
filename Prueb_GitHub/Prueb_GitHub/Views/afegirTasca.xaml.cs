@@ -31,37 +31,46 @@ namespace Prueb_GitHub.Views
             txt_id.Focus();
         }
         //quan l'usuari clica sobre el button afegir
-        private void btn_agregar_Click(object sender, RoutedEventArgs e)
+        private void btn_agregar_Clickpp(object sender, RoutedEventArgs e)
         {
             try
             {
                     //afageix un nou item al listview
                      temp = new Tasca()
                      {
-                        Id = int.Parse(txt_id.Text),
-                        Nom = txt_nomTasca.Text,
-                        Descripcio = txt_descripcio.Text,
-                        DInici = (DateTime)datepicker_data_inici.SelectedDate,
-                        DFinal = (DateTime)datepicker_data_final.SelectedDate,
-                        Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                        Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                        Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+
+                         Id = int.Parse(txt_id.Text),
+                         Nom = txt_nomTasca.Text,
+                         Descripcio = txt_descripcio.Text,
+                         DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                         DFinal = (DateTime)datepicker_data_final.SelectedDate,
+
+                         Prioritat_id = cmb_prioritat.SelectedIndex, //transforma el valor del item seleccionat
+                         Responsable_id = cmb_responsable.SelectedIndex, //transforma el valor del item seleccionat
+                         Estat_id = cmb_estat.SelectedIndex, //transforma el valor del item seleccionat
+
+
+
+
+                         /*Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                         Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                         Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), *///transforma el valor del item seleccionat
                      };
 
                 
                 //Añadir al listView De Afegir Tasca
-                if (temp.Estat_id == "To do")
+                if (temp.Estat_id == 1)
                 {
                     
                     w1.lvTascaToDo.Items.Add(temp);
                 }
-                else if (temp.Estat_id == "Doing")
+                else if (temp.Estat_id == 2)
                 {
                     
                     w1.lvTascaDoing.Items.Add(temp);
 
                 }
-                else if(temp.Estat_id == "Done")
+                else if(temp.Estat_id == 3)
                 {
                     w1.lvTascaDone.Items.Add(temp);
                 }
@@ -91,9 +100,14 @@ namespace Prueb_GitHub.Views
                     Descripcio = txt_descripcio.Text,
                     DInici = (DateTime)datepicker_data_inici.SelectedDate,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
-                    Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+
+                    Prioritat_id = cmb_prioritat.SelectedIndex, //transforma el valor del item seleccionat
+                    Responsable_id = cmb_responsable.SelectedIndex, //transforma el valor del item seleccionat
+                    Estat_id = cmb_estat.SelectedIndex, //transforma el valor del item seleccionat
+
+                    //Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    //Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
+                    //Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
