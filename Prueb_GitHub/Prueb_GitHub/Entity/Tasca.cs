@@ -11,8 +11,8 @@ namespace Prueb_GitHub.Entity
         private int id;
         private string nom;
         private string descripcio;
-        private string dInici;
-        private string dFinal;
+        private DateTime dInici;
+        private DateTime dFinal;
         private string prioritat_id;
         private string responsable_id;
         private string estat_id;
@@ -29,13 +29,13 @@ namespace Prueb_GitHub.Entity
             id = 0;
             nom = "";
             descripcio = "";
-            dInici = "";
-            dFinal = "";
+            dInici = new DateTime();
+            dFinal = new DateTime();
             prioritat_id = "";
             responsable_id = "";
             estat_id = "";
         }
-        public Tasca(int id_, string nom_, string descripcio_, string dInici_, string dFinal_, string prioritat_id_, string responsable_id_, string estat_id_)
+        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, string prioritat_id_, string responsable_id_, string estat_id_)
         {
             id = id_;
             nom = nom_;
@@ -62,12 +62,12 @@ namespace Prueb_GitHub.Entity
             get { return descripcio; }
             set { descripcio = value; }
         }
-        public string DInici
+        public DateTime DInici
         {
             get { return dInici; }
             set { dInici = value; }
         }
-        public string DFinal
+        public DateTime DFinal
         {
             get { return dFinal; }
             set { dFinal = value; }

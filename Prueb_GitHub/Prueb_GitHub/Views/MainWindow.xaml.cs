@@ -51,8 +51,8 @@ namespace Prueb_GitHub
             w2.txt_id.Text = temp.Id.ToString();
             w2.txt_nomTasca.Text = temp.Nom;
             w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
-            w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            w2.datepicker_data_inici.SelectedDate = temp.DInici;
+            w2.datepicker_data_final.SelectedDate = temp.DFinal;
             w2.cmb_prioritat.Text = temp.Prioritat_id;
             w2.cmb_responsable.Text = temp.Responsable_id;
             w2.cmb_estat.Text = temp.Estat_id;
@@ -68,8 +68,10 @@ namespace Prueb_GitHub
             w2.txt_id.Text = temp.Id.ToString();
             w2.txt_nomTasca.Text = temp.Nom;
             w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
-            w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            //w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
+            w2.datepicker_data_inici.SelectedDate = temp.DInici;
+            //w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            w2.datepicker_data_final.SelectedDate = temp.DFinal;
             w2.cmb_prioritat.Text = temp.Prioritat_id;
             w2.cmb_responsable.Text = temp.Responsable_id;
             w2.cmb_estat.Text = temp.Estat_id;
@@ -84,8 +86,8 @@ namespace Prueb_GitHub
             w2.txt_id.Text = temp.Id.ToString();
             w2.txt_nomTasca.Text = temp.Nom;
             w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_inici.SelectedDate = new DateTime(int.Parse(temp.DInici.Split("/")[2]), int.Parse(temp.DInici.Split("/")[1]), int.Parse(temp.DInici.Split("/")[0]));
-            w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
+            w2.datepicker_data_inici.SelectedDate = temp.DInici;
+            w2.datepicker_data_final.SelectedDate = temp.DFinal;
             w2.cmb_prioritat.Text = temp.Prioritat_id;
             w2.cmb_responsable.Text = temp.Responsable_id;
             w2.cmb_estat.Text = temp.Estat_id;
