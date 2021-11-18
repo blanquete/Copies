@@ -29,9 +29,11 @@ namespace Prueb_GitHub.BBDD
             int retorno = 0;
             try
             {
-                /*string Query = "Insert into tasca(id, nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id_responsable) " +
+                string Query = "Insert into tasca(id, nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id_responsable) " +
                 "values('" + temp.Id + "', '" + temp.Nom + "','" + temp.Descripcio + "','" + temp.DInici + "','" + temp.DFinal + "','" + 1 +
-                "','" + 1 + "','" + 1 + "');";*/
+                "','" + 1 + "','" + 1 + "');";
+
+                //string query = "INSERT INTO TASCA (id, nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id"
 
                 //temp.Id, temp.Nom, temp.Descripcio, temp.DInici, temp.DFinal, int.Parse(temp.Prioritat_id), int.Parse(temp.Estat_id), int.Parse(temp.Responsable_id)
 
