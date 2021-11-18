@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Prueb_GitHub.BBDD;
+using Prueb_GitHub.Persistence;
 
 namespace Prueb_GitHub.Entity
 {

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Prueb_GitHub.Persistence;
+using Prueb_GitHub.Service;
 
 namespace Prueb_GitHub.Views
 {
@@ -24,7 +25,7 @@ namespace Prueb_GitHub.Views
         
         public afegirTasca()
         {
-            Persistence.ObtenerConexion();
+            DbContext.ObtenerConexion();
             InitializeComponent();
 
             txt_id.Focus();
@@ -74,7 +75,8 @@ namespace Prueb_GitHub.Views
             {
                 MessageBox.Show("Has d'omplir tots els camps");
             }
-            Persistence.Agregar(temp);   
+
+            UserService.Agregar(temp);   
         }
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)

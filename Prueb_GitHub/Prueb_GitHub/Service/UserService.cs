@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
 using System.Text;
+using MySql.Data.MySqlClient;
 using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
 
@@ -9,24 +9,61 @@ namespace Prueb_GitHub.Service
 {
     public class UserService
     {
+        //Funció fer un insert de les dades introduïdes desde els textboxs.
         public static void Agregar(Tasca tasca)
         {
 
             string query = "INSERT INTO tasca(nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id_responsable) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            using (var command = new SQLiteCommand(query, DbContext.conectar))
+            using (var command = new MySqlCommand(query, DbContext.conectar))
             {
                 //command.Parameters.Add(new SQLiteParameter("id", temp.Id));
-                command.Parameters.Add(new SQLiteParameter("nom", tasca.Nom));
-                command.Parameters.Add(new SQLiteParameter("descripcio", tasca.Descripcio));
-                command.Parameters.Add(new SQLiteParameter("dataInici", tasca.DInici));
-                command.Parameters.Add(new SQLiteParameter("dataFinal", tasca.DFinal));
-                command.Parameters.Add(new SQLiteParameter("id_prioritat", tasca.Prioritat_id));
-                command.Parameters.Add(new SQLiteParameter("id_estat", tasca.Estat_id));
-                command.Parameters.Add(new SQLiteParameter("id_responsable", tasca.Responsable_id));
+                command.Parameters.Add(new MySqlParameter("nom", tasca.Nom));
+                command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
+                command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
+                command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
+                command.Parameters.Add(new MySqlParameter("id_prioritat", tasca.Prioritat_id));
+                command.Parameters.Add(new MySqlParameter("id_estat", tasca.Estat_id));
+                command.Parameters.Add(new MySqlParameter("id_responsable", tasca.Responsable_id));
 
                 command.ExecuteNonQuery();
             }
 
+        }
+
+        public static void SelecionarTodo()
+        {
+            
+            List<Tasca> todo = new List<Tasca>();
+            List<Tasca> doing = new List<Tasca>();
+            List<Tasca> done = new List<Tasca>();
+
+
+            string queryTodo = "SELECT * FROM tasca WHERE estat_id = 1";
+            string queryDoing = "SELECT * FROM tasca WHERE estat_id = 2";
+            string queryDone = "SELECT * FROM tasca WHERE estat_id = 3";
+
+            using (var commmand = new MySqlCommand(queryTodo, DbContext.conectar))
+            {
+                using(var reader = commmand.ExecuteReader())
+                {
+                    while(reader.Read())
+                    {
+                        todo.Add(new Tasca
+                        { 
+                            Id = (int)reader["id"],
+                            nom ,
+                            descripcio,
+                            dInici,
+                            dFinal,
+                            prioritat_id,
+                            responsable_id,
+                            estat_id
+                        }
+                        );  
+                    }
+                }
+            }
+            
         }
     }
 }

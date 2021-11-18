@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using Prueb_GitHub.Entity;
-using System.Data.SQLite;
+using MySql.Data.MySqlClient;
 
-namespace Prueb_GitHub.BBDD
+namespace Prueb_GitHub.Persistence
 {
     public class DbContext
     {
-        public static SQLiteConnection conectar;
-        public static SQLiteConnection ObtenerConexion()
+        public static MySqlConnection conectar;
+        public static MySqlConnection ObtenerConexion()
         {
-            string DBName = "todolist.sql";
-            //server = 127.0.0.1; database = todolist; Uid = root; pwd = 1234;
-            conectar = new SQLiteConnection(String.Format("Data source={0};Version=3", DBName));
+            conectar = new MySqlConnection(String.Format("server = 127.0.0.1; database = todolist; Uid = root; pwd = 1234;"));
             conectar.Open();
-
             return conectar;
         }
     }
