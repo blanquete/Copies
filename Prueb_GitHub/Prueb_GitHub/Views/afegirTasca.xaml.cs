@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Prueb_GitHub.BBDD;
+using Prueb_GitHub.Persistence;
 
 namespace Prueb_GitHub.Views
 {
@@ -24,7 +24,7 @@ namespace Prueb_GitHub.Views
         
         public afegirTasca()
         {
-            BaseDatos.ObtenerConexion();
+            Persistence.ObtenerConexion();
             InitializeComponent();
 
             txt_id.Focus();
@@ -77,15 +77,13 @@ namespace Prueb_GitHub.Views
                 //El primer listview obtiene los datos del segundo listview
                 
                 netejaCamps();
-                
-                
 
             }
             catch (Exception)
             {
                 MessageBox.Show("Has d'omplir tots els camps");
             }
-            BaseDatos.Agregar(temp);
+            Persistence.Agregar(temp);   
         }
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)

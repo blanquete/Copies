@@ -28,7 +28,7 @@ namespace Prueb_GitHub
 
         public MainWindow()
         {
-            BBDD.BaseDatos.ObtenerConexion();
+            BBDD.DbContext.ObtenerConexion();
             InitializeComponent();
             
         }
