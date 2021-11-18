@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Text;
 using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
@@ -12,7 +13,7 @@ namespace Prueb_GitHub.Service
         {
 
             string query = "INSERT INTO tasca(nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id_responsable) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            using (var command = new SQLiteCommand(query, conectar))
+            using (var command = new SQLiteCommand(query, DbContext.conectar))
             {
                 //command.Parameters.Add(new SQLiteParameter("id", temp.Id));
                 command.Parameters.Add(new SQLiteParameter("nom", tasca.Nom));
