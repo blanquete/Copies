@@ -43,6 +43,7 @@ namespace Prueb_GitHub
 
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            temp = null;
             temp = (Tasca)lvTascaToDo.SelectedItem;
             lvTascaDoing.SelectedItem = null;
             lvTascaDone.SelectedItem = null;
@@ -59,6 +60,7 @@ namespace Prueb_GitHub
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            temp = null;
             lvTascaToDo.SelectedItem = null;
             temp = (Tasca)lvTascaDoing.SelectedItem;
             lvTascaDone.SelectedItem = null;
@@ -74,6 +76,7 @@ namespace Prueb_GitHub
         }
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            temp = null;
             lvTascaToDo.SelectedItem = null;
             lvTascaDoing.SelectedItem = null;
             temp = (Tasca)lvTascaDone.SelectedItem;
