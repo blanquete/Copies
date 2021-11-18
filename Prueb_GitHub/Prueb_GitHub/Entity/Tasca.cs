@@ -13,9 +13,9 @@ namespace Prueb_GitHub.Entity
         private string descripcio;
         private DateTime dInici;
         private DateTime dFinal;
-        private string prioritat_id;
-        private string responsable_id;
-        private string estat_id;
+        private int prioritat_id;
+        private int responsable_id;
+        private int estat_id;
         private enum estat
         {
             ToDo,
@@ -31,11 +31,11 @@ namespace Prueb_GitHub.Entity
             descripcio = "";
             dInici = new DateTime();
             dFinal = new DateTime();
-            prioritat_id = "";
-            responsable_id = "";
-            estat_id = "";
+            prioritat_id = 0;
+            responsable_id = 0;
+            estat_id = 0;
         }
-        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, string prioritat_id_, string responsable_id_, string estat_id_)
+        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, int prioritat_id_, int responsable_id_, int estat_id_)
         {
             id = id_;
             nom = nom_;
@@ -72,17 +72,17 @@ namespace Prueb_GitHub.Entity
             get { return dFinal; }
             set { dFinal = value; }
         }
-        public string Prioritat_id
+        public int Prioritat_id
         {
             get { return prioritat_id; }
             set { prioritat_id = value; }
         }
-        public string Responsable_id
+        public int Responsable_id
         {
             get { return responsable_id; }
             set { responsable_id = value; }
         }
-        public string Estat_id
+        public int Estat_id
         {
             get { return estat_id; }
             set { estat_id = value; }
