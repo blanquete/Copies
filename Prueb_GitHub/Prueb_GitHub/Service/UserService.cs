@@ -51,7 +51,7 @@ namespace Prueb_GitHub.Service
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
-            string query = "SELECT * FROM tasca WHERE estat_id = "+estat;
+            string query = "SELECT * FROM tasca WHERE id_estat = "+estat;
 
             using (var commmand = new MySqlCommand(query, DbContext.conectar))
             {
@@ -64,13 +64,12 @@ namespace Prueb_GitHub.Service
                             Id = (int)reader["id"],
                             Nom = reader["nom"].ToString(),
                             Descripcio = reader["descripcio"].ToString(),
-                            DInici = Convert.ToDateTime(reader["DInici"]),
-                            DFinal = Convert.ToDateTime(reader["DFinal"]),
+                            DInici = Convert.ToDateTime(reader["dataInici"]),
+                            DFinal = Convert.ToDateTime(reader["dataFinal"]),
                             Prioritat_id = (int)reader["id_prioritat"],
-                            Responsable_id = (int)reader["id_responsable"],
-                            Estat_id = (int)reader["id_estat"]
-                        }
-                        );
+                            Estat_id = (int)reader["id_estat"],
+                            Responsable_id = (int)reader["id_responsable"]
+                        });
                     }
                 }
             }
