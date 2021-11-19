@@ -29,8 +29,8 @@ namespace Prueb_GitHub
 
         public MainWindow()
         {
-            DbContext.ObtenerConexion();
             InitializeComponent();
+            DbContext.ObtenerConexion();
             
         }
 
