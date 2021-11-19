@@ -49,15 +49,15 @@ namespace Prueb_GitHub.Service
                     while(reader.Read())
                     {
                         todo.Add(new Tasca
-                        { 
+                        {
                             Id = (int)reader["id"],
-                            nom ,
-                            descripcio,
-                            dInici,
-                            dFinal,
-                            prioritat_id,
-                            responsable_id,
-                            estat_id
+                            Nom = reader["nom"].ToString(),
+                            Descripcio = reader["descripcio"].ToString(),
+                            DInici = Convert.ToDateTime(reader["DInici"]),
+                            DFinal = Convert.ToDateTime(reader["DFinal"]),
+                            Prioritat_id = (int)reader["id_prioritat"],
+                            Responsable_id = (int)reader["id_responsable"],
+                            Estat_id = (int)reader["id_estat"]
                         }
                         );  
                     }
