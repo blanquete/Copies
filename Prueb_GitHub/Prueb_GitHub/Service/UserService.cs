@@ -36,6 +36,7 @@ namespace Prueb_GitHub.Service
             }
 
         }
+
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
