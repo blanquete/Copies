@@ -17,7 +17,6 @@ using Prueb_GitHub.Views;
 using Prueb_GitHub.Persistence;
 using Prueb_GitHub.Service;
 
-
 namespace Prueb_GitHub
 {
     /// <summary>
@@ -32,8 +31,19 @@ namespace Prueb_GitHub
         {
             InitializeComponent();
             DbContext.ObtenerConexion();
-            UserService.SelecionarTodo();
+            SelecionarTodo();
             
+            
+        }
+        public void SelecionarTodo()
+        {
+            List<Tasca> todo = UserService.Select(1);
+            List<Tasca> doing = UserService.Select(2);
+            List<Tasca> done = UserService.Select(3);
+
+            lvTascaToDo.ItemsSource = todo;
+            lvTascaDoing.ItemsSource = doing;
+            lvTascaDone.ItemsSource = done;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

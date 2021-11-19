@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub.Views"
         mc:Ignorable="d"
-        Title="Afegir Tasca" Height="370" Width="470" MinHeight="275" >
+        Title="Tasca" Height="350" Width="470" MinHeight="305" MaxHeight="470">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="175"/>
@@ -42,7 +42,7 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,30,38">
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,30,148">
             <Button x:Name="btn_agregar" Content="Afegir Tasca"  Click="btn_agregar_Click"></Button>
             <Button x:Name="btn_modificar"  Content="Modificar Tasca" Margin="0,10,0,0"  Click="btn_modificar_Click"></Button>
             <Button x:Name="btn_eliminar"  Content="Eliminar Tasca" Margin="0,10,0,0"   Click="btn_eliminar_Click"></Button>

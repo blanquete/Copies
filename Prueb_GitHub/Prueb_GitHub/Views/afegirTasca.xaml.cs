@@ -27,7 +27,6 @@ namespace Prueb_GitHub.Views
         {
             DbContext.ObtenerConexion();
             InitializeComponent();
-
             txt_nomTasca.Focus();
         }
         //quan l'usuari clica sobre el button afegir
@@ -38,28 +37,19 @@ namespace Prueb_GitHub.Views
                     //afageix un nou item al listview
                      temp = new Tasca()
                      {
-
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
                          DInici = DateTime.Now,
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
-
                          Prioritat_id = cmb_prioritat.SelectedIndex, //transforma el valor del item seleccionat
                          Responsable_id = cmb_responsable.SelectedIndex, //transforma el valor del item seleccionat
                          Estat_id = 0, //transforma el valor del item seleccionat
-
-
                      };
-
-                
                 //Añadir al listView De Afegir Tasca
-                
+                //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 w1.lvTascaToDo.Items.Add(temp);
 
-                //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
-                
                 netejaCamps();
-
             }
             catch (Exception)
             {
