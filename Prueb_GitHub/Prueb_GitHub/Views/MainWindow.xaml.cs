@@ -89,9 +89,11 @@ namespace Prueb_GitHub
             w2.txt_descripcio.Text = temp.Descripcio;
             w2.datepicker_data_inici.SelectedDate = temp.DInici;
             w2.datepicker_data_final.SelectedDate = temp.DFinal;
+
             w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
             w2.cmb_responsable.SelectedItem = temp.Responsable_id;
             w2.cmb_estat.SelectedItem = temp.Estat_id;
+
         }
     }
 
