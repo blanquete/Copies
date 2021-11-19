@@ -28,9 +28,9 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                 command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
                 command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
-                command.Parameters.Add(new MySqlParameter("id_prioritat", tasca.Prioritat_id+1));
-                command.Parameters.Add(new MySqlParameter("id_estat", tasca.Estat_id+1));
-                command.Parameters.Add(new MySqlParameter("id_responsable", tasca.Responsable_id+1));
+                command.Parameters.Add(new MySqlParameter("id_prioritat", tasca.Prioritat_id + 1));
+                command.Parameters.Add(new MySqlParameter("id_estat", tasca.Estat_id + 1));
+                command.Parameters.Add(new MySqlParameter("id_responsable", tasca.Responsable_id + 1));
 
                 command.ExecuteNonQuery();
             }
@@ -56,6 +56,35 @@ namespace Prueb_GitHub.Service
 
             using (var commmand = new MySqlCommand(query, DbContext.conectar))
             {
+<<<<<<< Updated upstream
+                using (var reader = commmand.ExecuteReader())
+=======
+
+                using(var reader = commmand.ExecuteReader())
+>>>>>>> Stashed changes
+                {
+                    while (reader.Read())
+                    {
+                        todo.Add(new Tasca
+                        {
+                            Id = (int)reader["id"],
+                            Nom = reader["nom"].ToString(),
+                            Descripcio = reader["descripcio"].ToString(),
+                            DInici = Convert.ToDateTime(reader["DInici"]),
+                            DFinal = Convert.ToDateTime(reader["DFinal"]),
+                            Prioritat_id = (int)reader["id_prioritat"],
+                            Responsable_id = (int)reader["id_responsable"],
+                            Estat_id = (int)reader["id_estat"]
+                        }
+                        );
+                    }
+                }
+            }
+<<<<<<< Updated upstream
+            return todo;
+=======
+            using (var commmand = new MySqlCommand(queryDoing, DbContext.conectar))
+            {
                 using (var reader = commmand.ExecuteReader())
                 {
                     while (reader.Read())
@@ -75,7 +104,29 @@ namespace Prueb_GitHub.Service
                     }
                 }
             }
-            return todo;
+
+            using (var commmand = new MySqlCommand(queryDone, DbContext.conectar))
+            {
+                using (var reader = commmand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        todo.Add(new Tasca
+                        {
+                            Id = (int)reader["id"],
+                            Nom = reader["nom"].ToString(),
+                            Descripcio = reader["descripcio"].ToString(),
+                            DInici = Convert.ToDateTime(reader["DInici"]),
+                            DFinal = Convert.ToDateTime(reader["DFinal"]),
+                            Prioritat_id = (int)reader["id_prioritat"],
+                            Responsable_id = (int)reader["id_responsable"],
+                            Estat_id = (int)reader["id_estat"]
+                        }
+                        );
+                    }
+                }   
+            }
+>>>>>>> Stashed changes
         }
     }
 }
