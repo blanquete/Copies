@@ -39,7 +39,6 @@ namespace Prueb_GitHub.Views
                      temp = new Tasca()
                      {
 
-                         Id = int.Parse(txt_id.Text),
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
                          DInici = DateTime.Now,
