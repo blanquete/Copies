@@ -59,18 +59,18 @@ namespace Prueb_GitHub.Views
 
                 
                 //Añadir al listView De Afegir Tasca
-                if (temp.Estat_id == 1)
+                if (temp.Estat_id == 0)
                 {
                     
                     w1.lvTascaToDo.Items.Add(temp);
                 }
-                else if (temp.Estat_id == 2)
+                else if (temp.Estat_id == 1)
                 {
                     
                     w1.lvTascaDoing.Items.Add(temp);
 
                 }
-                else if(temp.Estat_id == 3)
+                else if(temp.Estat_id == 2)
                 {
                     w1.lvTascaDone.Items.Add(temp);
                 }

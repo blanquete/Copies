@@ -21,9 +21,9 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                 command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
                 command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
-                command.Parameters.Add(new MySqlParameter("id_prioritat", tasca.Prioritat_id));
-                command.Parameters.Add(new MySqlParameter("id_estat", tasca.Estat_id));
-                command.Parameters.Add(new MySqlParameter("id_responsable", tasca.Responsable_id));
+                command.Parameters.Add(new MySqlParameter("id_prioritat", tasca.Prioritat_id+1));
+                command.Parameters.Add(new MySqlParameter("id_estat", tasca.Estat_id+1));
+                command.Parameters.Add(new MySqlParameter("id_responsable", tasca.Responsable_id+1));
 
                 command.ExecuteNonQuery();
             }
