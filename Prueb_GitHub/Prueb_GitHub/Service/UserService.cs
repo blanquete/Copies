@@ -37,16 +37,6 @@ namespace Prueb_GitHub.Service
 
         }
 
-        public static void SelecionarTodo()
-        {
-            List<Tasca> todo = Select(1);
-            List<Tasca> doing = Select(2);
-            List<Tasca> done = Select(3);
-
-            w1.lvTascaToDo.ItemsSource = todo;
-            w1.lvTascaDoing.ItemsSource = doing;
-            w1.lvTascaDone.ItemsSource = done;
-        }
 
         public static List<Tasca> Select(int estat)
         {

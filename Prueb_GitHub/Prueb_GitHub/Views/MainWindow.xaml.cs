@@ -27,14 +27,33 @@ namespace Prueb_GitHub
     {
         public afegirTasca w2;
         Tasca temp;
+        public List<Tasca> todo = new List<Tasca>();
+        public List<Tasca> doing = new List<Tasca>();
+        public List<Tasca> done = new List<Tasca>();
 
         public MainWindow()
         {
             InitializeComponent();
+
             DbContext.ObtenerConexion();
-            UserService.SelecionarTodo();
-            
+
+            todo = UserService.Select(1);
+            doing = UserService.Select(2);
+            done = UserService.Select(3);
+
+
+            SelecionarTodo();
+
         }
+
+
+        public void SelecionarTodo()
+        {
+            lvTascaToDo.ItemsSource = todo;
+            lvTascaDoing.ItemsSource = doing;
+            lvTascaDone.ItemsSource = done;
+        }
+
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {

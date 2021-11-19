@@ -33,7 +33,7 @@ namespace Prueb_GitHub.Views
         //quan l'usuari clica sobre el button afegir
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //try
             {
                     //afageix un nou item al listview
                      temp = new Tasca()
@@ -53,18 +53,17 @@ namespace Prueb_GitHub.Views
 
                 
                 //Añadir al listView De Afegir Tasca
-                
-                w1.lvTascaToDo.Items.Add(temp);
+                w1.todo.Add(temp);
 
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 
                 netejaCamps();
 
             }
-            catch (Exception)
+            /*catch (Exception)
             {
                 MessageBox.Show("Has d'omplir tots els camps");
-            }
+            }*/
 
             UserService.Agregar(temp);   
         }
