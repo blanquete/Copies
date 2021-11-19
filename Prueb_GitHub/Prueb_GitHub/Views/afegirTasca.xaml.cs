@@ -76,7 +76,7 @@ namespace Prueb_GitHub.Views
                 //creem un nou item al listview
                 temp = new Tasca()
                 {
-                    Id = int.Parse(txt_id.Text),
+                    //Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
@@ -148,7 +148,7 @@ namespace Prueb_GitHub.Views
             cmb_responsable.SelectedItem = null;
             cmb_estat.SelectedItem = null;
 
-            txt_id.Focus();
+            txt_nomTasca.Focus();
 
         }
 
