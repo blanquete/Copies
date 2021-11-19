@@ -54,9 +54,9 @@ namespace Prueb_GitHub
             w2.txt_descripcio.Text = temp.Descripcio;
             w2.datepicker_data_inici.SelectedDate = temp.DInici;
             w2.datepicker_data_final.SelectedDate = temp.DFinal;
-            w2.cmb_prioritat.Text = temp.Prioritat_id;
-            w2.cmb_responsable.Text = temp.Responsable_id;
-            w2.cmb_estat.Text = temp.Estat_id;
+            w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
+            w2.cmb_responsable.SelectedIndex = temp.Responsable_id;
+            w2.cmb_estat.SelectedIndex = temp.Estat_id;
         }
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,9 +73,9 @@ namespace Prueb_GitHub
             w2.datepicker_data_inici.SelectedDate = temp.DInici;
             //w2.datepicker_data_final.SelectedDate = new DateTime(int.Parse(temp.DFinal.Split("/")[2]), int.Parse(temp.DFinal.Split("/")[1]), int.Parse(temp.DFinal.Split("/")[0]));
             w2.datepicker_data_final.SelectedDate = temp.DFinal;
-            w2.cmb_prioritat.Text = temp.Prioritat_id;
-            w2.cmb_responsable.Text = temp.Responsable_id;
-            w2.cmb_estat.Text = temp.Estat_id;
+            w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
+            w2.cmb_responsable.SelectedIndex = temp.Responsable_id;
+            w2.cmb_estat.SelectedIndex = temp.Estat_id;
         }
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -89,9 +89,9 @@ namespace Prueb_GitHub
             w2.txt_descripcio.Text = temp.Descripcio;
             w2.datepicker_data_inici.SelectedDate = temp.DInici;
             w2.datepicker_data_final.SelectedDate = temp.DFinal;
-            w2.cmb_prioritat.Text = temp.Prioritat_id;
-            w2.cmb_responsable.Text = temp.Responsable_id;
-            w2.cmb_estat.Text = temp.Estat_id;
+            w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
+            w2.cmb_responsable.SelectedIndex = temp.Responsable_id;
+            w2.cmb_estat.SelectedIndex = temp.Estat_id;
         }
     }
 

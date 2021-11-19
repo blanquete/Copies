@@ -31,7 +31,7 @@ namespace Prueb_GitHub.Views
             txt_id.Focus();
         }
         //quan l'usuari clica sobre el button afegir
-        private void btn_agregar_Clickpp(object sender, RoutedEventArgs e)
+        private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
