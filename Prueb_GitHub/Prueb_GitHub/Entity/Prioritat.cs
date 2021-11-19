@@ -15,15 +15,15 @@ namespace Prueb_GitHub.Entity
         {
             id = 0;
             nom = "";
-            urgencia = 0;
-            color = "";
+            //urgencia = 0;
+            //color = "";
         }
         public Prioritat(int id_, string nom_, int urgencia_, string color_)
         {
             id = id_;
             nom = nom_;
-            urgencia = urgencia_;
-            color = color_;
+            //urgencia = urgencia_;
+            //color = color_;
         }
 
         public int Id
@@ -36,7 +36,7 @@ namespace Prueb_GitHub.Entity
             get { return nom; }
             set { nom = value; }
         }
-        public int Urgencia
+        /*public int Urgencia
         {
             get { return urgencia; }
             set { urgencia = value; }
@@ -45,6 +45,6 @@ namespace Prueb_GitHub.Entity
         {
             get { return color; }
             set { color = value; }
-        }
+        }*/
     }
 }
