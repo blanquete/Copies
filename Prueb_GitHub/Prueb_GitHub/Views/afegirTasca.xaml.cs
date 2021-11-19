@@ -42,7 +42,6 @@ namespace Prueb_GitHub.Views
                          Id = int.Parse(txt_id.Text),
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
-                         //DInici = (DateTime)datepicker_data_inici.SelectedDate,
                          DInici = DateTime.Now,
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
 
