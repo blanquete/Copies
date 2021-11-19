@@ -50,18 +50,12 @@ namespace Prueb_GitHub.Service
 
         public static List<Tasca> Select(int estat)
         {
-
             List<Tasca> todo = new List<Tasca>();
             string query = "SELECT * FROM tasca WHERE estat_id = "+estat;
 
             using (var commmand = new MySqlCommand(query, DbContext.conectar))
             {
-<<<<<<< Updated upstream
                 using (var reader = commmand.ExecuteReader())
-=======
-
-                using(var reader = commmand.ExecuteReader())
->>>>>>> Stashed changes
                 {
                     while (reader.Read())
                     {
@@ -80,53 +74,7 @@ namespace Prueb_GitHub.Service
                     }
                 }
             }
-<<<<<<< Updated upstream
             return todo;
-=======
-            using (var commmand = new MySqlCommand(queryDoing, DbContext.conectar))
-            {
-                using (var reader = commmand.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        todo.Add(new Tasca
-                        {
-                            Id = (int)reader["id"],
-                            Nom = reader["nom"].ToString(),
-                            Descripcio = reader["descripcio"].ToString(),
-                            DInici = Convert.ToDateTime(reader["DInici"]),
-                            DFinal = Convert.ToDateTime(reader["DFinal"]),
-                            Prioritat_id = (int)reader["id_prioritat"],
-                            Responsable_id = (int)reader["id_responsable"],
-                            Estat_id = (int)reader["id_estat"]
-                        }
-                        );
-                    }
-                }
-            }
-
-            using (var commmand = new MySqlCommand(queryDone, DbContext.conectar))
-            {
-                using (var reader = commmand.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        todo.Add(new Tasca
-                        {
-                            Id = (int)reader["id"],
-                            Nom = reader["nom"].ToString(),
-                            Descripcio = reader["descripcio"].ToString(),
-                            DInici = Convert.ToDateTime(reader["DInici"]),
-                            DFinal = Convert.ToDateTime(reader["DFinal"]),
-                            Prioritat_id = (int)reader["id_prioritat"],
-                            Responsable_id = (int)reader["id_responsable"],
-                            Estat_id = (int)reader["id_estat"]
-                        }
-                        );
-                    }
-                }   
-            }
->>>>>>> Stashed changes
         }
     }
 }

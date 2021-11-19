@@ -139,17 +139,13 @@ namespace Prueb_GitHub.Views
         //metode per netejar els camps
         public void netejaCamps()
         {
-            txt_id.Text = "";
             txt_nomTasca.Text = "";
             txt_descripcio.Text = "";
-            datepicker_data_inici.SelectedDate = null;
             datepicker_data_final.SelectedDate = null;
             cmb_prioritat.SelectedItem = null;
             cmb_responsable.SelectedItem = null;
-            cmb_estat.SelectedItem = null;
-
+            
             txt_nomTasca.Focus();
-
         }
 
         //Aques event s'aplica sobre el textbox id  
