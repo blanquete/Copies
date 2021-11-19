@@ -4,11 +4,18 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
+using Prueb_GitHub.Views;
 
 namespace Prueb_GitHub.Service
 {
     public class UserService
     {
+
+
+        //public Tasca temp;
+        public static MainWindow w1;
+
+
         //Funció fer un insert de les dades introduïdes desde els textboxs.
         public static void Agregar(Tasca tasca)
         {
@@ -32,21 +39,26 @@ namespace Prueb_GitHub.Service
 
         public static void SelecionarTodo()
         {
-            
+            List<Tasca> todo = Select(1);
+            List<Tasca> doing = Select(2);
+            List<Tasca> done = Select(3);
+
+            w1.lvTascaToDo.ItemsSource = todo;
+            w1.lvTascaDoing.ItemsSource = doing;
+            w1.lvTascaDone.ItemsSource = done;
+        }
+
+        public static List<Tasca> Select(int estat)
+        {
+
             List<Tasca> todo = new List<Tasca>();
-            List<Tasca> doing = new List<Tasca>();
-            List<Tasca> done = new List<Tasca>();
+            string query = "SELECT * FROM tasca WHERE estat_id = "+estat;
 
-
-            string queryTodo = "SELECT * FROM tasca WHERE estat_id = 1";
-            string queryDoing = "SELECT * FROM tasca WHERE estat_id = 2";
-            string queryDone = "SELECT * FROM tasca WHERE estat_id = 3";
-
-            using (var commmand = new MySqlCommand(queryTodo, DbContext.conectar))
+            using (var commmand = new MySqlCommand(query, DbContext.conectar))
             {
-                using(var reader = commmand.ExecuteReader())
+                using (var reader = commmand.ExecuteReader())
                 {
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         todo.Add(new Tasca
                         {
@@ -59,11 +71,11 @@ namespace Prueb_GitHub.Service
                             Responsable_id = (int)reader["id_responsable"],
                             Estat_id = (int)reader["id_estat"]
                         }
-                        );  
+                        );
                     }
                 }
             }
-            
+            return todo;
         }
     }
 }
