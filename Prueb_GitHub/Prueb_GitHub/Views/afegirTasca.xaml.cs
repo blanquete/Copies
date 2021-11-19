@@ -42,40 +42,23 @@ namespace Prueb_GitHub.Views
                          Id = int.Parse(txt_id.Text),
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
-                         DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                         //DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                         DInici = DateTime.Now,
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
 
                          Prioritat_id = cmb_prioritat.SelectedIndex, //transforma el valor del item seleccionat
                          Responsable_id = cmb_responsable.SelectedIndex, //transforma el valor del item seleccionat
-                         Estat_id = cmb_estat.SelectedIndex, //transforma el valor del item seleccionat
+                         Estat_id = 0, //transforma el valor del item seleccionat
 
 
-
-
-                         /*Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                         Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                         Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), *///transforma el valor del item seleccionat
                      };
 
                 
                 //Añadir al listView De Afegir Tasca
-                if (temp.Estat_id == 0)
-                {
-                    
-                    w1.lvTascaToDo.Items.Add(temp);
-                }
-                else if (temp.Estat_id == 1)
-                {
-                    
-                    w1.lvTascaDoing.Items.Add(temp);
+                
+                w1.lvTascaToDo.Items.Add(temp);
 
-                }
-                else if(temp.Estat_id == 2)
-                {
-                    w1.lvTascaDone.Items.Add(temp);
-                }
-
-                //El primer listview obtiene los datos del segundo listview
+                //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 
                 netejaCamps();
 
@@ -98,16 +81,10 @@ namespace Prueb_GitHub.Views
                     Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
-                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
 
                     Prioritat_id = cmb_prioritat.SelectedIndex, //transforma el valor del item seleccionat
                     Responsable_id = cmb_responsable.SelectedIndex, //transforma el valor del item seleccionat
-                    Estat_id = cmb_estat.SelectedIndex, //transforma el valor del item seleccionat
-
-                    //Prioritat_id = (cmb_prioritat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    //Responsable_id = (cmb_responsable.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
-                    //Estat_id = (cmb_estat.SelectedItem as ComboBoxItem).Content.ToString(), //transforma el valor del item seleccionat
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
