@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Prueb_GitHub.Entity;
 using Prueb_GitHub.Views;
 using Prueb_GitHub.Persistence;
+using Prueb_GitHub.Service;
 
 
 namespace Prueb_GitHub
@@ -31,6 +32,7 @@ namespace Prueb_GitHub
         {
             InitializeComponent();
             DbContext.ObtenerConexion();
+            UserService.SelecionarTodo();
             
         }
 
