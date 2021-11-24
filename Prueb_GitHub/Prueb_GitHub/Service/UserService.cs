@@ -10,12 +10,6 @@ namespace Prueb_GitHub.Service
 {
     public class UserService
     {
-
-
-        //public Tasca temp;
-        public static MainWindow w1;
-
-
         //Funció fer un insert de les dades introduïdes desde els textboxs.
         public static void Agregar(Tasca tasca)
         {
@@ -34,8 +28,6 @@ namespace Prueb_GitHub.Service
 
                 command.ExecuteNonQuery();
             }
-            //w1.todo = Select(1);
-
         }
 
         public static List<Tasca> Select(int estat)
