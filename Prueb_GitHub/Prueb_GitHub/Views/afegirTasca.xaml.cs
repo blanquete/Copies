@@ -50,12 +50,6 @@ namespace Prueb_GitHub.Views
                      };
                 //Añadir al listView De Afegir Tasca
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
-
-                w1.todo.Add(temp);
-                w1.todo = UserService.Select(1);
-                w1.doing = UserService.Select(2);
-                w1.done = UserService.Select(3);
-                w1.SelecionarTodo();
                 netejaCamps();
                 
             }
