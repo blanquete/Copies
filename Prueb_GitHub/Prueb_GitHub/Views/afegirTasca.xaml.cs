@@ -29,8 +29,14 @@ namespace Prueb_GitHub.Views
             InitializeComponent();
             txt_nomTasca.Focus();
 
-            cmb_prioritat.ItemsSource = w1.prioritats;
-            cmb_responsable.ItemsSource = w1.responsables;
+            foreach (Prioritat prio in UserService.SelectP())
+            {
+                cmb_prioritat.Items.Add(prio.Nom);
+            }
+            foreach (Responsable resp in UserService.SelectR())
+            {
+                cmb_responsable.Items.Add(resp.Nom);
+            }
         }
         //quan l'usuari clica sobre el button afegir
         private void btn_agregar_Click(object sender, RoutedEventArgs e)

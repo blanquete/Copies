@@ -6,6 +6,12 @@ using Prueb_GitHub.Persistence;
 
 namespace Prueb_GitHub.Entity
 {
+    public enum Estat
+    {
+        ToDo,
+        Doing,
+        Done
+    }
     public class Tasca
     {
         private int id;
@@ -13,15 +19,11 @@ namespace Prueb_GitHub.Entity
         private string descripcio;
         private DateTime dInici;
         private DateTime dFinal;
-        private int prioritat_id;
-        private int responsable_id;
-        private int estat_id;
-        public enum estat
-        {
-            ToDo,
-            Doing,
-            Done
-        }
+        private string prioritat_id;
+        private string responsable_id;
+        private string estat_id;
+        private Estat estat;
+        
         
 
         public Tasca()
@@ -34,8 +36,9 @@ namespace Prueb_GitHub.Entity
             prioritat_id = 0;
             responsable_id = 0;
             estat_id = 0;
+            estat = (Estat)0;
         }
-        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, int prioritat_id_, int responsable_id_, int estat_id_)
+        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, string prioritat_id_, string responsable_id_, string estat_id_, Estat estat_)
         {
             id = id_;
             nom = nom_;
@@ -45,6 +48,7 @@ namespace Prueb_GitHub.Entity
             prioritat_id = prioritat_id_;
             responsable_id = responsable_id_;
             estat_id = estat_id_;
+            estat = estat_;
         }
 
         public int Id
@@ -72,20 +76,25 @@ namespace Prueb_GitHub.Entity
             get { return dFinal; }
             set { dFinal = value; }
         }
-        public int Prioritat_id
+        public string Prioritat_id
         {
             get { return prioritat_id; }
             set { prioritat_id = value; }
         }
-        public int Responsable_id
+        public string Responsable_id
         {
             get { return responsable_id; }
             set { responsable_id = value; }
         }
-        public int Estat_id
+        public string Estat_id
         {
             get { return estat_id; }
             set { estat_id = value; }
+        }
+        public Estat Estat
+        {
+            get { return estat; }
+            set { estat = value; }
         }
     }
 }

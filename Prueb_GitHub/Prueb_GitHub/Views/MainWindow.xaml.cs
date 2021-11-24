@@ -45,7 +45,6 @@ namespace Prueb_GitHub
             responsables = UserService.SelectR();
 
             SelecionarTodo();
-
         }
 
         public void SelecionarTodo()
