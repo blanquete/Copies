@@ -29,11 +29,14 @@ namespace Prueb_GitHub.Views
             InitializeComponent();
             txt_nomTasca.Focus();
 
-            foreach (Prioritat prio in UserService.SelectP())
+            List<Prioritat> prioritats = UserService.SelectP();
+            List<Responsable> responsables = UserService.SelectR();
+
+            foreach (Prioritat prio in prioritats)
             {
                 cmb_prioritat.Items.Add(prio.Nom);
             }
-            foreach (Responsable resp in UserService.SelectR())
+            foreach (Responsable resp in responsables)
             {
                 cmb_responsable.Items.Add(resp.Nom);
             }
@@ -50,9 +53,9 @@ namespace Prueb_GitHub.Views
                          Descripcio = txt_descripcio.Text,
                          DInici = DateTime.Now,
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
-                         Prioritat_id = cmb_prioritat.SelectedIndex, //Agafa el valor de l'index
-                         Responsable_id = cmb_responsable.SelectedIndex, //Agafa el valor de l'index
-                         Estat_id = 0, //Fixem el valor de l'index, una tasca sempre inicia al ToDo
+                         Prioritat_id = cmb_prioritat.SelectedItem.ToString(), //Agafa el valor de l'index
+                         Responsable_id = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
+                         Estat_id = "", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
                      };
                 //Añadir al listView De Afegir Tasca
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
@@ -79,8 +82,8 @@ namespace Prueb_GitHub.Views
                     Descripcio = txt_descripcio.Text,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
 
-                    Prioritat_id = cmb_prioritat.SelectedIndex, //transforma el valor del item seleccionat
-                    Responsable_id = cmb_responsable.SelectedIndex, //transforma el valor del item seleccionat
+                    Prioritat_id = cmb_prioritat.SelectedItem.ToString(), //transforma el valor del item seleccionat
+                    Responsable_id = cmb_responsable.SelectedItem.ToString(), //transforma el valor del item seleccionat
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 

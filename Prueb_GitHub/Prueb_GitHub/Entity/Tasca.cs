@@ -33,9 +33,9 @@ namespace Prueb_GitHub.Entity
             descripcio = "";
             dInici = new DateTime();
             dFinal = new DateTime();
-            prioritat_id = 0;
-            responsable_id = 0;
-            estat_id = 0;
+            prioritat_id = "";
+            responsable_id = "";
+            estat_id = "";
             estat = (Estat)0;
         }
         public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, string prioritat_id_, string responsable_id_, string estat_id_, Estat estat_)

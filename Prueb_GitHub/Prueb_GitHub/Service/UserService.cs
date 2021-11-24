@@ -50,19 +50,15 @@ namespace Prueb_GitHub.Service
                             Descripcio = reader["descripcio"].ToString(),
                             DInici = Convert.ToDateTime(reader["dataInici"]),
                             DFinal = Convert.ToDateTime(reader["dataFinal"]),
-                            Prioritat_id = (int)reader["id_prioritat"],
-                            Estat_id = (int)reader["id_estat"],
-                            Responsable_id = (int)reader["id_responsable"]
+                            Prioritat_id = reader["id_prioritat"].ToString(),
+                            Estat_id = reader["id_estat"].ToString(),
+                            Responsable_id = reader["id_responsable"].ToString()
                         });
                     }
                 }
             }
             return todo;
         }
-
-
-
-
 
         public static List<Prioritat> SelectP()
         {
@@ -85,12 +81,6 @@ namespace Prueb_GitHub.Service
             }
             return prioritats;
         }
-
-
-
-
-
-
 
         public static List<Responsable> SelectR()
         {
