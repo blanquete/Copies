@@ -27,21 +27,24 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                 command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
                 command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
-
+                int p = -1;
                 foreach(Prioritat prioritat in prioritats)
                 {
                     if(prioritat.Nom == tasca.Estat_id)
-                        command.Parameters.Add(new MySqlParameter("id_prioritat", prioritat.Id));
+                        p = prioritat.Id;
                 }
+                command.Parameters.Add(new MySqlParameter("id_prioritat", p));
 
                 command.Parameters.Add(new MySqlParameter("id_estat", Estat.ToDo));
 
+                int r = -1;
 
                 foreach (Responsable responsable in responsables)
                 {
                     if (responsable.Nom == tasca.Estat_id)
-                        command.Parameters.Add(new MySqlParameter("id_responsable", responsable.Id));
+                        r = responsable.Id;
                 }
+                command.Parameters.Add(new MySqlParameter("id_responsable", r));
 
 
                 command.ExecuteNonQuery();
