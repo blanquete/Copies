@@ -29,6 +29,8 @@ namespace Prueb_GitHub
         public List<Tasca> todo = new List<Tasca>();
         public List<Tasca> doing = new List<Tasca>();
         public List<Tasca> done = new List<Tasca>();
+        public List<Prioritat> prioritats = new List<Prioritat>();
+        public List<Responsable> responsables = new List<Responsable>();
 
         public MainWindow()
         {
@@ -39,6 +41,8 @@ namespace Prueb_GitHub
             todo = UserService.Select(1);
             doing = UserService.Select(2);
             done = UserService.Select(3);
+            prioritats = UserService.SelectP();
+            responsables = UserService.SelectR();
 
             SelecionarTodo();
 

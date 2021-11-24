@@ -16,6 +16,8 @@ namespace Prueb_GitHub.Service
         public static MainWindow w1;
 
 
+
+
         //Funció fer un insert de les dades introduïdes desde els textboxs.
         public static void Agregar(Tasca tasca)
         {
@@ -37,7 +39,7 @@ namespace Prueb_GitHub.Service
             //w1.todo = Select(1);
 
         }
-
+        ///
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
@@ -64,6 +66,60 @@ namespace Prueb_GitHub.Service
                 }
             }
             return todo;
+        }
+
+
+
+
+
+        public static List<Prioritat> SelectP()
+        {
+            List<Prioritat> prioritats = new List<Prioritat>();
+            string query = $"SELECT * FROM prioritat";
+
+            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            {
+                using (var reader = commmand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        prioritats.Add(new Prioritat
+                        {
+                            Id = (int)reader["id"],
+                            Nom = reader["nom"].ToString()
+                        });
+                    }
+                }
+            }
+            return prioritats;
+        }
+
+
+
+
+
+
+
+        public static List<Responsable> SelectR()
+        {
+            List<Responsable> responsables = new List<Responsable>();
+            string query = $"SELECT * FROM responsable";
+
+            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            {
+                using (var reader = commmand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        responsables.Add(new Responsable
+                        {
+                            Id = (int)reader["id"],
+                            Nom = reader["nom"].ToString()
+                        });
+                    }
+                }
+            }
+            return responsables;
         }
     }
 }
