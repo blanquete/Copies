@@ -16,13 +16,7 @@ namespace Prueb_GitHub.Entity
         private int prioritat_id;
         private int responsable_id;
         private int estat_id;
-        private enum estat
-        {
-            ToDo,
-            Doing,
-            Done
-        }
-
+        
 
         public Tasca()
         {

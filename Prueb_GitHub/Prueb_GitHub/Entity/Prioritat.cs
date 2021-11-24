@@ -8,8 +8,8 @@ namespace Prueb_GitHub.Entity
     {
         private int id;
         private string nom;
-        private int urgencia;
-        private string color;
+        //private int urgencia;
+        //private string color;
 
         public Prioritat()
         {
