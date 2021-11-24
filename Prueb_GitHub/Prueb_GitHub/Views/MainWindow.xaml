@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub"
         mc:Ignorable="d"
-        Title="To Do List" Height="650" Width="800">
+        Title="To Do List" Height="650" Width="850" MinHeight="630" MaxHeight="830">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

@@ -51,13 +51,14 @@ namespace Prueb_GitHub.Views
                 w1.todo.Add(temp);
 
                 netejaCamps();
+                
             }
             /*catch (Exception)
             {
                 MessageBox.Show("Has d'omplir tots els camps");
             }*/
 
-            UserService.Agregar(temp);   
+            UserService.Agregar(temp); 
         }
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
