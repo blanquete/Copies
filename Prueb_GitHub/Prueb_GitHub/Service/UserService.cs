@@ -12,6 +12,8 @@ namespace Prueb_GitHub.Service
     {
         //public Tasca temp;
         public static MainWindow w1;
+        public static List<Prioritat> prioritats = SelectP();
+        public static List<Responsable> responsables = SelectR();
 
 
         public static void Agregar(Tasca tasca)
@@ -25,9 +27,22 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                 command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
                 command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
-                command.Parameters.Add(new MySqlParameter("id_prioritat", tasca.Prioritat_id + 1));
-                command.Parameters.Add(new MySqlParameter("id_estat", tasca.Estat_id + 1));
-                command.Parameters.Add(new MySqlParameter("id_responsable", tasca.Responsable_id + 1));
+
+                foreach(Prioritat prioritat in prioritats)
+                {
+                    if(prioritat.Nom == tasca.Estat_id)
+                        command.Parameters.Add(new MySqlParameter("id_prioritat", prioritat.Id));
+                }
+
+                command.Parameters.Add(new MySqlParameter("id_estat", Estat.ToDo));
+
+
+                foreach (Responsable responsable in responsables)
+                {
+                    if (responsable.Nom == tasca.Estat_id)
+                        command.Parameters.Add(new MySqlParameter("id_responsable", responsable.Id));
+                }
+
 
                 command.ExecuteNonQuery();
             }
