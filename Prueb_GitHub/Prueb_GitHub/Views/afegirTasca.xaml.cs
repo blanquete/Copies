@@ -66,7 +66,7 @@ namespace Prueb_GitHub.Views
             {
                 MessageBox.Show("Has d'omplir tots els camps");
             }*/
-
+            
             UserService.Agregar(temp); 
         }
 
