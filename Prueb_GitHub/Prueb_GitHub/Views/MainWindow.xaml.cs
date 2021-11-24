@@ -55,7 +55,6 @@ namespace Prueb_GitHub
             lvTascaDone.ItemsSource = done;
         }
 
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             w2 = new Views.afegirTasca();
@@ -91,6 +90,7 @@ namespace Prueb_GitHub
             w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
             w2.cmb_responsable.SelectedItem = temp.Responsable_id;
         }
+
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             temp = null;
