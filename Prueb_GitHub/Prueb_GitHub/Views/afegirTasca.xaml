@@ -29,23 +29,11 @@
             <TextBox TabIndex="2" Name="txt_nomTasca" Height="28"/>
             <TextBox TabIndex="3" Name="txt_descripcio" Height="28"/>
             <DatePicker TabIndex="5" Name="datepicker_data_final" Height="28" SelectedDateFormat="Short"/>
-<<<<<<< Updated upstream
+
             <ComboBox TabIndex="6" Name="cmb_prioritat" Height="28" ></ComboBox>
             <ComboBox TabIndex="7" Name="cmb_responsable" Height="28"></ComboBox>
             <TextBox Name="txt_prioritat" Width="0" Height="0" Focusable="False" />
 
-=======
-            <ComboBox TabIndex="6" Name="cmb_prioritat" Height="28" >
-                <ComboBoxItem Content="Alta"/>
-                <ComboBoxItem Content="Media"/>
-                <ComboBoxItem Content="Baja"/>
-            </ComboBox>
-            <ComboBox TabIndex="7" Name="cmb_responsable" Height="28">
-                <ComboBoxItem Content="Usuari 1"/>
-                <ComboBoxItem Content="Usuari 2"/>
-                <ComboBoxItem Content="Usuari 3"/>
-            </ComboBox>
->>>>>>> Stashed changes
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,30,148">
