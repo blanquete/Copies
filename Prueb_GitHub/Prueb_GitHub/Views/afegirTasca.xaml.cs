@@ -60,6 +60,9 @@ namespace Prueb_GitHub.Views
                 //Añadir al listView De Afegir Tasca
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 netejaCamps();
+
+                w1.todo.Add(temp);
+                w1.lvTascaToDo.ItemsSource = w1.todo;
                 
             }
             /*catch (Exception)
