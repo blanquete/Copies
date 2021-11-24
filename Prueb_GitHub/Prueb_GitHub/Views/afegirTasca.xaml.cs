@@ -28,6 +28,9 @@ namespace Prueb_GitHub.Views
             DbContext.ObtenerConexion();
             InitializeComponent();
             txt_nomTasca.Focus();
+
+            cmb_prioritat.ItemsSource = w1.prioritats;
+            cmb_responsable.ItemsSource = w1.responsables;
         }
         //quan l'usuari clica sobre el button afegir
         private void btn_agregar_Click(object sender, RoutedEventArgs e)

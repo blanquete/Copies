@@ -16,6 +16,12 @@ namespace Prueb_GitHub.Entity
         private int prioritat_id;
         private int responsable_id;
         private int estat_id;
+        public enum estat
+        {
+            ToDo,
+            Doing,
+            Done
+        }
         
 
         public Tasca()
@@ -81,8 +87,5 @@ namespace Prueb_GitHub.Entity
             get { return estat_id; }
             set { estat_id = value; }
         }
-
-
-       
     }
 }
