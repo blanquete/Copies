@@ -27,6 +27,7 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                 command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
                 command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
+
                 int p = -1;
                 foreach(Prioritat prioritat in prioritats)
                 {
@@ -38,7 +39,6 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("id_estat", Estat.ToDo+1));
 
                 int r = -1;
-
                 foreach (Responsable responsable in responsables)
                 {
                     if (responsable.Nom == tasca.Responsable_name)
