@@ -33,8 +33,8 @@ namespace Prueb_GitHub.Views
             InitializeComponent();
             txt_nomTasca.Focus();
 
-            //List<Prioritat> prioritats = UserService.SelectP();
-            //List<Responsable> responsables = UserService.SelectR();
+            List<Prioritat> prioritats = UserService.SelectP();
+            List<Responsable> responsables = UserService.SelectR();
 
             foreach (Prioritat prio in prioritats)
             {

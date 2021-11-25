@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub.Views"
         mc:Ignorable="d"
-        Icon="icon.png"
         Title="Tasca" Height="270" Width="470" MinHeight="265" MaxHeight="450">
     <Grid>
         <Grid.RowDefinitions>
