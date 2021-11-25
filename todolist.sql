@@ -21,26 +21,31 @@ USE `todolist`;
 CREATE TABLE IF NOT EXISTS `estat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `ordre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
--- Volcando datos para la tabla todolist.estat: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla todolist.estat: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `estat` DISABLE KEYS */;
+INSERT IGNORE INTO `estat` (`id`, `nom`) VALUES
+	(1, 'To do'),
+	(2, 'Doing'),
+	(3, 'Done');
 /*!40000 ALTER TABLE `estat` ENABLE KEYS */;
 
 -- Volcando estructura para tabla todolist.prioritat
 CREATE TABLE IF NOT EXISTS `prioritat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
-  `urgencia` int(11) NOT NULL,
-  `color` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
--- Volcando datos para la tabla todolist.prioritat: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla todolist.prioritat: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `prioritat` DISABLE KEYS */;
+INSERT IGNORE INTO `prioritat` (`id`, `nom`) VALUES
+	(1, 'Alta'),
+	(3, 'Baixa'),
+	(2, 'Mitja');
 /*!40000 ALTER TABLE `prioritat` ENABLE KEYS */;
 
 -- Volcando estructura para tabla todolist.responsable
@@ -48,10 +53,14 @@ CREATE TABLE IF NOT EXISTS `responsable` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
--- Volcando datos para la tabla todolist.responsable: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla todolist.responsable: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `responsable` DISABLE KEYS */;
+INSERT IGNORE INTO `responsable` (`id`, `nom`) VALUES
+	(1, 'Usuari1'),
+	(2, 'Usuari2'),
+	(3, 'Usuari3');
 /*!40000 ALTER TABLE `responsable` ENABLE KEYS */;
 
 -- Volcando estructura para tabla todolist.tasca
@@ -59,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `tasca` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
   `descripcio` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `dataInici` date DEFAULT NULL,
-  `dataFinal` date DEFAULT NULL,
+  `dataInici` datetime DEFAULT NULL,
+  `dataFinal` datetime DEFAULT NULL,
   `id_prioritat` int(11) DEFAULT NULL,
   `id_estat` int(11) DEFAULT NULL,
   `id_responsable` int(11) DEFAULT NULL,
@@ -71,10 +80,14 @@ CREATE TABLE IF NOT EXISTS `tasca` (
   CONSTRAINT `tasca_ibfk_1` FOREIGN KEY (`id_prioritat`) REFERENCES `prioritat` (`id`),
   CONSTRAINT `tasca_ibfk_2` FOREIGN KEY (`id_estat`) REFERENCES `estat` (`id`),
   CONSTRAINT `tasca_ibfk_3` FOREIGN KEY (`id_responsable`) REFERENCES `responsable` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
--- Volcando datos para la tabla todolist.tasca: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla todolist.tasca: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `tasca` DISABLE KEYS */;
+INSERT IGNORE INTO `tasca` (`id`, `nom`, `descripcio`, `dataInici`, `dataFinal`, `id_prioritat`, `id_estat`, `id_responsable`) VALUES
+	(1, 'Tasca 1', 'Hola', '2021-11-19 16:57:05', '2021-11-19 00:00:00', 1, 1, 1),
+	(2, 'Tasca 2', 'Hola', '2021-11-24 15:31:21', '2021-11-24 15:31:23', 1, 2, 1),
+	(3, 'Tasca 3', 'Hola', '2021-11-25 16:51:54', '2021-11-25 16:51:55', 1, 3, 3);
 /*!40000 ALTER TABLE `tasca` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
