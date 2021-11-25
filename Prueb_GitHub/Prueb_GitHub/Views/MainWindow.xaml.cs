@@ -121,7 +121,7 @@ namespace Prueb_GitHub
 
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItem_Eliminar(object sender, RoutedEventArgs e)
         {
             this.w2.btn_agregar.IsEnabled = false;
             this.w2.btn_agregar.Visibility = (Visibility)2;
@@ -149,6 +149,34 @@ namespace Prueb_GitHub
                 lvTascaDone.ItemsSource = done;
             }
 
+        }
+        private void MenuItem_Modificar(object sender, RoutedEventArgs e)
+        {
+            if (!this.w2.IsActive)
+            {
+
+                w2.w1 = this;
+                w2.Show();
+
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+
+                w2.Focus();
+            }
+            else
+            {
+
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+
+                w2.Focus();
+            }
         }
     }
 

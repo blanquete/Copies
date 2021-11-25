@@ -22,9 +22,9 @@
             <MenuItem Header="Afegir Tasca" Height="23" Width="85" Click="MenuItem_Click">
                 <MenuItem Header="Afegir"/>
             </MenuItem>
-            <MenuItem Header="Modificar Tasca">
-                <MenuItem Header="Modificar Tasca"/>
-                <MenuItem Header="Eliminar Tasca" Click="MenuItem_Click_1" />
+            <MenuItem Header="Modificar Tasca" Click="MenuItem_Modificar">
+                <MenuItem x:Name="btn_mi_modificar" Header="Modificar Tasca"/>
+                <MenuItem Header="Eliminar Tasca" Click="MenuItem_Eliminar" />
             </MenuItem>
         </Menu>
 
