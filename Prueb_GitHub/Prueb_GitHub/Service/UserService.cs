@@ -29,14 +29,14 @@ namespace Prueb_GitHub.Service
                 command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
 
                 int p = -1;
-                foreach(Prioritat prioritat in prioritats)
+                foreach (Prioritat prioritat in prioritats)
                 {
-                    if(prioritat.Nom == tasca.Prioritat_name)
+                    if (prioritat.Nom == tasca.Prioritat_name)
                         p = prioritat.Id;
                 }
                 command.Parameters.Add(new MySqlParameter("id_prioritat", p));
 
-                command.Parameters.Add(new MySqlParameter("id_estat", Estat.ToDo+1));
+                command.Parameters.Add(new MySqlParameter("id_estat", Estat.ToDo + 1));
 
                 int r = -1;
                 foreach (Responsable responsable in responsables)
@@ -52,7 +52,7 @@ namespace Prueb_GitHub.Service
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
-            string query = $"SELECT * FROM tasca WHERE id_estat = {estat} ";
+            string query = $"SELECT t.id as ID, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
 
             using (var commmand = new MySqlCommand(query, DbContext.conectar))
             {
@@ -67,16 +67,15 @@ namespace Prueb_GitHub.Service
                             Descripcio = reader["descripcio"].ToString(),
                             DInici = Convert.ToDateTime(reader["dataInici"]),
                             DFinal = Convert.ToDateTime(reader["dataFinal"]),
-
-
-                            Prioritat_id = (int)reader["id_prioritat"],
-                            Estat_name = reader["id_estat"].ToString(),
-                            Responsable_id = (int)reader["id_responsable"]
+                            Estat_name = reader["nomEstat"].ToString(),
+                            Prioritat_name = reader["nomPrioritat"].ToString(),
+                            Responsable_name = reader["nomResponsable"].ToString(),
                         });
+
                     }
                 }
+                return todo;
             }
-            return todo;
         }
 
         public static List<Prioritat> SelectP()
@@ -125,21 +124,16 @@ namespace Prueb_GitHub.Service
 
         public static int maxId()
         {
-            string query = $"SELECT MAX(ID) FROM tasca";
+            string query = $"SELECT MAX(id) FROM tasca";
 
             int max = 0;
 
             using (var commmand = new MySqlCommand(query, DbContext.conectar))
             {
-                using (var reader = commmand.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        max = (int)reader["id"];
-                    }
-                }
+                max = (int)commmand.ExecuteScalar();
             }
             return max;
         }
     }
 }
+
