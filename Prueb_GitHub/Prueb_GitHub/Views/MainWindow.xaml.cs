@@ -56,6 +56,13 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+
+            this.w2.btn_modificar.IsEnabled = false;
+            this.w2.btn_modificar.Visibility = (Visibility)2;
+
+            this.w2.btn_agregar.IsEnabled = true;
+            this.w2.btn_agregar.Visibility = (Visibility)0;
+
             w2.w1 = this;
             w2.Show();
             
@@ -116,6 +123,11 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
+            this.w2.btn_agregar.IsEnabled = false;
+            this.w2.btn_agregar.Visibility = (Visibility)2;
+
+            this.w2.btn_modificar.IsEnabled = true;
+            this.w2.btn_modificar.Visibility = (Visibility)0;
 
             UserService.eliminarTasca(temp.Id);
             if (lvTascaToDo.SelectedItem != null)

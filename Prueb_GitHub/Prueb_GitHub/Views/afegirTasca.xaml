@@ -32,7 +32,6 @@
 
             <ComboBox TabIndex="6" Name="cmb_prioritat" Height="28" ></ComboBox>
             <ComboBox TabIndex="7" Name="cmb_responsable" Height="28"></ComboBox>
-            <TextBox Name="txt_prioritat" Width="0" Height="0" Focusable="False" />
 
         </StackPanel>
 
