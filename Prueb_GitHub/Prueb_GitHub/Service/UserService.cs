@@ -49,14 +49,24 @@ namespace Prueb_GitHub.Service
                 command.ExecuteNonQuery();
             }
         }
+
+        public static void eliminarTasca(int id)
+        {
+            string query = $"DELETE FROM tasca WHERE id = {id}";
+
+            using (var command = new MySqlCommand(query, DbContext.conectar))
+            {
+                   id = (int)command.ExecuteNonQuery();
+            }
+        }
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
             string query = $"SELECT t.id as ID, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
 
-            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            using (var command = new MySqlCommand(query, DbContext.conectar))
             {
-                using (var reader = commmand.ExecuteReader())
+                using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -83,9 +93,9 @@ namespace Prueb_GitHub.Service
             List<Prioritat> prioritats = new List<Prioritat>();
             string query = $"SELECT * FROM prioritat";
 
-            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            using (var command = new MySqlCommand(query, DbContext.conectar))
             {
-                using (var reader = commmand.ExecuteReader())
+                using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -105,9 +115,9 @@ namespace Prueb_GitHub.Service
             List<Responsable> responsables = new List<Responsable>();
             string query = $"SELECT * FROM responsable";
 
-            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            using (var command = new MySqlCommand(query, DbContext.conectar))
             {
-                using (var reader = commmand.ExecuteReader())
+                using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -122,15 +132,17 @@ namespace Prueb_GitHub.Service
             return responsables;
         }
 
+        
+
         public static int maxId()
         {
             string query = $"SELECT MAX(id) FROM tasca";
 
             int max = 0;
 
-            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            using (var command = new MySqlCommand(query, DbContext.conectar))
             {
-                max = (int)commmand.ExecuteScalar();
+                max = (int)command.ExecuteScalar();
             }
             return max;
         }

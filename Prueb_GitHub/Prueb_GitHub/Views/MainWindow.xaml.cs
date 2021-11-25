@@ -24,7 +24,7 @@ namespace Prueb_GitHub
     /// </summary>
     public partial class MainWindow : Window
     {
-        public afegirTasca w2;
+        public afegirTasca w2 = new afegirTasca();
         Tasca temp;
         public List<Tasca> todo = new List<Tasca>();
         public List<Tasca> doing = new List<Tasca>();
@@ -56,7 +56,6 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            w2 = new Views.afegirTasca();
             w2.w1 = this;
             w2.Show();
             
@@ -69,11 +68,14 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             lvTascaDone.SelectedItem = null;
 
-            w2.txt_nomTasca.Text = temp.Nom;
-            w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_final.SelectedDate = temp.DFinal;
-            w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-            w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+            if (this.w2.IsActive)
+            {
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+            }
         }
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -83,11 +85,14 @@ namespace Prueb_GitHub
             temp = (Tasca)lvTascaDoing.SelectedItem;
             lvTascaDone.SelectedItem = null;
 
-            w2.txt_nomTasca.Text = temp.Nom;
-            w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_final.SelectedDate = temp.DFinal;
-            w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-            w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+            if (this.w2.IsActive)
+            {
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+            }
         }
 
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -97,12 +102,40 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             temp = (Tasca)lvTascaDone.SelectedItem;
 
-            w2.txt_nomTasca.Text = temp.Nom;
-            w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_final.SelectedDate = temp.DFinal;
+            if (this.w2.IsActive)
+            {
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+            }
 
-            w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-            w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            UserService.eliminarTasca(temp.Id);
+            if (lvTascaToDo.SelectedItem != null)
+            {
+                todo.RemoveAt(lvTascaToDo.SelectedIndex);
+                lvTascaToDo.ItemsSource = null;
+                lvTascaToDo.ItemsSource = todo;
+            }
+            else if (lvTascaDoing.SelectedItem != null)
+            {
+                doing.RemoveAt(lvTascaDoing.SelectedIndex);
+                lvTascaDoing.ItemsSource = null;
+                lvTascaDoing.ItemsSource = doing;
+            }
+            else if (lvTascaDone.SelectedItem != null)
+            {
+                done.RemoveAt(lvTascaDone.SelectedIndex);
+                lvTascaDone.ItemsSource = null;
+                lvTascaDone.ItemsSource = done;
+            }
 
         }
     }

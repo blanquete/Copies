@@ -24,7 +24,7 @@
             </MenuItem>
             <MenuItem Header="Modificar Tasca">
                 <MenuItem Header="Modificar Tasca"/>
-                <MenuItem Header="Eliminar Tasca"/>
+                <MenuItem Header="Eliminar Tasca" Click="MenuItem_Click_1" />
             </MenuItem>
         </Menu>
 
