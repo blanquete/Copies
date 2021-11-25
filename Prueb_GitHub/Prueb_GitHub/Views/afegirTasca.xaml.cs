@@ -22,15 +22,18 @@ namespace Prueb_GitHub.Views
     {
         public Tasca temp;
         public MainWindow w1;
-        
+
+        public List<Prioritat> prioritats = UserService.SelectP();
+        public List<Responsable> responsables = UserService.SelectR();
+
         public afegirTasca()
         {
             DbContext.ObtenerConexion();
             InitializeComponent();
             txt_nomTasca.Focus();
 
-            List<Prioritat> prioritats = UserService.SelectP();
-            List<Responsable> responsables = UserService.SelectR();
+            //List<Prioritat> prioritats = UserService.SelectP();
+            //List<Responsable> responsables = UserService.SelectR();
 
             foreach (Prioritat prio in prioritats)
             {
