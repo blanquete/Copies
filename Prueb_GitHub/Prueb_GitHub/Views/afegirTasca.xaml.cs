@@ -73,7 +73,9 @@ namespace Prueb_GitHub.Views
                 MessageBox.Show("Has d'omplir tots els camps");
             }*/
             
-            UserService.Agregar(temp); 
+            UserService.Agregar(temp);
+            //w1.lvTascaToDo.ItemsSource = UserService.Select((int)Estat.ToDo);
+
         }
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)

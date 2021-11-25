@@ -122,5 +122,24 @@ namespace Prueb_GitHub.Service
             }
             return responsables;
         }
+
+        public static int maxId()
+        {
+            string query = $"SELECT MAX(ID) FROM tasca";
+
+            int max = 0;
+
+            using (var commmand = new MySqlCommand(query, DbContext.conectar))
+            {
+                using (var reader = commmand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        max = (int)reader["id"];
+                    }
+                }
+            }
+            return max;
+        }
     }
 }
