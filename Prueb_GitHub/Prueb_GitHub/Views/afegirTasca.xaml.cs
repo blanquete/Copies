@@ -25,7 +25,7 @@ namespace Prueb_GitHub.Views
 
         public List<Prioritat> prioritats = UserService.SelectP();
         public List<Responsable> responsables = UserService.SelectR();
-        private string icon = "icon.png";
+        
 
         public afegirTasca()
         {
