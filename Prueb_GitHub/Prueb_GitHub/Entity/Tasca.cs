@@ -19,9 +19,11 @@ namespace Prueb_GitHub.Entity
         private string descripcio;
         private DateTime dInici;
         private DateTime dFinal;
-        private string prioritat_id;
-        private string responsable_id;
-        private string estat_id;
+        private int prioritat_id;
+        private string prioritat_name;
+        private int responsable_id;
+        private string responsable_name;
+        private string estat_name;
         private Estat estat;
         
         
@@ -33,12 +35,14 @@ namespace Prueb_GitHub.Entity
             descripcio = "";
             dInici = new DateTime();
             dFinal = new DateTime();
-            prioritat_id = "";
-            responsable_id = "";
-            estat_id = "";
+            prioritat_id = 0;
+            prioritat_name = "";
+            responsable_id = 0;
+            responsable_name = "";
+            estat_name = "";
             estat = (Estat)0;
         }
-        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, string prioritat_id_, string responsable_id_, string estat_id_, Estat estat_)
+        public Tasca(int id_, string nom_, string descripcio_, DateTime dInici_, DateTime dFinal_, int prioritat_id_, string prioritat_name_, int responsable_id_, string responsable_name_, string estat_name_, Estat estat_)
         {
             id = id_;
             nom = nom_;
@@ -46,8 +50,10 @@ namespace Prueb_GitHub.Entity
             dInici = dInici_;
             dFinal = dFinal_;
             prioritat_id = prioritat_id_;
+            prioritat_name = prioritat_name_;
             responsable_id = responsable_id_;
-            estat_id = estat_id_;
+            responsable_name = responsable_name_;
+            estat_name = estat_name_;
             estat = estat_;
         }
 
@@ -76,20 +82,30 @@ namespace Prueb_GitHub.Entity
             get { return dFinal; }
             set { dFinal = value; }
         }
-        public string Prioritat_id
+        public int Prioritat_id
         {
             get { return prioritat_id; }
             set { prioritat_id = value; }
         }
-        public string Responsable_id
+        public string Prioritat_name
+        {
+            get { return prioritat_name; }
+            set { prioritat_name = value; }
+        }
+        public int Responsable_id
         {
             get { return responsable_id; }
             set { responsable_id = value; }
         }
-        public string Estat_id
+        public string Responsable_name
         {
-            get { return estat_id; }
-            set { estat_id = value; }
+            get { return responsable_name; }
+            set { responsable_name = value; }
+        }
+        public string Estat_name
+        {
+            get { return estat_name; }
+            set { estat_name = value; }
         }
         public Estat Estat
         {

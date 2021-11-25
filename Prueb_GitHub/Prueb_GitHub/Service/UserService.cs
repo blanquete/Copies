@@ -22,7 +22,7 @@ namespace Prueb_GitHub.Service
             string query = "INSERT INTO tasca(nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id_responsable) VALUES (?, ?, ?, ?, ?, ?, ?)";
             using (var command = new MySqlCommand(query, DbContext.conectar))
             {
-                //command.Parameters.Add(new SQLiteParameter("id", temp.Id));
+                //command.Parameters.Add(new MySqlParameter("id", temp.Id));
                 command.Parameters.Add(new MySqlParameter("nom", tasca.Nom));
                 command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                 command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
@@ -30,7 +30,7 @@ namespace Prueb_GitHub.Service
                 int p = -1;
                 foreach(Prioritat prioritat in prioritats)
                 {
-                    if(prioritat.Nom == tasca.Prioritat_id)
+                    if(prioritat.Nom == tasca.Prioritat_name)
                         p = prioritat.Id;
                 }
                 command.Parameters.Add(new MySqlParameter("id_prioritat", p));
@@ -41,7 +41,7 @@ namespace Prueb_GitHub.Service
 
                 foreach (Responsable responsable in responsables)
                 {
-                    if (responsable.Nom == tasca.Responsable_id)
+                    if (responsable.Nom == tasca.Responsable_name)
                         r = responsable.Id;
                 }
                 command.Parameters.Add(new MySqlParameter("id_responsable", r));
@@ -67,9 +67,11 @@ namespace Prueb_GitHub.Service
                             Descripcio = reader["descripcio"].ToString(),
                             DInici = Convert.ToDateTime(reader["dataInici"]),
                             DFinal = Convert.ToDateTime(reader["dataFinal"]),
-                            Prioritat_id = reader["id_prioritat"].ToString(),
-                            Estat_id = reader["id_estat"].ToString(),
-                            Responsable_id = reader["id_responsable"].ToString()
+
+
+                            Prioritat_id = (int)reader["id_prioritat"],
+                            Estat_name = reader["id_estat"].ToString(),
+                            Responsable_id = (int)reader["id_responsable"]
                         });
                     }
                 }

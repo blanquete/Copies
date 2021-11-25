@@ -37,9 +37,9 @@
                         <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
                         <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
                         <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
-                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_id}"/>
-                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_id}"/>
-                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_id}"/>
+                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_name}"/>
+                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_name}"/>
+                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_name}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -54,9 +54,9 @@
                         <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
                         <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
                         <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
-                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_id}"/>
-                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_id}"/>
-                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_id}"/>
+                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_name}"/>
+                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_name}"/>
+                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_name}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -71,9 +71,9 @@
                         <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
                         <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
                         <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
-                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_id}"/>
-                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_id}"/>
-                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_id}"/>
+                        <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_name}"/>
+                        <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_name}"/>
+                        <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_name}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

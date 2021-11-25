@@ -22,6 +22,7 @@ namespace Prueb_GitHub.Views
     {
         public Tasca temp;
         public MainWindow w1;
+        public int max_id = UserService.maxId();
         
         public afegirTasca()
         {
@@ -49,21 +50,23 @@ namespace Prueb_GitHub.Views
                     //afageix un nou item al listview
                      temp = new Tasca()
                      {
+                         Id = ,
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
                          DInici = DateTime.Now,
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
-                         Prioritat_id = cmb_prioritat.SelectedItem.ToString(), //Agafa el valor de l'index
-                         Responsable_id = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
-                         Estat_id = "ToDo", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
+                         Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //Agafa el valor de l'index
+                         Responsable_name = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
+                         Estat_name = "ToDo", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
                      };
                 //Añadir al listView De Afegir Tasca
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 netejaCamps();
 
                 w1.todo.Add(temp);
+                w1.lvTascaToDo.ItemsSource = null;
                 w1.lvTascaToDo.ItemsSource = w1.todo;
-                
+
             }
             /*catch (Exception)
             {
@@ -85,8 +88,8 @@ namespace Prueb_GitHub.Views
                     Descripcio = txt_descripcio.Text,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
 
-                    Prioritat_id = cmb_prioritat.SelectedItem.ToString(), //transforma el valor del item seleccionat
-                    Responsable_id = cmb_responsable.SelectedItem.ToString(), //transforma el valor del item seleccionat
+                    Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //transforma el valor del item seleccionat
+                    Responsable_name = cmb_responsable.SelectedItem.ToString(), //transforma el valor del item seleccionat
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
