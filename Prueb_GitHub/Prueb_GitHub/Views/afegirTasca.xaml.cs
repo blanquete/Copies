@@ -22,7 +22,6 @@ namespace Prueb_GitHub.Views
     {
         public Tasca temp;
         public MainWindow w1;
-        public int max_id = UserService.maxId();
         
         public afegirTasca()
         {
@@ -50,7 +49,7 @@ namespace Prueb_GitHub.Views
                     //afageix un nou item al listview
                      temp = new Tasca()
                      {
-                         Id = ,
+                         Id = UserService.maxId()+1,
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
                          DInici = DateTime.Now,
