@@ -21,7 +21,6 @@ USE `todolist`;
 CREATE TABLE IF NOT EXISTS `estat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
-  `ordre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -33,8 +32,6 @@ CREATE TABLE IF NOT EXISTS `estat` (
 CREATE TABLE IF NOT EXISTS `prioritat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
-  `urgencia` int(11) NOT NULL,
-  `color` varchar(255) COLLATE latin1_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;

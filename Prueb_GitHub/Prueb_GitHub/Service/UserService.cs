@@ -68,7 +68,7 @@ namespace Prueb_GitHub.Service
             }
         }
 
-        //Aquesta funció fa un select per mostrar la nostra BBDD dintre del programa.
+        //Aquesta funció fa un select, per poder mostrar cada tasca on li correspon, o sigui que depend de quina estat té la tasca, es mostrara en listview que tenim enllaçat en el main.
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
@@ -125,6 +125,7 @@ namespace Prueb_GitHub.Service
             return prioritats;
         }
 
+        //Fa una seleccio dels responsables
         public static List<Responsable> SelectR()
         {
             List<Responsable> responsables = new List<Responsable>();
@@ -150,6 +151,8 @@ namespace Prueb_GitHub.Service
             return responsables;
         }
 
+        //Fer un update del estat
+        //El que voliam fer era que puguesim arrosegar la nostra tasca en diferents listviews i el camp estat cambiaria.
         public static void updateEstat(Tasca tasca)
         {
             string query = $"UPDATE TASCA SET id_estat = {tasca.Estat + 1} WHERE id = {tasca.Id}";
@@ -163,6 +166,7 @@ namespace Prueb_GitHub.Service
             }
         }
 
+        //Fer una update per poder cambiar algun camp de la tasca com el nom, o la descripcio...
         public static void updateTasca(Tasca tasca)
         {
             string query = $"UPDATE TASCA SET nom = {tasca.Nom}, descripcio = {tasca.Descripcio}, dataFinal = {tasca.DFinal}, id_prioritat = {tasca.Prioritat_id}, id_responsable = {tasca.Responsable_id} WHERE id = {tasca.Id}";
@@ -176,6 +180,8 @@ namespace Prueb_GitHub.Service
             }
         }
 
+        //Aquesta funció selecciona la id mes gran que hi ha a la BBDD
+        //Perque en el listview, quan afegim un nou registre abans l'ID tenia el valor 0.
         public static int maxId()
         {
             string query = $"SELECT MAX(id) FROM tasca";

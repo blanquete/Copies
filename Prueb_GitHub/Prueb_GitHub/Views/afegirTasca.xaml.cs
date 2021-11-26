@@ -29,6 +29,7 @@ namespace Prueb_GitHub.Views
 
         public afegirTasca()
         {
+            //Conexio a la BBDD
             DbContext.ObtenerConexion();
             InitializeComponent();
             txt_nomTasca.Focus();
@@ -45,7 +46,7 @@ namespace Prueb_GitHub.Views
                 cmb_responsable.Items.Add(resp.Nom);
             }
         }
-        //quan l'usuari clica sobre el button afegir
+        //Funcio, per poder afegir una tasca
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -62,13 +63,13 @@ namespace Prueb_GitHub.Views
                          Responsable_name = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
                          Estat_name = "ToDo", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
                      };
-                //Añadir al listView De Afegir Tasca
-                //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 
+                //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
 
                 w1.todo.Add(temp);
                 UserService.Agregar(temp);
 
+                //Mostrem la tasca nova en el list view
                 w1.lvTascaToDo.ItemsSource = null;
                 w1.lvTascaToDo.ItemsSource = w1.todo;
 
@@ -172,11 +173,6 @@ namespace Prueb_GitHub.Views
             else
                 //si no no permet introduir valors
                 e.Handled = true;
-        }
-
-        private void btn_netejar_Click(object sender, RoutedEventArgs e)
-        {
-            netejaCamps();
         }
     }
 }

@@ -36,11 +36,15 @@ namespace Prueb_GitHub
         {
             InitializeComponent();
 
+            //Conexio a la BBDD
             DbContext.ObtenerConexion();
 
+            //Fem un enllaç de cada listView
+            //Depen del estat si es To Do, Doing o Done, mostrará l'informació en un list view diferent. 
             todo = UserService.Select(1);
             doing = UserService.Select(2);
             done = UserService.Select(3);
+
             prioritats = UserService.SelectP();
             responsables = UserService.SelectR();
 
@@ -49,15 +53,15 @@ namespace Prueb_GitHub
 
         public void SelecionarTodo()
         {
-            lvTascaToDo.ItemsSource = todo;
+            //Agafa el items que te cada llista
+            lvTascaToDo.ItemsSource = todo; 
             lvTascaDoing.ItemsSource = doing;
             lvTascaDone.ItemsSource = done;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
-
+            //Mostra la segona finestra
             w2.w1 = this;
             w2.Show();
             
@@ -65,6 +69,8 @@ namespace Prueb_GitHub
 
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Selecciona una tasca del listview corresponent
+            //Es posa null els altres view, perque no hi hagi cap conflicte a l'hora de seleccionar.
             temp = null;
             temp = (Tasca)lvTascaToDo.SelectedItem;
             lvTascaDoing.SelectedItem = null;
@@ -75,6 +81,8 @@ namespace Prueb_GitHub
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Selecciona una tasca del listview corresponent
+            //Es posa null els altres view, perque no hi hagi cap conflicte a l'hora de seleccionar.
             temp = null;
             lvTascaToDo.SelectedItem = null;
             temp = (Tasca)lvTascaDoing.SelectedItem;
@@ -85,40 +93,42 @@ namespace Prueb_GitHub
 
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Selecciona una tasca del listview corresponent
+            //Es posa null els altres view, perque no hi hagi cap conflicte a l'hora de seleccionar.
             temp = null;
             lvTascaToDo.SelectedItem = null;
             lvTascaDoing.SelectedItem = null;
             temp = (Tasca)lvTascaDone.SelectedItem;
 
             emplenarCampsFinestra();
-
-
         }
 
+        //Funcio per poder eliminar una tasca seleccionada.
         private void MenuItem_Eliminar(object sender, RoutedEventArgs e)
         {
-
             UserService.eliminarTasca(temp.Id);
             if (lvTascaToDo.SelectedItem != null)
             {
                 todo.RemoveAt(lvTascaToDo.SelectedIndex);
-                lvTascaToDo.ItemsSource = null;
+                lvTascaToDo.ItemsSource = null; //Es posa null per fer com una "actualizacio de la pantalla" i després el mostra.
                 lvTascaToDo.ItemsSource = todo;
             }
             else if (lvTascaDoing.SelectedItem != null)
             {
                 doing.RemoveAt(lvTascaDoing.SelectedIndex);
-                lvTascaDoing.ItemsSource = null;
+                lvTascaDoing.ItemsSource = null; //Es posa null per fer com una "actualizacio de la pantalla" i després el mostra.
                 lvTascaDoing.ItemsSource = doing;
             }
             else if (lvTascaDone.SelectedItem != null)
             {
                 done.RemoveAt(lvTascaDone.SelectedIndex);
-                lvTascaDone.ItemsSource = null;
+                lvTascaDone.ItemsSource = null; //Es posa null per fer com una "actualizacio de la pantalla" i després el mostra.
                 lvTascaDone.ItemsSource = done;
             }
 
         }
+
+        //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
             if (this.w2.IsActive)
@@ -144,6 +154,8 @@ namespace Prueb_GitHub
                 w2.Focus();
             }
         }
+
+        //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         public void emplenarCampsFinestra()
         {
             if (w2.IsActive)
