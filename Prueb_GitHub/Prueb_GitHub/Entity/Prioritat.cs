@@ -6,26 +6,23 @@ namespace Prueb_GitHub.Entity
 {
     public class Prioritat
     {
+        //Declaració de variables
         private int id;
         private string nom;
-        //private int urgencia;
-        //private string color;
 
+        //Constructor
         public Prioritat()
         {
             id = 0;
             nom = "";
-            //urgencia = 0;
-            //color = "";
         }
-        public Prioritat(int id_, string nom_, int urgencia_, string color_)
+        public Prioritat(int id_, string nom_)
         {
             id = id_;
             nom = nom_;
-            //urgencia = urgencia_;
-            //color = color_;
         }
 
+        //Accesors
         public int Id
         {
             get { return id; }
@@ -36,15 +33,5 @@ namespace Prueb_GitHub.Entity
             get { return nom; }
             set { nom = value; }
         }
-        /*public int Urgencia
-        {
-            get { return urgencia; }
-            set { urgencia = value; }
-        }
-        public string Color
-        {
-            get { return color; }
-            set { color = value; }
-        }*/
     }
 }

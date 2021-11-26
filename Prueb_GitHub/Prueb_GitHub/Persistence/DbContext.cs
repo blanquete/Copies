@@ -8,6 +8,7 @@ namespace Prueb_GitHub.Persistence
 {
     public class DbContext
     {
+        //Conexio a la BBDD 
         public static MySqlConnection conectar;
         public static MySqlConnection ObtenerConexion()
         {

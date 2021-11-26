@@ -10,40 +10,43 @@ namespace Prueb_GitHub.Service
 {
     public class UserService
     {
-        public static MainWindow w1;
         public static List<Prioritat> prioritats = SelectP();
         public static List<Responsable> responsables = SelectR();
 
-
+        //Funcio per agregar una tasca dins de la BBDD
         public static void Agregar(Tasca tasca)
         {
-
             string query = "INSERT INTO tasca(nom, descripcio, dataInici, dataFinal, id_prioritat, id_estat, id_responsable) VALUES (?, ?, ?, ?, ?, ?, ?)";
             using (MySqlConnection conection = DbContext.ObtenerConexion())
             {
                 using (var command = new MySqlCommand(query, conection))
                 {
-                    //command.Parameters.Add(new MySqlParameter("id", temp.Id));
+                    int p = -1, r = -1;
                     command.Parameters.Add(new MySqlParameter("nom", tasca.Nom));
                     command.Parameters.Add(new MySqlParameter("descripcio", tasca.Descripcio));
                     command.Parameters.Add(new MySqlParameter("dataInici", tasca.DInici));
                     command.Parameters.Add(new MySqlParameter("dataFinal", tasca.DFinal));
 
-                    int p = -1;
+                    //Recorre les prioritats i guarda l'ID corresponent.
                     foreach (Prioritat prioritat in prioritats)
                     {
                         if (prioritat.Nom == tasca.Prioritat_name)
+                        {
                             p = prioritat.Id;
+                        }
+                           
                     }
                     command.Parameters.Add(new MySqlParameter("id_prioritat", p));
-
                     command.Parameters.Add(new MySqlParameter("id_estat", Estat.ToDo + 1));
 
-                    int r = -1;
+                    //Recorre els responsables i guarda l'ID corresponent.
                     foreach (Responsable responsable in responsables)
                     {
                         if (responsable.Nom == tasca.Responsable_name)
+                        {
                             r = responsable.Id;
+                        }
+                           
                     }
                     command.Parameters.Add(new MySqlParameter("id_responsable", r));
                     command.ExecuteNonQuery();
@@ -51,6 +54,7 @@ namespace Prueb_GitHub.Service
             }
         }
 
+        //Funcio per poder eliminar una tasca dintre de la nostra BBDD
         public static void eliminarTasca(int id)
         {
             string query = $"DELETE FROM tasca WHERE id = {id}";
@@ -63,6 +67,8 @@ namespace Prueb_GitHub.Service
                 }
             }
         }
+
+        //Aquesta funció fa un select per mostrar la nostra BBDD dintre del programa.
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
@@ -99,8 +105,6 @@ namespace Prueb_GitHub.Service
         {
             List<Prioritat> prioritats = new List<Prioritat>();
             string query = "SELECT * FROM prioritat";
-
-
             using (MySqlConnection conection = DbContext.ObtenerConexion())
             { 
                 using (var command = new MySqlCommand(query, conection))

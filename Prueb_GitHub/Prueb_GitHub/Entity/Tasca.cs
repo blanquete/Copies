@@ -25,9 +25,9 @@ namespace Prueb_GitHub.Entity
         private string responsable_name;
         private string estat_name;
         private Estat estat;
-        
-        
 
+
+        //Constructors 
         public Tasca()
         {
             id = 0;
@@ -57,6 +57,7 @@ namespace Prueb_GitHub.Entity
             estat = estat_;
         }
 
+        //Accesors
         public int Id
         {
             get { return id; }

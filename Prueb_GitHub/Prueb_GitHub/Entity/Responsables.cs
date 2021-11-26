@@ -6,10 +6,11 @@ namespace Prueb_GitHub.Entity
 {
     public class Responsable
     {
+        //Declaració de variables
         private int id;
         private string nom;
 
-
+        //Constructor 
         public Responsable()
         {
             id = 0;
@@ -21,6 +22,7 @@ namespace Prueb_GitHub.Entity
             nom = nom_;
         }
 
+        //Accesors
         public int Id
         {
             get { return id; }
