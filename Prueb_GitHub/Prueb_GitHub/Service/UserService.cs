@@ -148,11 +148,24 @@ namespace Prueb_GitHub.Service
 
         public static void updateEstat(Tasca tasca)
         {
-            string query = $"UPDATE TASCA SET id_estat = {tasca.Estat+1} WHERE id = {tasca.Id}";
+            string query = $"UPDATE TASCA SET id_estat = {tasca.Estat + 1} WHERE id = {tasca.Id}";
 
-            using(var connection = DbContext.ObtenerConexion())
+            using (var connection = DbContext.ObtenerConexion())
             {
-                using(var command = new MySqlCommand(query, connection))
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void updateTasca(Tasca tasca)
+        {
+            string query = $"UPDATE TASCA SET nom = {tasca.Nom}, descripcio = {tasca.Descripcio}, dataFinal = {tasca.DFinal}, id_prioritat = {tasca.Prioritat_id}, id_responsable = {tasca.Responsable_id} WHERE id = {tasca.Id}";
+
+            using (var connection = DbContext.ObtenerConexion())
+            {
+                using (var command = new MySqlCommand(query, connection))
                 {
                     command.ExecuteNonQuery();
                 }

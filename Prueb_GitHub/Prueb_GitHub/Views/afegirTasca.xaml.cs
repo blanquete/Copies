@@ -112,6 +112,8 @@ namespace Prueb_GitHub.Views
                     w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
                 }
 
+                UserService.updateTasca(temp);
+
                 netejaCamps();
             }
             catch (Exception)
