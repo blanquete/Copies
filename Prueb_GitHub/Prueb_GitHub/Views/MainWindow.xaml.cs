@@ -57,11 +57,6 @@ namespace Prueb_GitHub
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
-            this.w2.btn_modificar.IsEnabled = false;
-            this.w2.btn_modificar.Visibility = (Visibility)2;
-
-            this.w2.btn_agregar.IsEnabled = true;
-            this.w2.btn_agregar.Visibility = (Visibility)0;
 
             w2.w1 = this;
             w2.Show();
@@ -102,11 +97,6 @@ namespace Prueb_GitHub
 
         private void MenuItem_Eliminar(object sender, RoutedEventArgs e)
         {
-            this.w2.btn_agregar.IsEnabled = false;
-            this.w2.btn_agregar.Visibility = (Visibility)2;
-
-            this.w2.btn_modificar.IsEnabled = true;
-            this.w2.btn_modificar.Visibility = (Visibility)0;
 
             UserService.eliminarTasca(temp.Id);
             if (lvTascaToDo.SelectedItem != null)
@@ -131,26 +121,25 @@ namespace Prueb_GitHub
         }
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
-            if (!this.w2.IsActive)
+            if (this.w2.IsActive)
+            {
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
+                this.w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
+
+                w2.Focus();
+            }
+            else
             {
                 w2.Show();
 
                 this.w2.txt_nomTasca.Text = temp.Nom;
                 this.w2.txt_descripcio.Text = temp.Descripcio;
                 this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
-
-                w2.Focus();
-            }
-            else
-            {
-
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+                this.w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
+                this.w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
 
                 w2.Focus();
             }
