@@ -64,20 +64,21 @@ namespace Prueb_GitHub.Views
                      };
                 //Añadir al listView De Afegir Tasca
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
-                netejaCamps();
+                
 
                 w1.todo.Add(temp);
+                UserService.Agregar(temp);
+
                 w1.lvTascaToDo.ItemsSource = null;
                 w1.lvTascaToDo.ItemsSource = w1.todo;
+
+                netejaCamps();
 
             }
             catch (Exception)
             {
                 MessageBox.Show("Has d'omplir tots els camps", "Information",MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            
-            UserService.Agregar(temp);
-            
 
         }
 
@@ -110,7 +111,6 @@ namespace Prueb_GitHub.Views
                 {
                     w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
                 }
-
 
                 netejaCamps();
             }

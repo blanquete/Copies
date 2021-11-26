@@ -75,14 +75,7 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             lvTascaDone.SelectedItem = null;
 
-            if (this.w2.IsActive)
-            {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
-            }
+            emplenarCampsFinestra();
         }
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,14 +85,7 @@ namespace Prueb_GitHub
             temp = (Tasca)lvTascaDoing.SelectedItem;
             lvTascaDone.SelectedItem = null;
 
-            if (this.w2.IsActive)
-            {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
-            }
+            emplenarCampsFinestra();
         }
 
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,14 +95,7 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             temp = (Tasca)lvTascaDone.SelectedItem;
 
-            if (this.w2.IsActive)
-            {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
-            }
+            emplenarCampsFinestra();
 
 
         }
@@ -154,8 +133,6 @@ namespace Prueb_GitHub
         {
             if (!this.w2.IsActive)
             {
-
-                w2.w1 = this;
                 w2.Show();
 
                 this.w2.txt_nomTasca.Text = temp.Nom;
@@ -178,7 +155,16 @@ namespace Prueb_GitHub
                 w2.Focus();
             }
         }
+        public void emplenarCampsFinestra()
+        {
+            if (w2.IsActive)
+            {
+                this.w2.txt_nomTasca.Text = temp.Nom;
+                this.w2.txt_descripcio.Text = temp.Descripcio;
+                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+            }
+        }
     }
-
-
 }
