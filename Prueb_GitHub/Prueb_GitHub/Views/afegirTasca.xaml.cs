@@ -27,8 +27,9 @@ namespace Prueb_GitHub.Views
         public List<Responsable> responsables = UserService.SelectR();
         
 
-        public afegirTasca()
+        public afegirTasca(MainWindow mainW)
         {
+            w1 = mainW;
             DbContext.ObtenerConexion();
             InitializeComponent();
             txt_nomTasca.Focus();
@@ -48,7 +49,7 @@ namespace Prueb_GitHub.Views
         //quan l'usuari clica sobre el button afegir
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //try
             {
                     //afageix un nou item al listview
                      temp = new Tasca()
@@ -74,10 +75,12 @@ namespace Prueb_GitHub.Views
 
                 netejaCamps();
 
+                this.Close();
+
             }
-            catch (Exception)
+            ///catch (Exception)
             {
-                MessageBox.Show("Has d'omplir tots els camps", "Information",MessageBoxButton.OK, MessageBoxImage.Information);
+            //    MessageBox.Show("Has d'omplir tots els camps", "Information",MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }
@@ -114,7 +117,28 @@ namespace Prueb_GitHub.Views
 
                 UserService.updateTasca(temp);
 
+                if (w1.lvTascaToDo.SelectedItem != null)
+                {
+                    w1.todo.RemoveAt(w1.lvTascaToDo.SelectedIndex);
+                    w1.lvTascaToDo.ItemsSource = null;
+                    w1.lvTascaToDo.ItemsSource = w1.todo;
+                }
+                else if (w1.lvTascaDoing.SelectedItem != null)
+                {
+                    w1.doing.RemoveAt(w1.lvTascaDoing.SelectedIndex);
+                    w1.lvTascaDoing.ItemsSource = null;
+                    w1.lvTascaDoing.ItemsSource = w1.doing;
+                }
+                else if (w1.lvTascaDone.SelectedItem != null)
+                {
+                    w1.done.RemoveAt(w1.lvTascaDone.SelectedIndex);
+                    w1.lvTascaDone.ItemsSource = null;
+                    w1.lvTascaDone.ItemsSource = w1.done;
+                }
+
                 netejaCamps();
+
+                this.Close();
             }
             catch (Exception)
             {

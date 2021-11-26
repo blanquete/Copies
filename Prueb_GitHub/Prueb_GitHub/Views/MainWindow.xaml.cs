@@ -24,7 +24,7 @@ namespace Prueb_GitHub
     /// </summary>
     public partial class MainWindow : Window
     {
-        public afegirTasca w2 = new afegirTasca();
+        public afegirTasca w2;
         Tasca temp;
         public List<Tasca> todo = new List<Tasca>();
         public List<Tasca> doing = new List<Tasca>();
@@ -38,6 +38,7 @@ namespace Prueb_GitHub
 
             DbContext.ObtenerConexion();
 
+            //w2 = new afegirTasca(this);
             todo = UserService.Select(1);
             doing = UserService.Select(2);
             done = UserService.Select(3);
@@ -54,13 +55,11 @@ namespace Prueb_GitHub
             lvTascaDone.ItemsSource = done;
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Afegir(object sender, RoutedEventArgs e)
         {
-
-
+            w2 = new afegirTasca(this);
             w2.w1 = this;
             w2.Show();
-            
         }
 
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -121,38 +120,43 @@ namespace Prueb_GitHub
         }
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
-            if (this.w2.IsActive)
+            w2 = new afegirTasca(this);
+            if(temp != null)
             {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
-                this.w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
+                if (w2.IsActive)
+                {
+                    w2.txt_nomTasca.Text = temp.Nom;
+                    w2.txt_descripcio.Text = temp.Descripcio;
+                    w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                    w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
+                    w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
 
-                w2.Focus();
-            }
-            else
-            {
-                w2.Show();
+                    w2.Focus();
+                }
+                else
+                {
+                    w2.Show();
 
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
-                this.w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
+                    w2.txt_nomTasca.Text = temp.Nom;
+                    w2.txt_descripcio.Text = temp.Descripcio;
+                    w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                    w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
+                    w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
 
-                w2.Focus();
+                    w2.Focus();
+                }
             }
         }
         public void emplenarCampsFinestra()
         {
+            w2 = new afegirTasca(this);
             if (w2.IsActive)
             {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+                w2.txt_nomTasca.Text = temp.Nom;
+                w2.txt_descripcio.Text = temp.Descripcio;
+                w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                w2.cmb_responsable.SelectedItem = temp.Responsable_id;
             }
         }
     }
