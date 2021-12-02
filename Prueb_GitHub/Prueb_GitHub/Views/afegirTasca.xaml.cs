@@ -23,8 +23,8 @@ namespace Prueb_GitHub.Views
         public Tasca temp;
         public MainWindow w1;
 
-        public List<Prioritat> prioritats = UserService.SelectP();
-        public List<Responsable> responsables = UserService.SelectR();
+        public List<Prioritat> prioritats;
+        public List<Responsable> responsables;
         
 
         public afegirTasca(MainWindow main)
@@ -36,8 +36,8 @@ namespace Prueb_GitHub.Views
             w1 = main;
             txt_nomTasca.Focus();
 
-            List<Prioritat> prioritats = UserService.SelectP();
-            List<Responsable> responsables = UserService.SelectR();
+            prioritats = UserService.SelectP();
+            responsables = UserService.SelectR();
 
             foreach (Prioritat prio in prioritats)
             {

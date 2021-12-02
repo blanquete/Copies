@@ -64,7 +64,7 @@ namespace Prueb_GitHub
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             //Mostra la segona finestra
-            if(w2.IsEnabled)
+            if(w2.IsActive)
             {
                 w2.Close();
             }
