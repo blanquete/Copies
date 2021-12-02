@@ -146,7 +146,12 @@ namespace Prueb_GitHub.Views
             datepicker_data_final.SelectedDate = null;
             cmb_prioritat.SelectedItem = null;
             cmb_responsable.SelectedItem = null;
-            
+
+            txt_id.Text = "";
+            txt_estat.Text = "";
+            datepicker_data_inici.SelectedDate = null;
+
+
             txt_nomTasca.Focus();
         }
 

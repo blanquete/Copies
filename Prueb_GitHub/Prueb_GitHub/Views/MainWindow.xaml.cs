@@ -64,10 +64,11 @@ namespace Prueb_GitHub
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             //Mostra la segona finestra
-            if(w2.IsEnabled)
+            if(w2.IsActive)
             {
                 w2.Close();
             }
+                
                 
             w2.w1 = this;
             w2.Show();
@@ -82,9 +83,9 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             lvTascaDone.SelectedItem = null;
 
-            obrir_i_emplenar();
+            //obrir_i_emplenar();
 
-            emplenarCampsFinestra();
+            //emplenarCampsFinestra();
         }
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,9 +97,9 @@ namespace Prueb_GitHub
             temp = (Tasca)lvTascaDoing.SelectedItem;
             lvTascaDone.SelectedItem = null;
 
-            obrir_i_emplenar();
+            //obrir_i_emplenar();
 
-            emplenarCampsFinestra();
+            //emplenarCampsFinestra();
         }
 
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -111,7 +112,7 @@ namespace Prueb_GitHub
             temp = (Tasca)lvTascaDone.SelectedItem;
 
             
-            obrir_i_emplenar();
+            //obrir_i_emplenar();
              
 
             //emplenarCampsFinestra();
@@ -149,7 +150,7 @@ namespace Prueb_GitHub
         }
         public void obrir()
         {
-            if (w2.IsEnabled)
+            if (w2.IsActive)
             {
                 w2.Close();
 
@@ -163,7 +164,7 @@ namespace Prueb_GitHub
 
         public void obrir_i_emplenar()
         {
-            if (w2.IsEnabled)
+            if (w2.IsActive)
             {
                 w2.Close();
 
