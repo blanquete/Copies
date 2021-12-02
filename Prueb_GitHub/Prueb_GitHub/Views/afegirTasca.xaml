@@ -29,10 +29,12 @@
             <TextBox TabIndex="2" Name="txt_nomTasca" Height="28"/>
             <TextBox TabIndex="3" Name="txt_descripcio" Height="28"/>
             <DatePicker TabIndex="5" Name="datepicker_data_final" Height="28" SelectedDateFormat="Short"/>
-
             <ComboBox TabIndex="6" Name="cmb_prioritat" Height="28" ></ComboBox>
             <ComboBox TabIndex="7" Name="cmb_responsable" Height="28"></ComboBox>
 
+            <TextBox Name="txt_id" Visibility="Collapsed"/>
+            <TextBox Name="txt_estat" Visibility="Collapsed"/>
+            <DatePicker Name="datepicker_data_inici" Visibility="Collapsed" SelectedDateFormat="Short"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,30,148">

@@ -27,11 +27,13 @@ namespace Prueb_GitHub.Views
         public List<Responsable> responsables = UserService.SelectR();
         
 
-        public afegirTasca()
+        public afegirTasca(MainWindow main)
         {
             //Conexio a la BBDD
             DbContext.ObtenerConexion();
             InitializeComponent();
+
+            w1 = main;
             txt_nomTasca.Focus();
 
             List<Prioritat> prioritats = UserService.SelectP();
@@ -90,6 +92,10 @@ namespace Prueb_GitHub.Views
                 //creem un nou item al listview
                 temp = new Tasca()
                 {
+                    Id = int.Parse(txt_id.Text),
+                    DInici = (DateTime)datepicker_data_inici.SelectedDate,
+                    Estat = (Estat)int.Parse(txt_estat.Text),
+
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
@@ -98,20 +104,29 @@ namespace Prueb_GitHub.Views
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
-                /* if(w1.lvTascaToDo.SelectedItem != null)
-                  {
-                      w1.lvTascaToDo.Items.Insert(w1.lvTascaToDo.SelectedIndex, temp);
-                  }
-                  else if (w1.lvTascaDoing.SelectedItem != null)
-                  {
-                      w1.lvTascaDoing.Items.Insert(w1.lvTascaDoing.SelectedIndex, temp);
-                  }
-                  else if (w1.lvTascaDone.SelectedItem != null)
-                  {
-                      w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
-                  }*/
-                w1.lvTascaToDo.ItemsSource = null;
-                w1.lvTascaToDo.ItemsSource = w1.todo;
+
+                if(w1.lvTascaToDo.SelectedItem != null)
+                {
+                    w1.todo.RemoveAt(w1.lvTascaToDo.SelectedIndex);
+                    w1.todo.Insert(w1.lvTascaToDo.SelectedIndex, temp);
+                    w1.lvTascaToDo.ItemsSource = null;
+                    w1.lvTascaToDo.ItemsSource = w1.todo;
+                }
+                else if (w1.lvTascaDoing.SelectedItem != null)
+                {
+                    w1.todo.RemoveAt(w1.lvTascaDoing.SelectedIndex);
+                    w1.doing.Insert(w1.lvTascaDoing.SelectedIndex, temp);
+                    w1.lvTascaDoing.ItemsSource = null;
+                    w1.lvTascaDoing.ItemsSource = w1.doing;
+                }
+                else if (w1.lvTascaDone.SelectedItem != null)
+                {
+                    w1.todo.RemoveAt(w1.lvTascaDone.SelectedIndex);
+                    w1.done.Insert(w1.lvTascaDone.SelectedIndex, temp);
+                    w1.lvTascaDone.ItemsSource = null;
+                    w1.lvTascaDone.ItemsSource = w1.done;
+                }
+                
 
                 //UserService.updateTasca(temp);
 
@@ -119,8 +134,7 @@ namespace Prueb_GitHub.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
-                
+                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps. " + ex.Message, "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

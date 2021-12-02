@@ -24,7 +24,7 @@ namespace Prueb_GitHub
     /// </summary>
     public partial class MainWindow : Window
     {
-        public afegirTasca w2 = new afegirTasca();
+        public afegirTasca w2;
         Tasca temp;
         public List<Tasca> todo = new List<Tasca>();
         public List<Tasca> doing = new List<Tasca>();
@@ -49,12 +49,14 @@ namespace Prueb_GitHub
             responsables = UserService.SelectR();
 
             SelecionarTodo();
-        }
+
+            w2 = new afegirTasca(this);
+    }
 
         public void SelecionarTodo()
         {
             //Agafa el items que te cada llista
-            lvTascaToDo.ItemsSource = todo; 
+            lvTascaToDo.ItemsSource = todo;
             lvTascaDoing.ItemsSource = doing;
             lvTascaDone.ItemsSource = done;
         }
@@ -62,6 +64,11 @@ namespace Prueb_GitHub
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             //Mostra la segona finestra
+            if(w2.IsActive)
+            {
+                w2.Close();
+            }
+                
             w2.w1 = this;
             w2.Show();
         }
@@ -75,6 +82,11 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             lvTascaDone.SelectedItem = null;
 
+            if (w2.IsActive)
+            {
+                obrir_i_emplenar();
+            }
+
             emplenarCampsFinestra();
         }
 
@@ -86,6 +98,11 @@ namespace Prueb_GitHub
             lvTascaToDo.SelectedItem = null;
             temp = (Tasca)lvTascaDoing.SelectedItem;
             lvTascaDone.SelectedItem = null;
+
+            if (w2.IsActive)
+            {
+                obrir_i_emplenar();
+            }
 
             emplenarCampsFinestra();
         }
@@ -99,6 +116,11 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             temp = (Tasca)lvTascaDone.SelectedItem;
 
+            if (w2.IsActive)
+            {
+                obrir_i_emplenar();
+            }
+
             emplenarCampsFinestra();
         }
 
@@ -109,19 +131,19 @@ namespace Prueb_GitHub
             if (lvTascaToDo.SelectedItem != null)
             {
                 todo.RemoveAt(lvTascaToDo.SelectedIndex);
-                lvTascaToDo.ItemsSource = null; //Es posa null per fer com una "actualizacio de la pantalla" i després el mostra.
-                lvTascaToDo.ItemsSource = todo;
+                lvTascaToDo.ItemsSource = null; //Es posa null per fer com una "actualizacio del ListView"
+                lvTascaToDo.ItemsSource = todo; //I després es torna a omplir.
             }
             else if (lvTascaDoing.SelectedItem != null)
             {
                 doing.RemoveAt(lvTascaDoing.SelectedIndex);
-                lvTascaDoing.ItemsSource = null; //Es posa null per fer com una "actualizacio de la pantalla" i després el mostra.
+                lvTascaDoing.ItemsSource = null;
                 lvTascaDoing.ItemsSource = doing;
             }
             else if (lvTascaDone.SelectedItem != null)
             {
                 done.RemoveAt(lvTascaDone.SelectedIndex);
-                lvTascaDone.ItemsSource = null; //Es posa null per fer com una "actualizacio de la pantalla" i després el mostra.
+                lvTascaDone.ItemsSource = null;
                 lvTascaDone.ItemsSource = done;
             }
 
@@ -130,29 +152,49 @@ namespace Prueb_GitHub
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
-            if (this.w2.IsActive)
+            if(!w2.IsActive)
             {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
-                this.w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
-
-                w2.Focus();
+                obrir_i_emplenar();
             }
-            else
+        }
+        public void obrir()
+        {
+            if (w2.IsActive)
             {
-               afegirTasca afegirTasca = new afegirTasca();
-                afegirTasca.Show();
+                w2.Close();
 
-                afegirTasca.txt_nomTasca.Text = temp.Nom;
-                afegirTasca.txt_descripcio.Text = temp.Descripcio;
-                afegirTasca.datepicker_data_final.SelectedDate = temp.DFinal;
-                afegirTasca.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
-                afegirTasca.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
 
-                afegirTasca.Focus();
+                w2 = new afegirTasca(this);
+
+                w2.w1 = this;
+                w2.Show();
             }
+        }
+
+        public void obrir_i_emplenar()
+        {
+            if (w2.IsActive)
+            {
+                w2.Close();
+            }
+
+            w2 = new afegirTasca(this);
+
+            w2.w1 = this;
+            w2.Show();
+
+            w2.txt_id.Text = temp.Id.ToString();
+            w2.txt_estat.Text = ((int)temp.Estat).ToString();
+            w2.datepicker_data_inici.SelectedDate = temp.DInici;
+
+
+            w2.txt_nomTasca.Text = temp.Nom;
+            w2.txt_descripcio.Text = temp.Descripcio;
+            w2.datepicker_data_final.SelectedDate = temp.DFinal;
+            w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
+            w2.cmb_responsable.SelectedIndex = temp.Responsable_id;
+
+            w2.Focus();
         }
 
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
@@ -160,11 +202,11 @@ namespace Prueb_GitHub
         {
             if (w2.IsActive)
             {
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                this.w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+                w2.txt_nomTasca.Text = temp.Nom;
+                w2.txt_descripcio.Text = temp.Descripcio;
+                w2.datepicker_data_final.SelectedDate = temp.DFinal;
+                w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
+                w2.cmb_responsable.SelectedItem = temp.Responsable_id;
             }
         }
 
