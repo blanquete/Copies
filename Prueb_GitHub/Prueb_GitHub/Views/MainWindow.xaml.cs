@@ -157,28 +157,21 @@ namespace Prueb_GitHub
 
         public void obrir_i_emplenar()
         {
-            if (w2.IsActive)
-            {
-                w2.Close();
+            afegirTasca at = new afegirTasca(this);
+            at.Show();
 
-                w2 = new afegirTasca(this);
-
-                w2.w1 = this;
-                w2.Show();
-            }
-
-            w2.txt_id.Text = temp.Id.ToString();
-            w2.txt_estat.Text = ((int)temp.Estat).ToString();
-            w2.datepicker_data_inici.SelectedDate = temp.DInici;
+            at.txt_id.Text = temp.Id.ToString();
+            at.txt_estat.Text = ((int)temp.Estat).ToString();
+            at.datepicker_data_inici.SelectedDate = temp.DInici;
 
 
-            w2.txt_nomTasca.Text = temp.Nom;
-            w2.txt_descripcio.Text = temp.Descripcio;
-            w2.datepicker_data_final.SelectedDate = temp.DFinal;
-            w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
-            w2.cmb_responsable.SelectedIndex = temp.Responsable_id;
+            at.txt_nomTasca.Text = temp.Nom;
+            at.txt_descripcio.Text = temp.Descripcio;
+            at.datepicker_data_final.SelectedDate = temp.DFinal;
+            at.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
+            at.cmb_responsable.SelectedIndex = temp.Responsable_id;
 
-            w2.Focus();
+            at.Focus();
         }
 
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
