@@ -51,7 +51,7 @@ namespace Prueb_GitHub
             SelecionarTodo();
 
             w2 = new afegirTasca(this);
-    }
+        }
 
         public void SelecionarTodo()
         {
@@ -64,7 +64,7 @@ namespace Prueb_GitHub
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             //Mostra la segona finestra
-            if(w2.IsActive)
+            if(w2.IsEnabled)
             {
                 w2.Close();
             }
@@ -83,10 +83,7 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             lvTascaDone.SelectedItem = null;
 
-            if (w2.IsActive)
-            {
-                obrir_i_emplenar();
-            }
+            obrir_i_emplenar();
 
             emplenarCampsFinestra();
         }
@@ -100,10 +97,7 @@ namespace Prueb_GitHub
             temp = (Tasca)lvTascaDoing.SelectedItem;
             lvTascaDone.SelectedItem = null;
 
-            if (w2.IsActive)
-            {
-                obrir_i_emplenar();
-            }
+            obrir_i_emplenar();
 
             emplenarCampsFinestra();
         }
@@ -117,12 +111,11 @@ namespace Prueb_GitHub
             lvTascaDoing.SelectedItem = null;
             temp = (Tasca)lvTascaDone.SelectedItem;
 
-            if (w2.IsActive)
-            {
-                obrir_i_emplenar();
-            }
+            
+            obrir_i_emplenar();
+             
 
-            emplenarCampsFinestra();
+            //emplenarCampsFinestra();
         }
 
         //Funcio per poder eliminar una tasca seleccionada.
@@ -153,14 +146,11 @@ namespace Prueb_GitHub
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
-            if(!w2.IsActive)
-            {
-                obrir_i_emplenar();
-            }
+            obrir_i_emplenar();
         }
         public void obrir()
         {
-            if (w2.IsActive)
+            if (w2.IsEnabled)
             {
                 w2.Close();
 
@@ -174,15 +164,15 @@ namespace Prueb_GitHub
 
         public void obrir_i_emplenar()
         {
-            if (w2.IsActive)
+            if (w2.IsEnabled)
             {
                 w2.Close();
+
+                w2 = new afegirTasca(this);
+
+                w2.w1 = this;
+                w2.Show();
             }
-
-            w2 = new afegirTasca(this);
-
-            w2.w1 = this;
-            w2.Show();
 
             w2.txt_id.Text = temp.Id.ToString();
             w2.txt_estat.Text = ((int)temp.Estat).ToString();
