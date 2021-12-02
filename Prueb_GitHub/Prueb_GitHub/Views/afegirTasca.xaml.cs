@@ -90,17 +90,18 @@ namespace Prueb_GitHub.Views
                 //creem un nou item al listview
                 temp = new Tasca()
                 {
-                    //Id = int.Parse(txt_id.Text),
+                    Id = int.Parse(txt_id.Text),
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
-                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    //DInici = DateTime.Now,
 
+                    DFinal = (DateTime)datepicker_data_final.SelectedDate,
                     Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //transforma el valor del item seleccionat
                     Responsable_name = cmb_responsable.SelectedItem.ToString(), //transforma el valor del item seleccionat
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
-                if(w1.lvTascaToDo.SelectedItem != null)
+                /*if(w1.lvTascaToDo.SelectedItem != null)
                 {
                     w1.lvTascaToDo.Items.Insert(w1.lvTascaToDo.SelectedIndex, temp);
                 }
@@ -111,15 +112,15 @@ namespace Prueb_GitHub.Views
                 else if (w1.lvTascaDone.SelectedItem != null)
                 {
                     w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
-                }
+                }*/
 
                 UserService.updateTasca(temp);
 
                 netejaCamps();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps. " + ex.Message, "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
                 
             }
         }
