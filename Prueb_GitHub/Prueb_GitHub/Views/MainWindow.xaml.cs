@@ -24,7 +24,8 @@ namespace Prueb_GitHub
     /// </summary>
     public partial class MainWindow : Window
     {
-        public afegirTasca w2;
+        public afegirTasca at;
+        public afegirTasca mt;
         Tasca temp;
         public List<Tasca> todo = new List<Tasca>();
         public List<Tasca> doing = new List<Tasca>();
@@ -63,7 +64,7 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            afegirTasca at = new afegirTasca(this);
+            at = new afegirTasca(this);
             at.Show();
         }
 
@@ -139,51 +140,52 @@ namespace Prueb_GitHub
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
-            obrir_i_emplenar();
+            obrirModificar();
+
+            emplenarCampsFinestra();
+
+            mt.Focus();
         }
-        public void obrir()
+
+        public void obrirModificar()
         {
-            if (w2.IsActive)
+
+            if (at.IsEnabled)
             {
-                w2.Close();
+                at.Close();
 
-
-                w2 = new afegirTasca(this);
-
-                w2.w1 = this;
-                w2.Show();
+                mt = new afegirTasca(this);
+                mt.Show();
             }
-        }
+            else if(mt.IsEnabled)
+            {
+                mt.Close();
 
-        public void obrir_i_emplenar()
-        {
-            afegirTasca at = new afegirTasca(this);
-            at.Show();
+                mt = new afegirTasca(this);
+                mt.Show();
+            }
+            else
+            {
+                mt = new afegirTasca(this);
+                mt.Show();
+            }
 
-            at.txt_id.Text = temp.Id.ToString();
-            at.txt_estat.Text = ((int)temp.Estat).ToString();
-            at.datepicker_data_inici.SelectedDate = temp.DInici;
-
-
-            at.txt_nomTasca.Text = temp.Nom;
-            at.txt_descripcio.Text = temp.Descripcio;
-            at.datepicker_data_final.SelectedDate = temp.DFinal;
-            at.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
-            at.cmb_responsable.SelectedIndex = temp.Responsable_id;
-
-            at.Focus();
         }
 
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         public void emplenarCampsFinestra()
         {
-            if (w2.IsActive)
+            if (mt.IsActive)
             {
-                w2.txt_nomTasca.Text = temp.Nom;
-                w2.txt_descripcio.Text = temp.Descripcio;
-                w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
-                w2.cmb_responsable.SelectedItem = temp.Responsable_id;
+                mt.txt_id.Text = temp.Id.ToString();
+                mt.txt_estat.Text = ((int)temp.Estat).ToString();
+                mt.datepicker_data_inici.SelectedDate = temp.DInici;
+
+                mt.txt_nomTasca.Text = temp.Nom;
+                mt.txt_descripcio.Text = temp.Descripcio;
+                mt.datepicker_data_final.SelectedDate = temp.DFinal;
+                mt.cmb_prioritat.SelectedIndex = temp.Prioritat_id;
+                mt.cmb_responsable.SelectedIndex = temp.Responsable_id;
             }
         }
 
