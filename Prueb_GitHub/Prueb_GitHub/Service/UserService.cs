@@ -73,7 +73,7 @@ namespace Prueb_GitHub.Service
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
-            string query = $"SELECT t.id as id, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
+            string query = $"SELECT t.id as id, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat} order by id";
 
             using (MySqlConnection conection = DbContext.ObtenerConexion())
             {
@@ -164,6 +164,7 @@ namespace Prueb_GitHub.Service
                 {
                     command.ExecuteNonQuery();
                 }
+
             }
         }
 
@@ -176,6 +177,20 @@ namespace Prueb_GitHub.Service
             {
                 using (var command = new MySqlCommand(query, connection))
                 {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void afegirResponsable (Responsable r)
+        {
+            
+            string query = $"INSERT INTO responsable (nom) VALUES (?)";
+            using (MySqlConnection conection = DbContext.ObtenerConexion())
+            {
+                using (var command = new MySqlCommand(query, conection))
+                {
+                    command.Parameters.Add(new MySqlParameter("nom", r.Nom));
                     command.ExecuteNonQuery();
                 }
             }
@@ -198,6 +213,8 @@ namespace Prueb_GitHub.Service
             }
             return max;
         }
+
+
     }
 }
 

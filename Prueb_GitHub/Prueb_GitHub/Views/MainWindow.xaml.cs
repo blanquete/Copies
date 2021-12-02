@@ -71,7 +71,6 @@ namespace Prueb_GitHub
                 
             w2.w1 = this;
             w2.Show();
-            
         }
 
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -199,6 +198,12 @@ namespace Prueb_GitHub
                 w2.cmb_prioritat.SelectedItem = temp.Prioritat_id;
                 w2.cmb_responsable.SelectedItem = temp.Responsable_id;
             }
+        }
+
+        private void btn_AfegirResponsalbe_Click(object sender, RoutedEventArgs e)
+        {
+            AfegirResponsable afegirResponsable = new AfegirResponsable();
+            afegirResponsable.Show();
         }
     }
 }

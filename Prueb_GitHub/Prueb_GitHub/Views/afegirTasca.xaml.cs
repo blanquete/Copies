@@ -53,6 +53,7 @@ namespace Prueb_GitHub.Views
         {
             try
             {
+                    
                     //afageix un nou item al listview
                      temp = new Tasca()
                      {

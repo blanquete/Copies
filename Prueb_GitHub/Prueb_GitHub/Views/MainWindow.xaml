@@ -19,9 +19,10 @@
         </Grid.RowDefinitions>
 
         <Menu x:Name="MenuItems" Grid.ColumnSpan="2" >
-            <MenuItem Header="Afegir Tasca" Height="23" Width="85" Click="MenuItem_Click"/>
-            <MenuItem  x:Name="btn_mi_modificar" Header="Modificar Tasca"  Click="MenuItem_Modificar" />
-            <MenuItem Header="Eliminar Tasca" Click="MenuItem_Eliminar" />
+            <MenuItem Header="Afegir tasca" Height="23" Width="85" Click="MenuItem_Click"/>
+            <MenuItem  x:Name="btn_mi_modificar" Header="Modificar tasca"  Click="MenuItem_Modificar" />
+            <MenuItem x:Name="btn_AfegirResponsalbe" Header="Afegir responsable" Click="btn_AfegirResponsalbe_Click"/>
+            <MenuItem Header="Eliminar tasca" Click="MenuItem_Eliminar" />
         </Menu>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0" Grid.RowSpan="2" Width="788">
