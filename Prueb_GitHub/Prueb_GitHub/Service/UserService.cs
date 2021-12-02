@@ -6,6 +6,7 @@ using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
 using Prueb_GitHub.Views;
 
+
 namespace Prueb_GitHub.Service
 {
     public class UserService
@@ -72,7 +73,7 @@ namespace Prueb_GitHub.Service
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
-            string query = $"SELECT t.id as ID, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
+            string query = $"SELECT t.id as id, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
 
             using (MySqlConnection conection = DbContext.ObtenerConexion())
             {
@@ -169,7 +170,7 @@ namespace Prueb_GitHub.Service
         //Fer una update per poder cambiar algun camp de la tasca com el nom, o la descripcio...
         public static void updateTasca(Tasca tasca)
         {
-            string query = $"UPDATE TASCA SET nom = {tasca.Nom}, descripcio = {tasca.Descripcio}, dataFinal = {tasca.DFinal}, id_prioritat = {tasca.Prioritat_id}, id_responsable = {tasca.Responsable_id} WHERE id = {tasca.Id}";
+            string query = $"UPDATE TASCA SET nom = {tasca.Nom.Trim()}, descripcio = {tasca.Descripcio}, dataFinal = {tasca.DFinal.ToString("yyyy/MM/dd")}, id_prioritat = {tasca.Prioritat_id}, id_responsable = {tasca.Responsable_id} WHERE id = {tasca.Id}";
 
             using (var connection = DbContext.ObtenerConexion())
             {

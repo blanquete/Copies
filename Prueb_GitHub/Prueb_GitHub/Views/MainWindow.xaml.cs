@@ -143,15 +143,16 @@ namespace Prueb_GitHub
             }
             else
             {
-                w2.Show();
+               afegirTasca afegirTasca = new afegirTasca();
+                afegirTasca.Show();
 
-                this.w2.txt_nomTasca.Text = temp.Nom;
-                this.w2.txt_descripcio.Text = temp.Descripcio;
-                this.w2.datepicker_data_final.SelectedDate = temp.DFinal;
-                this.w2.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
-                this.w2.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
+                afegirTasca.txt_nomTasca.Text = temp.Nom;
+                afegirTasca.txt_descripcio.Text = temp.Descripcio;
+                afegirTasca.datepicker_data_final.SelectedDate = temp.DFinal;
+                afegirTasca.cmb_prioritat.SelectedIndex = temp.Prioritat_id + 1;
+                afegirTasca.cmb_responsable.SelectedIndex = temp.Responsable_id + 1;
 
-                w2.Focus();
+                afegirTasca.Focus();
             }
         }
 
