@@ -18,11 +18,11 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel x:Name="PanellLabels" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,0">
-            <Label Name="lbl_name" Content="Nom" FontSize="14" Height="28"/>
-            <Label Name="lbl_descripcio" Content="Descripcio"  FontSize="14" Height="28"/>
-            <Label Name="lbl_data_final" Content="Data Final"  FontSize="14" Height="30"/>
-            <Label Name="lbl_prioritat" Content="Prioritat"  FontSize="14" Height="28"/>
-            <Label Name="lbl_responsable" Content="Responsable"  FontSize="14" Height="27"/>
+            <Label Name="lbl_name" Content="Nom Tasca:" FontSize="14" Height="28"/>
+            <Label Name="lbl_descripcio" Content="Descripcio:"  FontSize="14" Height="28"/>
+            <Label Name="lbl_data_final" Content="Data Final:"  FontSize="14" Height="30"/>
+            <Label Name="lbl_prioritat" Content="Prioritat:"  FontSize="14" Height="28"/>
+            <Label Name="lbl_responsable" Content="Responsable:"  FontSize="14" Height="27"/>
         </StackPanel>
 
         <StackPanel x:Name="PanellBoxs" Orientation="Vertical" Grid.Row="0" Grid.Column="1" Margin="0,11,30,0">

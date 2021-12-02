@@ -21,6 +21,7 @@ namespace Prueb_GitHub.Views
     {
         public Responsable responsable = new Responsable();
         public List<Responsable> listresponsables = new List<Responsable>();
+        public afegirTasca afegirTasca;
         public AfegirResponsable()
         {
             InitializeComponent();
@@ -32,7 +33,6 @@ namespace Prueb_GitHub.Views
                 {
                     responsable.Nom = txtBoxNomResponsable.Text;
                     UserService.afegirResponsable(responsable);
-                    listresponsables.Add(responsable);
                     MessageBox.Show("Has introduït un usuari", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
@@ -40,7 +40,8 @@ namespace Prueb_GitHub.Views
                 {
                     MessageBox.Show("Has de escriure un usuari", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            
+            afegirTasca.responsables.Add(responsable);
+
         }
     }
 }
