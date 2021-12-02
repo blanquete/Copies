@@ -24,7 +24,7 @@
             <MenuItem Header="Eliminar Tasca" Click="MenuItem_Eliminar" />
         </Menu>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Margin="6,30,0,0" Grid.RowSpan="2" Width="788">
+        <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0" Grid.RowSpan="2" Width="788">
             <ListView  Margin="10" Name="lvTascaToDo" Width="768" SelectionChanged="lvTascaToDo_SelectionChanged">
                 <ListView.View>
                     <GridView>

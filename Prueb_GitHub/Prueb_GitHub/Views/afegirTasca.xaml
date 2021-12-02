@@ -39,7 +39,7 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" Margin="0,0,30,148">
             <Button x:Name="btn_agregar" Content="Afegir Tasca"  Click="btn_agregar_Click"></Button>
-            <Button x:Name="btn_modificar"  Content="Modificar Tasca" Margin="0,10,0,0"  Click="btn_modificar_Click"></Button>
+            <Button x:Name="btn_modificar"  Content="Guardar cambis" Margin="0,10,0,0"  Click="btn_modificar_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

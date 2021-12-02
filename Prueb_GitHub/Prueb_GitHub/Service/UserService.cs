@@ -6,6 +6,7 @@ using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
 using Prueb_GitHub.Views;
 
+
 namespace Prueb_GitHub.Service
 {
     public class UserService
@@ -72,7 +73,7 @@ namespace Prueb_GitHub.Service
         public static List<Tasca> Select(int estat)
         {
             List<Tasca> todo = new List<Tasca>();
-            string query = $"SELECT t.id as ID, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
+            string query = $"SELECT t.id as id, t.nom as nom, descripcio, dataInici, dataFinal, r.nom as nomResponsable, e.nom as nomEstat, p.nom as nomPrioritat FROM tasca t, responsable r, estat e, prioritat p WHERE t.id_estat = e.id  and t.id_responsable = r.id and t.id_prioritat = p.id  and t.id_estat = {estat}";
 
             using (MySqlConnection conection = DbContext.ObtenerConexion())
             {

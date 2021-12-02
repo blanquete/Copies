@@ -65,16 +65,15 @@ namespace Prueb_GitHub.Views
                      };
                 
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
-
                 w1.todo.Add(temp);
-                UserService.Agregar(temp);
 
                 //Mostrem la tasca nova en el list view
                 w1.lvTascaToDo.ItemsSource = null;
                 w1.lvTascaToDo.ItemsSource = w1.todo;
 
-                netejaCamps();
+                UserService.Agregar(temp);
 
+                netejaCamps();
             }
             catch (Exception)
             {
@@ -101,57 +100,33 @@ namespace Prueb_GitHub.Views
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
 
-                /*if(w1.lvTascaToDo.SelectedItem != null)
-                {
-                    w1.lvTascaToDo.Items.Insert(w1.lvTascaToDo.SelectedIndex, temp);
-                }
-                else if (w1.lvTascaDoing.SelectedItem != null)
-                {
-                    w1.lvTascaDoing.Items.Insert(w1.lvTascaDoing.SelectedIndex, temp);
-                }
-                else if (w1.lvTascaDone.SelectedItem != null)
-                {
-                    w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
-                }*/
 
-                UserService.updateTasca(temp);
+                /* if(w1.lvTascaToDo.SelectedItem != null)
+                  {
+                      w1.lvTascaToDo.Items.Insert(w1.lvTascaToDo.SelectedIndex, temp);
+                  }
+                  else if (w1.lvTascaDoing.SelectedItem != null)
+                  {
+                      w1.lvTascaDoing.Items.Insert(w1.lvTascaDoing.SelectedIndex, temp);
+                  }
+                  else if (w1.lvTascaDone.SelectedItem != null)
+                  {
+                      w1.lvTascaDone.Items.Insert(w1.lvTascaDone.SelectedIndex, temp);
+                  }
+                w1.lvTascaToDo.ItemsSource = null;
+                w1.lvTascaToDo.ItemsSource = w1.todo;*/
+                
+
+                //UserService.updateTasca(temp);
 
                 netejaCamps();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps. " + ex.Message, "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
-                
             }
         }
 
-        // quan l'usuari clica sobre el button eliminar
-        private void btn_eliminar_Click(object sender, RoutedEventArgs e)
-        {
-            try //faig un trycatch per asegurarme que l'usuari ha seleccionat un item previament
-            {
-                //elimina el item seleccionat
-
-                if (w1.lvTascaToDo.SelectedItem != null)
-                {
-                    w1.lvTascaToDo.Items.RemoveAt(w1.lvTascaToDo.SelectedIndex);
-                }
-                else if (w1.lvTascaDoing.SelectedItem != null)
-                {
-                    w1.lvTascaDoing.Items.RemoveAt(w1.lvTascaDoing.SelectedIndex);
-                }
-                else if (w1.lvTascaDone.SelectedItem != null)
-                {
-                    w1.lvTascaDone.Items.RemoveAt(w1.lvTascaDone.SelectedIndex);
-                }
-                netejaCamps();
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Has de seleccionar una tasca", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-        }
         //metode per netejar els camps
         public void netejaCamps()
         {
@@ -164,16 +139,6 @@ namespace Prueb_GitHub.Views
             txt_nomTasca.Focus();
         }
 
-        //Aques event s'aplica sobre el textbox id  
-        private void OnKeyDownHandler(object sender, KeyEventArgs e)
-        {
-            //si la tecla es un nuemero
-            if (e.Key >= Key.D0 && e.Key <= Key.D9 || e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9 || e.Key == Key.Tab)
-                //permet introduir valors
-                e.Handled = false;
-            else
-                //si no no permet introduir valors
-                e.Handled = true;
-        }
+        
     }
 }
