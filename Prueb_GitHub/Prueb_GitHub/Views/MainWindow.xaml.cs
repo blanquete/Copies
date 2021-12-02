@@ -50,7 +50,7 @@ namespace Prueb_GitHub
 
             SelecionarTodo();
 
-            w2 = new afegirTasca(this);
+            //w2 = new afegirTasca(this);
         }
 
         public void SelecionarTodo()
@@ -63,15 +63,8 @@ namespace Prueb_GitHub
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //Mostra la segona finestra
-            if(w2.IsActive)
-            {
-                w2.Close();
-            }
-                
-                
-            w2.w1 = this;
-            w2.Show();
+            afegirTasca at = new afegirTasca(this);
+            at.Show();
         }
 
         private void lvTascaToDo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -205,6 +198,7 @@ namespace Prueb_GitHub
         {
             AfegirResponsable afegirResponsable = new AfegirResponsable();
             afegirResponsable.Show();
+
         }
     }
 }

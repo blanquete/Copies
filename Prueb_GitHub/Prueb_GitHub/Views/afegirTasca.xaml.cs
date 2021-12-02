@@ -39,6 +39,8 @@ namespace Prueb_GitHub.Views
             prioritats = UserService.SelectP();
             responsables = UserService.SelectR();
 
+            
+
             foreach (Prioritat prio in prioritats)
             {
                 cmb_prioritat.Items.Add(prio.Nom);
