@@ -66,7 +66,7 @@ namespace Prueb_GitHub.Views
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
                          Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //Agafa el valor de l'index
                          Responsable_name = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
-                         Estat_name = "ToDo", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
+                         Estat_name = "To do", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
                      };
                 
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal

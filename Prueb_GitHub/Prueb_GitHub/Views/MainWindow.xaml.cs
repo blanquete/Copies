@@ -50,7 +50,7 @@ namespace Prueb_GitHub
             responsables = UserService.SelectR();
 
             SelecionarTodo();
-
+            
             //w2 = new afegirTasca(this);
         }
 
