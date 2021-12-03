@@ -18,7 +18,7 @@
 
         <Label x:Name="lblNomResponsable" Content="Nom responsable: " Grid.Column="0" Grid.Row="0" Margin="30,30,30,30"/>
         <TextBox x:Name="txtBoxNomResponsable" Grid.Row="0" Grid.Column="1" Margin="10,30,30,37"></TextBox>
-        <Button x:Name="btnAfegirReponsable" Content="Afegir responsable" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,20,20,33" Click="btnAfegirReponsable_Click"/>
+        <Button x:Name="btnAfegirReponsable" Content="Afegir responsable" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,20,20,26" Click="btnAfegirReponsable_Click"/>
 
     </Grid>
 </Window>

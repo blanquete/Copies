@@ -103,10 +103,9 @@ namespace Prueb_GitHub.Views
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
                     Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //transforma el valor del item seleccionat
                     Responsable_name = cmb_responsable.SelectedItem.ToString(), //transforma el valor del item seleccionat
+                    Estat_name = "To do"
                 };
                 //intercanvia l'item seleccionat per el que acabem de crear
-
-
                 if(w1.lvTascaToDo.SelectedItem != null)
                 {
                     w1.todo.RemoveAt(w1.lvTascaToDo.SelectedIndex);
