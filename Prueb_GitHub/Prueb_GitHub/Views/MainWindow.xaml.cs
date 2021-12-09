@@ -32,34 +32,31 @@ namespace Prueb_GitHub
         public List<Tasca> done = new List<Tasca>();
         public List<Prioritat> prioritats = new List<Prioritat>();
         public List<Responsable> responsables = new List<Responsable>();
-
+        
         public MainWindow()
         {
             InitializeComponent();
-
+            
             //Conexio a la BBDD
             DbContext.ObtenerConexion();
 
             //Fem un enllaç de cada listView
             //Depen del estat si es To Do, Doing o Done, mostrará l'informació en un list view diferent. 
-            todo = UserService.Select(1);
-            doing = UserService.Select(2);
-            done = UserService.Select(3);
-
+            
             prioritats = UserService.SelectP();
             responsables = UserService.SelectR();
 
             SelecionarTodo();
-            
-            //w2 = new afegirTasca(this);
+           
+
         }
 
         public void SelecionarTodo()
         {
             //Agafa el items que te cada llista
-            lvTascaToDo.ItemsSource = todo;
-            lvTascaDoing.ItemsSource = doing;
-            lvTascaDone.ItemsSource = done;
+            lvTascaToDo.ItemsSource = todo = UserService.Select(1); 
+            lvTascaDoing.ItemsSource = doing = UserService.Select(2); 
+            lvTascaDone.ItemsSource = done = UserService.Select(3); ;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -72,44 +69,38 @@ namespace Prueb_GitHub
         {
             //Selecciona una tasca del listview corresponent
             //Es posa null els altres view, perque no hi hagi cap conflicte a l'hora de seleccionar.
-            temp = null;
-            temp = (Tasca)lvTascaToDo.SelectedItem;
-            lvTascaDoing.SelectedItem = null;
-            lvTascaDone.SelectedItem = null;
-
-            //obrir_i_emplenar();
-
-            //emplenarCampsFinestra();
+            if (lvTascaToDo.SelectedItem != null)
+            {
+                lvTascaDoing.SelectedItem = null;
+                lvTascaDone.SelectedItem = null;
+                temp = null;
+                temp = (Tasca)lvTascaToDo.SelectedItem;
+            }
         }
 
         private void lvTascaDoing_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Selecciona una tasca del listview corresponent
-            //Es posa null els altres view, perque no hi hagi cap conflicte a l'hora de seleccionar.
-            temp = null;
-            lvTascaToDo.SelectedItem = null;
-            temp = (Tasca)lvTascaDoing.SelectedItem;
-            lvTascaDone.SelectedItem = null;
-
-            //obrir_i_emplenar();
-
-            //emplenarCampsFinestra();
+            if (lvTascaDoing.SelectedItem != null)
+            {
+                lvTascaToDo.SelectedItem = null;
+                lvTascaDone.SelectedItem = null;
+                temp = null;
+                temp = (Tasca)lvTascaDoing.SelectedItem;
+            }
         }
 
         private void lvTascaDone_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //Selecciona una tasca del listview corresponent
             //Es posa null els altres view, perque no hi hagi cap conflicte a l'hora de seleccionar.
-            temp = null;
-            lvTascaToDo.SelectedItem = null;
-            lvTascaDoing.SelectedItem = null;
-            temp = (Tasca)lvTascaDone.SelectedItem;
-
-            
-            //obrir_i_emplenar();
-             
-
-            //emplenarCampsFinestra();
+            if (lvTascaDone.SelectedItem != null)
+            {
+                lvTascaDoing.SelectedItem = null;
+                lvTascaToDo.SelectedItem = null;
+                temp = null;
+                temp = (Tasca)lvTascaDone.SelectedItem;
+            }
         }
 
         //Funcio per poder eliminar una tasca seleccionada.
@@ -134,16 +125,14 @@ namespace Prueb_GitHub
                 lvTascaDone.ItemsSource = null;
                 lvTascaDone.ItemsSource = done;
             }
-
         }
 
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
             obrirModificar();
-
+            mt.btn_agregar.Visibility = Visibility.Hidden;
             emplenarCampsFinestra();
-
             mt.Focus();
         }
 
@@ -153,14 +142,12 @@ namespace Prueb_GitHub
             if (at.IsEnabled)
             {
                 at.Close();
-
                 mt = new afegirTasca(this);
                 mt.Show();
             }
             else if(mt.IsEnabled)
             {
                 mt.Close();
-
                 mt = new afegirTasca(this);
                 mt.Show();
             }
@@ -169,7 +156,6 @@ namespace Prueb_GitHub
                 mt = new afegirTasca(this);
                 mt.Show();
             }
-
         }
 
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
@@ -180,7 +166,6 @@ namespace Prueb_GitHub
                 mt.txt_id.Text = temp.Id.ToString();
                 mt.txt_estat.Text = ((int)temp.Estat).ToString();
                 mt.datepicker_data_inici.SelectedDate = temp.DInici;
-
                 mt.txt_nomTasca.Text = temp.Nom;
                 mt.txt_descripcio.Text = temp.Descripcio;
                 mt.datepicker_data_final.SelectedDate = temp.DFinal;
@@ -193,7 +178,71 @@ namespace Prueb_GitHub
         {
             AfegirResponsable afegirResponsable = new AfegirResponsable();
             afegirResponsable.Show();
+        }
 
+        ListView dragSource = null;
+
+        private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //Obtenim la llista des d'on s'ha polsat 
+            ListView parent = (ListView)sender;
+            dragSource = parent;
+            //Obtenim l'element seleccionat
+            object data = GetDataFromListView(dragSource, e.GetPosition(parent));
+
+            if (data != null)
+            {
+                DragDrop.DoDragDrop(parent, data, DragDropEffects.Move);
+            }
+        }
+        private static object GetDataFromListView(ListView source, Point point)
+        {
+            UIElement element = source.InputHitTest(point) as UIElement;
+            if (element != null)
+            {
+                object data = DependencyProperty.UnsetValue;
+                while (data == DependencyProperty.UnsetValue)
+                {
+                    data = source.ItemContainerGenerator.ItemFromContainer(element);
+
+                    if (data == DependencyProperty.UnsetValue)
+                    {
+                        element = VisualTreeHelper.GetParent(element) as UIElement;
+                    }
+                    if (element == source)
+                    {
+                        return null;
+                    }
+                }
+                if (data != DependencyProperty.UnsetValue)
+                {
+                    return data;
+                }
+            }
+            return null;
+        }
+
+        //Eliminem l'element de la llista origen i l'afegim a la llista desti
+        private void ListView_Drop(object sender, DragEventArgs e)
+        {
+            Tasca task = (Tasca)e.Data.GetData(typeof(Tasca)); //obte les dades del item seleccionat previament
+            ListView parent = (ListView)sender; //obte el llistview destí
+
+            //Depenennt del nom del listview destí, actualitzará el seu estat en un numero o altre
+            switch (parent.Name)
+            {
+                case "lvTascaToDo":
+                    UserService.updateEstat(task.Id, 1); // 1 - estat todo
+                    break;
+                case "lvTascaDoing":
+                    UserService.updateEstat(task.Id, 2); // 2 - estat doing
+                    break;
+                case "lvTascaDone":
+                    UserService.updateEstat(task.Id, 3); // 3 - estat done
+                    break;
+            }
+            //Actualitza els listviews
+            SelecionarTodo();
         }
     }
 }

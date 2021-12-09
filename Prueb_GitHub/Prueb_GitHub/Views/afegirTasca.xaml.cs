@@ -22,10 +22,8 @@ namespace Prueb_GitHub.Views
     {
         public Tasca temp;
         public MainWindow w1;
-
         public List<Prioritat> prioritats;
         public List<Responsable> responsables;
-        
 
         public afegirTasca(MainWindow main)
         {
@@ -39,8 +37,6 @@ namespace Prueb_GitHub.Views
             prioritats = UserService.SelectP();
             responsables = UserService.SelectR();
 
-            
-
             foreach (Prioritat prio in prioritats)
             {
                 cmb_prioritat.Items.Add(prio.Nom);
@@ -49,15 +45,14 @@ namespace Prueb_GitHub.Views
             {
                 cmb_responsable.Items.Add(resp.Nom);
             }
+
         }
         //Funcio, per poder afegir una tasca
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            {
-                    
-                    //afageix un nou item al listview
-                     temp = new Tasca()
+            
+            //afageix un nou item al listview
+                temp = new Tasca()
                      {
                          Id = UserService.maxId()+1,
                          Nom = txt_nomTasca.Text,
@@ -79,14 +74,7 @@ namespace Prueb_GitHub.Views
                 w1.lvTascaToDo.ItemsSource = w1.todo;
 
                 UserService.Agregar(temp);
-
                 netejaCamps();
-            }
-            /*catch (Exception)
-            {
-                MessageBox.Show("Has d'omplir tots els camps", "Information",MessageBoxButton.OK, MessageBoxImage.Information);
-            }*/
-
         }
 
         private void btn_modificar_Click(object sender, RoutedEventArgs e)
@@ -132,7 +120,6 @@ namespace Prueb_GitHub.Views
                     w1.lvTascaDone.ItemsSource = w1.done;
                 }
                 
-
                 UserService.updateTasca(temp);
 
                 netejaCamps();
@@ -151,15 +138,10 @@ namespace Prueb_GitHub.Views
             datepicker_data_final.SelectedDate = null;
             cmb_prioritat.SelectedItem = null;
             cmb_responsable.SelectedItem = null;
-
             txt_id.Text = "";
             txt_estat.Text = "";
             datepicker_data_inici.SelectedDate = null;
-
-
             txt_nomTasca.Focus();
         }
-
-        
     }
 }

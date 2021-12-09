@@ -154,9 +154,9 @@ namespace Prueb_GitHub.Service
 
         //Fer un update del estat
         //El que voliam fer era que puguesim arrosegar la nostra tasca en diferents listviews i el camp estat cambiaria.
-        public static void updateEstat(Tasca tasca)
+        public static void updateEstat(int idtasca, int estat)
         {
-            string query = $"UPDATE TASCA SET id_estat = {tasca.Estat + 1} WHERE id = {tasca.Id}";
+            string query = $"UPDATE TASCA SET id_estat = {estat} WHERE id = {idtasca}";
 
             using (var connection = DbContext.ObtenerConexion())
             {

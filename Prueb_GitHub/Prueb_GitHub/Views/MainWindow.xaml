@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prueb_GitHub"
         mc:Ignorable="d"
-        Title="To Do List" Height="650" Width="850" MinHeight="630" MaxHeight="830">
+        Title="To Do List" Height="650" Width="850" MinHeight="630" MaxHeight="830" >
     <Grid>
         
         <Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
         </Menu>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0" Grid.RowSpan="2" Width="788">
-            <ListView  Margin="10" Name="lvTascaToDo" Width="768" SelectionChanged="lvTascaToDo_SelectionChanged">
+            <ListView  Margin="10" Name="lvTascaToDo" Width="768" SelectionChanged="lvTascaToDo_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn  Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
@@ -44,7 +44,7 @@
 
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Width="788">
-            <ListView Margin="10" Name="lvTascaDoing" Width="768" SelectionChanged="lvTascaDoing_SelectionChanged">
+            <ListView Margin="10" Name="lvTascaDoing" Width="768" SelectionChanged="lvTascaDoing_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
@@ -61,7 +61,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="788">
-            <ListView Margin="10" Name="lvTascaDone" Width="768" SelectionChanged="lvTascaDone_SelectionChanged">
+            <ListView Margin="10" Name="lvTascaDone" Width="768" SelectionChanged="lvTascaDone_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
