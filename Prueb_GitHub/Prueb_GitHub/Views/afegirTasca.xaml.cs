@@ -53,7 +53,7 @@ namespace Prueb_GitHub.Views
         //Funcio, per poder afegir una tasca
         private void btn_agregar_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //try
             {
                     
                     //afageix un nou item al listview
@@ -65,6 +65,8 @@ namespace Prueb_GitHub.Views
                          DInici = DateTime.Now,
                          DFinal = (DateTime)datepicker_data_final.SelectedDate,
                          Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //Agafa el valor de l'index
+                         Prioritat_id  = cmb_prioritat.SelectedIndex,
+                         Responsable_id = cmb_responsable.SelectedIndex,
                          Responsable_name = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
                          Estat_name = "To do", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
                      };
@@ -80,10 +82,10 @@ namespace Prueb_GitHub.Views
 
                 netejaCamps();
             }
-            catch (Exception)
+            /*catch (Exception)
             {
                 MessageBox.Show("Has d'omplir tots els camps", "Information",MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            }*/
 
         }
 
@@ -101,6 +103,8 @@ namespace Prueb_GitHub.Views
                     Nom = txt_nomTasca.Text,
                     Descripcio = txt_descripcio.Text,
                     DFinal = (DateTime)datepicker_data_final.SelectedDate,
+                    Prioritat_id = cmb_prioritat.SelectedIndex,
+                    Responsable_id = cmb_responsable.SelectedIndex,
                     Prioritat_name = cmb_prioritat.SelectedItem.ToString(), //transforma el valor del item seleccionat
                     Responsable_name = cmb_responsable.SelectedItem.ToString(), //transforma el valor del item seleccionat
                     Estat_name = "To do"
@@ -129,7 +133,7 @@ namespace Prueb_GitHub.Views
                 }
                 
 
-                //UserService.updateTasca(temp);
+                UserService.updateTasca(temp);
 
                 netejaCamps();
             }

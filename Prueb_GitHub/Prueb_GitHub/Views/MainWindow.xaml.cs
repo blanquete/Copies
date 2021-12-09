@@ -149,7 +149,7 @@ namespace Prueb_GitHub
 
         public void obrirModificar()
         {
-
+            at = new afegirTasca(this);
             if (at.IsEnabled)
             {
                 at.Close();
