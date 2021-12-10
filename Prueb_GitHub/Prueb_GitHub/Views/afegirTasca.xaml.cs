@@ -123,6 +123,8 @@ namespace Prueb_GitHub.Views
                 UserService.updateTasca(temp);
 
                 netejaCamps();
+
+                this.Close();
             }
             catch (Exception)
             {
