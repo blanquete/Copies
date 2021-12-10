@@ -139,7 +139,7 @@ namespace Prueb_GitHub
         {
             if (temp == null)
             {
-                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps. ", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Has de seleccionar una tasca, per poder modificar-la. ", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
