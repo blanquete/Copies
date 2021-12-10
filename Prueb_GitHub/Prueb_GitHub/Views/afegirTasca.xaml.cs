@@ -124,9 +124,9 @@ namespace Prueb_GitHub.Views
 
                 netejaCamps();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps. " + ex.Message, "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

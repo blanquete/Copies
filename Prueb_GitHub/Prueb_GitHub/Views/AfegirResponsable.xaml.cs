@@ -38,8 +38,6 @@ namespace Prueb_GitHub.Views
                 {
                     MessageBox.Show("Has de escriure un usuari", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            
-
         }
     }
 }

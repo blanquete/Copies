@@ -32,7 +32,8 @@ namespace Prueb_GitHub
         public List<Tasca> done = new List<Tasca>();
         public List<Prioritat> prioritats = new List<Prioritat>();
         public List<Responsable> responsables = new List<Responsable>();
-        
+        ListView dragSource = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,8 +48,6 @@ namespace Prueb_GitHub
             responsables = UserService.SelectR();
 
             SelecionarTodo();
-           
-
         }
 
         public void SelecionarTodo()
@@ -107,34 +106,48 @@ namespace Prueb_GitHub
         //Funcio per poder eliminar una tasca seleccionada.
         private void MenuItem_Eliminar(object sender, RoutedEventArgs e)
         {
-            UserService.eliminarTasca(temp.Id);
-            if (lvTascaToDo.SelectedItem != null)
+            if(temp == null)
             {
-                todo.RemoveAt(lvTascaToDo.SelectedIndex);
-                lvTascaToDo.ItemsSource = null; //Es posa null per fer com una "actualizacio del ListView"
-                lvTascaToDo.ItemsSource = todo; //I després es torna a omplir.
+                MessageBox.Show("Has de seleccionar una tasca, per poder eliminar-la. ", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else if (lvTascaDoing.SelectedItem != null)
+            else
             {
-                doing.RemoveAt(lvTascaDoing.SelectedIndex);
-                lvTascaDoing.ItemsSource = null;
-                lvTascaDoing.ItemsSource = doing;
-            }
-            else if (lvTascaDone.SelectedItem != null)
-            {
-                done.RemoveAt(lvTascaDone.SelectedIndex);
-                lvTascaDone.ItemsSource = null;
-                lvTascaDone.ItemsSource = done;
+                UserService.eliminarTasca(temp.Id);
+                if (lvTascaToDo.SelectedItem != null)
+                {
+                    todo.RemoveAt(lvTascaToDo.SelectedIndex);
+                    lvTascaToDo.ItemsSource = null; //Es posa null per fer com una "actualizacio del ListView"
+                    lvTascaToDo.ItemsSource = todo; //I després es torna a omplir.
+                }
+                else if (lvTascaDoing.SelectedItem != null)
+                {
+                    doing.RemoveAt(lvTascaDoing.SelectedIndex);
+                    lvTascaDoing.ItemsSource = null;
+                    lvTascaDoing.ItemsSource = doing;
+                }
+                else if (lvTascaDone.SelectedItem != null)
+                {
+                    done.RemoveAt(lvTascaDone.SelectedIndex);
+                    lvTascaDone.ItemsSource = null;
+                    lvTascaDone.ItemsSource = done;
+                }
             }
         }
 
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         private void MenuItem_Modificar(object sender, RoutedEventArgs e)
         {
-            obrirModificar();
-            mt.btn_agregar.Visibility = Visibility.Hidden;
-            emplenarCampsFinestra();
-            mt.Focus();
+            if (temp == null)
+            {
+                MessageBox.Show("Has de seleccionar una tasca i omplir tots els camps. ", "Informacio", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                obrirModificar();
+                mt.btn_agregar.Visibility = Visibility.Hidden;
+                emplenarCampsFinestra();
+                mt.Focus();
+            }
         }
 
         public void obrirModificar()
@@ -162,7 +175,7 @@ namespace Prueb_GitHub
         //Funcio per seleccionar un item i poder modificar les dades la tasca. 
         public void emplenarCampsFinestra()
         {
-            if (mt.IsActive)
+            if(mt.IsActive && temp != null)
             {
                 mt.txt_id.Text = temp.Id.ToString();
                 mt.txt_estat.Text = ((int)temp.Estat).ToString();
@@ -180,9 +193,6 @@ namespace Prueb_GitHub
             AfegirResponsable afegirResponsable = new AfegirResponsable();
             afegirResponsable.Show();
         }
-
-        ListView dragSource = null;
-
         private void ListView_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             //Obtenim la llista des d'on s'ha polsat 
@@ -196,6 +206,7 @@ namespace Prueb_GitHub
                 DragDrop.DoDragDrop(parent, data, DragDropEffects.Move);
             }
         }
+
         private static object GetDataFromListView(ListView source, Point point)
         {
             UIElement element = source.InputHitTest(point) as UIElement;
