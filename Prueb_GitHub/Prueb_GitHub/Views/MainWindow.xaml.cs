@@ -62,6 +62,7 @@ namespace Prueb_GitHub
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             at = new afegirTasca(this);
+            at.btn_modificar.Visibility = Visibility.Hidden;
             at.Show();
         }
 
