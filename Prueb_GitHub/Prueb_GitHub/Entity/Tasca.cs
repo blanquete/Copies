@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Prueb_GitHub.Persistence;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace Prueb_GitHub.Entity
 {
@@ -14,6 +16,37 @@ namespace Prueb_GitHub.Entity
     }
     public class Tasca
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
+
+        [BsonElement("nom")]
+        public string Nom { get; set; }
+
+        [BsonElement("descripcio")]
+        public string Descripcio { get; set; }
+
+        [BsonElement("dInici")]
+        public DateTime DInici { get; set; }
+        [BsonElement("dFinal")]
+        public DateTime DFinal { get; set; }
+
+        [BsonElement("prioritat_id")]
+        public int Prioritat_id { get; set; }
+
+       [BsonElement("reponsable_name")]
+        public string Responsable_name { get; set; }
+
+        [BsonElement("estat")]
+        public Estat Estat { get; set; }
+
+        [BsonElement("Estat_name")]
+        public string estat_name { get; set; }
+
+    }
+
+    /*public class Tasca
+    {
+        [BsonId]
         private int id;
         private string nom;
         private string descripcio;
@@ -113,5 +146,5 @@ namespace Prueb_GitHub.Entity
             get { return estat; }
             set { estat = value; }
         }
-    }
+    }*/
 }
