@@ -30,11 +30,11 @@
             <ListView  Margin="10" Name="lvTascaToDo" Width="768" SelectionChanged="lvTascaToDo_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
-                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
-                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
+                        <GridViewColumn  Header="ID" Width="0" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Nom" Width="90" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Descripció" Width="130" DisplayMemberBinding="{Binding Descripcio}"/>
+                        <GridViewColumn Header="Data Inici" Width="110" DisplayMemberBinding="{Binding DInici}"/>
+                        <GridViewColumn Header="Data Final" Width="110" DisplayMemberBinding="{Binding DFinal}"/>
                         <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_name}"/>
                         <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_name}"/>
                         <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_name}"/>
@@ -47,11 +47,11 @@
             <ListView Margin="10" Name="lvTascaDoing" Width="768" SelectionChanged="lvTascaDoing_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
-                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
-                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
+                        <GridViewColumn Header="ID" Width="0" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Nom" Width="90" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Descripció" Width="130" DisplayMemberBinding="{Binding Descripcio}"/>
+                        <GridViewColumn Header="Data Inici" Width="110" DisplayMemberBinding="{Binding DInici}"/>
+                        <GridViewColumn Header="Data Final" Width="110" DisplayMemberBinding="{Binding DFinal}"/>
                         <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_name}"/>
                         <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_name}"/>
                         <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_name}"/>
@@ -64,11 +64,11 @@
             <ListView Margin="10" Name="lvTascaDone" Width="768" SelectionChanged="lvTascaDone_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
-                        <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>
-                        <GridViewColumn Header="Data Final" Width="90" DisplayMemberBinding="{Binding DFinal}"/>
+                        <GridViewColumn Header="ID" Width="0" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Nom" Width="90" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Descripció" Width="130" DisplayMemberBinding="{Binding Descripcio}"/>
+                        <GridViewColumn Header="Data Inici" Width="110" DisplayMemberBinding="{Binding DInici}"/>
+                        <GridViewColumn Header="Data Final" Width="110" DisplayMemberBinding="{Binding DFinal}"/>
                         <GridViewColumn Header="Prioritat" Width="90" DisplayMemberBinding="{Binding Prioritat_name}"/>
                         <GridViewColumn Header="Responsable" Width="90" DisplayMemberBinding="{Binding Responsable_name}"/>
                         <GridViewColumn Header="Estat" Width="90" DisplayMemberBinding="{Binding Estat_name}"/>
