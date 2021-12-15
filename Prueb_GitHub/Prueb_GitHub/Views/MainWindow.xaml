@@ -30,7 +30,7 @@
             <ListView  Margin="10" Name="lvTascaToDo" Width="768" SelectionChanged="lvTascaToDo_SelectionChanged" Drop="ListView_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn  Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="ID" Width="70" DisplayMemberBinding="{Binding Id}"/>
                         <GridViewColumn Header="Nom" Width="70" DisplayMemberBinding="{Binding Nom}"/>
                         <GridViewColumn Header="Descripció" Width="90" DisplayMemberBinding="{Binding Descripcio}"/>
                         <GridViewColumn Header="Data Inici" Width="90" DisplayMemberBinding="{Binding DInici}"/>

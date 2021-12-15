@@ -43,7 +43,7 @@ namespace Prueb_GitHub
 
             //Fem un enllaç de cada listView
             //Depen del estat si es To Do, Doing o Done, mostrará l'informació en un list view diferent. 
-            
+           
             prioritats = UserService.SelectP();
             responsables = UserService.SelectR();
 
