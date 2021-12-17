@@ -6,6 +6,7 @@ using Prueb_GitHub.Persistence;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
+
 namespace Prueb_GitHub.Entity
 {
     public enum Estat
@@ -18,6 +19,9 @@ namespace Prueb_GitHub.Entity
     {
         [BsonId]
         public ObjectId Id { get; set; }
+
+        [BsonElement("id")]
+        public int _Id { get; set; }
 
         [BsonElement("nom")]
         public string Nom { get; set; }
@@ -33,7 +37,7 @@ namespace Prueb_GitHub.Entity
         [BsonElement("prioritat_id")]
         public int Prioritat_id { get; set; }
 
-       [BsonElement("reponsable_name")]
+        [BsonElement("reponsable_name")]
         public string Responsable_name { get; set; }
 
         [BsonElement("estat")]
@@ -41,6 +45,10 @@ namespace Prueb_GitHub.Entity
 
         [BsonElement("Estat_name")]
         public string estat_name { get; set; }
+
+        public string Prioritat_name { get; set; }
+        public int Responsable_id { get; set; }
+        public string Estat_name { get; set; }
 
     }
 

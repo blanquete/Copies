@@ -85,7 +85,7 @@ namespace Prueb_GitHub.Service
                         {
                             todo.Add(new Tasca
                             {
-                                Id = (int)reader["id"],
+                                _Id = (int)reader["id"],
                                 Nom = reader["nom"].ToString(),
                                 Descripcio = reader["descripcio"].ToString(),
                                 DInici = Convert.ToDateTime(reader["dataInici"]),

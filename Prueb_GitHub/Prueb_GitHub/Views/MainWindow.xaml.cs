@@ -112,7 +112,7 @@ namespace Prueb_GitHub
             }
             else
             {
-                UserService.eliminarTasca(temp.Id);
+                UserService.eliminarTasca(temp._Id);
                 if (lvTascaToDo.SelectedItem != null)
                 {
                     todo.RemoveAt(lvTascaToDo.SelectedIndex);
@@ -244,13 +244,13 @@ namespace Prueb_GitHub
             switch (parent.Name)
             {
                 case "lvTascaToDo":
-                    UserService.updateEstat(task.Id, 1); // 1 - estat todo
+                    UserService.updateEstat(task._Id, 1); // 1 - estat todo
                     break;
                 case "lvTascaDoing":
-                    UserService.updateEstat(task.Id, 2); // 2 - estat doing
+                    UserService.updateEstat(task._Id, 2); // 2 - estat doing
                     break;
                 case "lvTascaDone":
-                    UserService.updateEstat(task.Id, 3); // 3 - estat done
+                    UserService.updateEstat(task._Id, 3); // 3 - estat done
                     break;
             }
             //Actualitza els listviews

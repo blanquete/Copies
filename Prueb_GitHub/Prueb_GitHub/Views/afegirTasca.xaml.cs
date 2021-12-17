@@ -54,7 +54,7 @@ namespace Prueb_GitHub.Views
             //afageix un nou item al listview
                 temp = new Tasca()
                      {
-                         Id = UserService.maxId()+1,
+                         _Id = UserService.maxId()+1,
                          Nom = txt_nomTasca.Text,
                          Descripcio = txt_descripcio.Text,
                          DInici = DateTime.Now,
@@ -84,7 +84,7 @@ namespace Prueb_GitHub.Views
                 //creem un nou item al listview
                 temp = new Tasca()
                 {
-                    Id = int.Parse(txt_id.Text),
+                   _Id = int.Parse(txt_id.Text),
                     DInici = (DateTime)datepicker_data_inici.SelectedDate,
                     Estat = (Estat)int.Parse(txt_estat.Text),
 
