@@ -39,7 +39,7 @@ namespace Prueb_GitHub
             InitializeComponent();
             
             //Conexio a la BBDD
-            DbContext.ObtenerConexion();
+            DbContextMongo.GetInstance();
 
             //Fem un enllaç de cada listView
             //Depen del estat si es To Do, Doing o Done, mostrará l'informació en un list view diferent. 
@@ -47,15 +47,15 @@ namespace Prueb_GitHub
             prioritats = UserService.SelectP();
             responsables = UserService.SelectR();
 
-            SelecionarTodo();
+            SeleccionarTodo();
         }
 
-        public void SelecionarTodo()
+        public void SeleccionarTodo()
         {
             //Agafa el items que te cada llista
-            lvTascaToDo.ItemsSource = todo = UserService.Select(1); 
-            lvTascaDoing.ItemsSource = doing = UserService.Select(2); 
-            lvTascaDone.ItemsSource = done = UserService.Select(3); ;
+            lvTascaToDo.ItemsSource = todo = UserService.Select(1);
+            lvTascaDoing.ItemsSource = doing = UserService.Select(2);
+            lvTascaDone.ItemsSource = done = UserService.Select(3);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -112,7 +112,7 @@ namespace Prueb_GitHub
             }
             else
             {
-                UserService.eliminarTasca(temp._Id);
+                UserService.eliminarTasca(temp.Id);
                 if (lvTascaToDo.SelectedItem != null)
                 {
                     todo.RemoveAt(lvTascaToDo.SelectedIndex);
@@ -244,13 +244,19 @@ namespace Prueb_GitHub
             switch (parent.Name)
             {
                 case "lvTascaToDo":
-                    UserService.updateEstat(task._Id, 1); // 1 - estat todo
+                    task.Estat = Estat.ToDo;
+                    task.Estat_name = "To Do";
+                    UserService.updateEstat(task); // 1 - estat todo
                     break;
                 case "lvTascaDoing":
-                    UserService.updateEstat(task._Id, 2); // 2 - estat doing
+                    task.Estat = Estat.Doing;
+                    task.Estat_name = "Doing";
+                    UserService.updateEstat(task); // 2 - estat doing
                     break;
                 case "lvTascaDone":
-                    UserService.updateEstat(task._Id, 3); // 3 - estat done
+                    task.Estat = Estat.Done;
+                    task.Estat_name = "Done";
+                    UserService.updateEstat(task); // 3 - estat done
                     break;
             }
             //Actualitza els listviews

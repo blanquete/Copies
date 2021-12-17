@@ -6,10 +6,6 @@ using MySql.Data.MySqlClient;
 
 namespace Prueb_GitHub.Persistence
 {
-    //----------------------------------- Password MongoDB ---------------------------------------------------//
-    //----------------------------------- User: Iprats, passwd: Campalans1234 --------------------------------//
-    //----------------------------------- User: Rblanco, passwd: Campalans1234 -------------------------------//
-    //----------------------------------- User: Awaggeh, passwd: Campalans1234 -------------------------------//
     public class DbContext
     {
         //Conexio a la BBDD 

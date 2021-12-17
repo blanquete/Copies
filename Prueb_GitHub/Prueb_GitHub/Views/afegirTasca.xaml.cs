@@ -64,7 +64,8 @@ namespace Prueb_GitHub.Views
                          Responsable_id = cmb_responsable.SelectedIndex,
                          Responsable_name = cmb_responsable.SelectedItem.ToString(), //Agafa el valor de l'index
                          Estat_name = "To do", //Fixem el valor de l'index, una tasca sempre inicia al ToDo
-                     };
+                         Estat = Estat.ToDo, //Fixem el valor de l'index, una tasca sempre inicia al ToDo
+                };
                 
                 //Des de la pantalla Afegir passem l'objecte al listview de la pagina principal
                 w1.todo.Add(temp);
@@ -82,7 +83,7 @@ namespace Prueb_GitHub.Views
             try
             {
                 //creem un nou item al listview
-                temp = new Tasca()
+                Tasca temp = new Tasca()
                 {
                    _Id = int.Parse(txt_id.Text),
                     DInici = (DateTime)datepicker_data_inici.SelectedDate,
