@@ -6,11 +6,94 @@ using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
 using Prueb_GitHub.Views;
 
+using MongoDB;
+using MongoDB.Bson;
+using MongoDB.Driver;
+
 
 namespace Prueb_GitHub.Service
 {
     public class UserService
     {
+
+        /// <summary>
+        /// Obté tots els usuaris
+        /// </summary>
+        /// <returns></returns>
+        public static List<Tasca> GetAll()
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            List<Tasca> result = tasques.AsQueryable<Tasca>().ToList();
+            return result;
+        }
+
+        /// <summary>
+        /// Afegeix un nou usuari a la base de dades
+        /// </summary>
+        /// <param name="tasca">Entitat usuari</param>
+        /// <returns>El número d'usuaris afegits</returns>
+        public int Add(Tasca tasca)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            tasques.InsertOne(tasca);
+
+            return 1;
+        }
+
+        /// <summary>
+        /// Actualitza un usuari
+        /// </summary>
+        /// <param name="tasca">Entitat usuari que es vol modificar</param>
+        /// <returns>El número de usuaris modificats</returns>
+        public long Update(Tasca tasca)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            var filtre = Builders<Tasca>.Filter.Eq(s => s.Id, tasca.Id);
+            var result = tasques.ReplaceOne(filtre, tasca);
+
+            return result.MatchedCount;
+        }
+
+        /// <summary>
+        /// Elimina un usuari
+        /// </summary>
+        /// <param name="Id">Codi d'usuari que es vol eliminar</param>
+        /// <returns>El número d'usuaris eliminats></returns>
+        public long Delete(ObjectId Id)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            var result = tasques.DeleteOne(s => s.Id == Id);
+
+            return result.DeletedCount;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         public static List<Prioritat> prioritats = SelectP();
         public static List<Responsable> responsables = SelectR();
 
@@ -212,7 +295,7 @@ namespace Prueb_GitHub.Service
                 }
             }
             return max;
-        }
+        }*/
 
 
     }

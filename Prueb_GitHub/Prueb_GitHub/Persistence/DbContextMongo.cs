@@ -15,7 +15,7 @@ namespace Prueb_GitHub.Persistence
             return mongoClient.GetDatabase("testMongo");
         }
 
-        public static IMongoCollection<Tasca> GetUsers()
+        public static IMongoCollection<Tasca> GetTasques()
         {
             return GetInstance().GetCollection<Tasca>("Tasca");
         }
