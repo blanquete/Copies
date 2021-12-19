@@ -11,6 +11,7 @@ namespace Prueb_GitHub.Entity
 {
     public enum Estat
     {
+        Default,
         ToDo,
         Doing,
         Done
@@ -37,18 +38,21 @@ namespace Prueb_GitHub.Entity
         [BsonElement("prioritat_id")]
         public int Prioritat_id { get; set; }
 
-        [BsonElement("reponsable_name")]
+        [BsonElement("responsable_name")]
         public string Responsable_name { get; set; }
 
         [BsonElement("estat")]
         public Estat Estat { get; set; }
 
-        [BsonElement("Estat_name")]
-        public string estat_name { get; set; }
-
-        public string Prioritat_name { get; set; }
-        public int Responsable_id { get; set; }
+        [BsonElement("estat_name")]
         public string Estat_name { get; set; }
+
+        [BsonElement("prioritat_name")]
+        public string Prioritat_name { get; set; }
+
+        [BsonElement("responsable_id")]
+        public int Responsable_id { get; set; }
+        //public string Estat_name { get; set; }
 
     }
 

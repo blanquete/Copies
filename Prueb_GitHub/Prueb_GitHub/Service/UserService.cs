@@ -6,11 +6,194 @@ using Prueb_GitHub.Entity;
 using Prueb_GitHub.Persistence;
 using Prueb_GitHub.Views;
 
+using MongoDB;
+using MongoDB.Bson;
+using MongoDB.Driver;
+
 
 namespace Prueb_GitHub.Service
 {
     public class UserService
     {
+
+        /// <summary>
+        /// Obté totes les tasques
+        /// </summary>
+        /// <returns></returns>
+        public static List<Tasca> GetAll()
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            List<Tasca> result = tasques.AsQueryable<Tasca>().ToList();
+            return result;
+        }
+
+
+
+        /// <summary>
+        /// Obté totes les tasques que tenen l'estat corresponent
+        /// </summary>
+        /// <returns></returns>
+        /// <param name="estat">Codi de l'estat</param>
+        public static List<Tasca> Select(int estat)
+        {
+            List<Tasca> tasques_ = GetAll();
+            List<Tasca> tasques = new List<Tasca>();
+
+            foreach(Tasca t in tasques_)
+            {
+                if(t.Estat == (Estat)estat)
+                {
+                    tasques.Add(t);
+                }
+            }
+
+
+            return tasques;
+        }
+
+        /// <summary>
+        /// Afegeix una nova tasca a la base de dades
+        /// </summary>
+        /// <param name="tasca">Entitat tasca</param>
+        public static void Agregar(Tasca tasca)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            tasques.InsertOne(tasca);
+        }
+
+        /// <summary>
+        /// Actualitza una tasca
+        /// </summary>
+        /// <param name="tasca">Entitat tasca que es vol modificar</param>
+        public static void updateTasca(Tasca tasca)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            var filtre = Builders<Tasca>.Filter.Eq(s => s.Id, tasca.Id);
+            var result = tasques.ReplaceOne(filtre, tasca);
+        }
+
+        /// <summary>
+        /// Elimina una tasca
+        /// </summary>
+        /// <param name="Id">Codi de la tasca que es vol eliminar</param>
+        public static void eliminarTasca(ObjectId Id)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            var result = tasques.DeleteOne(s => s.Id == Id);
+        }
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Obté tots els usuaris
+        /// </summary>
+        /// <returns></returns>
+        public static List<Prioritat> SelectP()
+        {
+            IMongoCollection<Prioritat> prioritats = DbContextMongo.GetPrioritats();
+
+            List<Prioritat> result = prioritats.AsQueryable<Prioritat>().ToList();
+            return result;
+        }
+
+        /// <summary>
+        /// Obté tots els usuaris
+        /// </summary>
+        /// <returns></returns>
+        public static List<Responsable> SelectR()
+        {
+            IMongoCollection<Responsable> respnsables = DbContextMongo.GetResponsables();
+
+            List<Responsable> result = respnsables.AsQueryable<Responsable>().ToList();
+            return result;
+        }
+
+        /// <summary>
+        /// Afegeix un nou usuari a la base de dades
+        /// </summary>
+        /// <param name="tasca">Entitat usuari</param>
+        public static void afegirResponsable(Responsable responsable)
+        {
+            IMongoCollection<Responsable> responsables = DbContextMongo.GetResponsables();
+
+            responsables.InsertOne(responsable);
+        }
+
+        /// <summary>
+        /// Actualitza un usuari
+        /// </summary>
+        /// <param name="tasca">Entitat usuari que es vol modificar</param>
+
+
+
+        public static void updateEstat(Tasca tasca)
+        {
+            IMongoCollection<Tasca> tasques = DbContextMongo.GetTasques();
+
+            var filtre = Builders<Tasca>.Filter.Eq(s => s.Id, tasca.Id);
+            var result = tasques.ReplaceOne(filtre, tasca);
+        }
+
+        /// <summary>
+        /// Elimina un usuari
+        /// </summary>
+        /// <param name="Id">Codi d'usuari que es vol eliminar</param>
+        public static int maxId()
+        {
+            List<Tasca> tasques = GetAll();
+
+            try
+            {
+                var max_id = tasques[tasques.Count - 1]._Id;
+                
+                return max_id;
+            }
+            catch
+            {
+                return 1;
+            }
+
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         public static List<Prioritat> prioritats = SelectP();
         public static List<Responsable> responsables = SelectR();
 
@@ -212,7 +395,7 @@ namespace Prueb_GitHub.Service
                 }
             }
             return max;
-        }
+        }*/
 
 
     }
