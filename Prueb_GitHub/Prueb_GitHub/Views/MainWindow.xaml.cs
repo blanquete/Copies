@@ -260,7 +260,7 @@ namespace Prueb_GitHub
                     break;
             }
             //Actualitza els listviews
-            SelecionarTodo();
+            SeleccionarTodo();
         }
     }
 }
